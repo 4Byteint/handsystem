@@ -1,0 +1,36 @@
+running egg_info
+creating ../../build/gripper_sub/gripper_sub.egg-info
+writing ../../build/gripper_sub/gripper_sub.egg-info/PKG-INFO
+writing dependency_links to ../../build/gripper_sub/gripper_sub.egg-info/dependency_links.txt
+writing entry points to ../../build/gripper_sub/gripper_sub.egg-info/entry_points.txt
+writing requirements to ../../build/gripper_sub/gripper_sub.egg-info/requires.txt
+writing top-level names to ../../build/gripper_sub/gripper_sub.egg-info/top_level.txt
+writing manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+reading manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build
+creating /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib
+creating /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub
+copying gripper_sub/subscriber_member_function.py -> /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub
+copying gripper_sub/__init__.py -> /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub
+running install
+running install_lib
+creating /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+copying /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub/subscriber_member_function.py -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+copying /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub/__init__.py -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+byte-compiling /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/subscriber_member_function.py to subscriber_member_function.cpython-310.pyc
+byte-compiling /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/ament_index
+creating /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/ament_index/resource_index
+creating /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/ament_index/resource_index/packages
+copying resource/gripper_sub -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/ament_index/resource_index/packages
+copying package.xml -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/gripper_sub
+running install_egg_info
+Copying ../../build/gripper_sub/gripper_sub.egg-info to /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub-0.0.0-py3.10.egg-info
+running install_scripts
+Installing listener script to /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/gripper_sub
+writing list of installed files to '/home/pi/handsystem/ros2_robot_ws/build/gripper_sub/install.log'

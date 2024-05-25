@@ -1,0 +1,22 @@
+[4.851s] Invoking command in '/home/pi/handsystem/ros2_robot_ws/src/arm_test': PYTHONPATH=/home/pi/handsystem/ros2_robot_ws/build/arm_test/prefix_override:/home/pi/handsystem/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/arm_test build --build-base /home/pi/handsystem/ros2_robot_ws/build/arm_test/build install --record /home/pi/handsystem/ros2_robot_ws/build/arm_test/install.log --single-version-externally-managed install_data
+[6.649s] running egg_info
+[6.652s] writing ../../build/arm_test/arm_test.egg-info/PKG-INFO
+[6.653s] writing dependency_links to ../../build/arm_test/arm_test.egg-info/dependency_links.txt
+[6.656s] writing entry points to ../../build/arm_test/arm_test.egg-info/entry_points.txt
+[6.657s] writing requirements to ../../build/arm_test/arm_test.egg-info/requires.txt
+[6.658s] writing top-level names to ../../build/arm_test/arm_test.egg-info/top_level.txt
+[6.667s] reading manifest file '../../build/arm_test/arm_test.egg-info/SOURCES.txt'
+[6.669s] adding license file 'LICENSE'
+[6.677s] writing manifest file '../../build/arm_test/arm_test.egg-info/SOURCES.txt'
+[6.678s] running build
+[6.678s] running build_py
+[6.680s] running install
+[6.682s] running install_lib
+[6.689s] running install_data
+[6.690s] running install_egg_info
+[6.699s] removing '/home/pi/handsystem/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages/arm_test-0.0.0-py3.10.egg-info' (and everything under it)
+[6.701s] Copying ../../build/arm_test/arm_test.egg-info to /home/pi/handsystem/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages/arm_test-0.0.0-py3.10.egg-info
+[6.709s] running install_scripts
+[6.807s] Installing talker script to /home/pi/handsystem/ros2_robot_ws/install/arm_test/lib/arm_test
+[6.809s] writing list of installed files to '/home/pi/handsystem/ros2_robot_ws/build/arm_test/install.log'
+[6.956s] Invoked command in '/home/pi/handsystem/ros2_robot_ws/src/arm_test' returned '0': PYTHONPATH=/home/pi/handsystem/ros2_robot_ws/build/arm_test/prefix_override:/home/pi/handsystem/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/arm_test build --build-base /home/pi/handsystem/ros2_robot_ws/build/arm_test/build install --record /home/pi/handsystem/ros2_robot_ws/build/arm_test/install.log --single-version-externally-managed install_data

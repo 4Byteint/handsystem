@@ -1,0 +1,1 @@
+cmd_/home/pi/handsystem/linuxcan/pcican/kvpcican.mod := { echo  /home/pi/handsystem/linuxcan/pcican/PciCanHwIf.o /home/pi/handsystem/linuxcan/pcican/dallas.o;  echo; } > /home/pi/handsystem/linuxcan/pcican/kvpcican.mod

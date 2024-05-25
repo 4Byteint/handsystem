@@ -1,0 +1,7 @@
+{
+  "package_name": "robot_interfaces",
+  "non_idl_tuples": [
+    "/home/pi/handsystem/ros2_robot_ws/src/robot_interfaces:msg/GripperCommand.msg",
+    "/home/pi/handsystem/ros2_robot_ws/src/robot_interfaces:msg/GripperInfo.msg"
+  ]
+}

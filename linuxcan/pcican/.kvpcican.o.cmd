@@ -1,0 +1,1 @@
+cmd_/home/pi/handsystem/linuxcan/pcican/kvpcican.o := ld -EL  -maarch64elf -z noexecstack   -r -o /home/pi/handsystem/linuxcan/pcican/kvpcican.o /home/pi/handsystem/linuxcan/pcican/PciCanHwIf.o /home/pi/handsystem/linuxcan/pcican/dallas.o

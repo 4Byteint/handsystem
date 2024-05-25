@@ -1,0 +1,1 @@
+cmd_/home/pi/handsystem/linuxcan/usbcanII/Module.symvers := sed 's/\.ko$$/\.o/' /home/pi/handsystem/linuxcan/usbcanII/modules.order | scripts/mod/modpost -m -a  -o /home/pi/handsystem/linuxcan/usbcanII/Module.symvers -e -i Module.symvers -i /home/pi/handsystem/linuxcan/usbcanII/../common/Module.symvers   -T -

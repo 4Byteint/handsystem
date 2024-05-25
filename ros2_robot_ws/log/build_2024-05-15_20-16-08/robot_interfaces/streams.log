@@ -1,0 +1,225 @@
+[0.045s] Invoking command in '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/handsystem/ros2_robot_ws/install/py_pubsub:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/ros2_ws/install/py_sub:/opt/ros/humble /usr/bin/cmake /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces -DCMAKE_INSTALL_PREFIX=/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces
+[0.351s] -- The C compiler identification is GNU 11.4.0
+[0.619s] -- The CXX compiler identification is GNU 11.4.0
+[0.657s] -- Detecting C compiler ABI info
+[1.008s] -- Detecting C compiler ABI info - done
+[1.033s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.036s] -- Detecting C compile features
+[1.039s] -- Detecting C compile features - done
+[1.052s] -- Detecting CXX compiler ABI info
+[1.420s] -- Detecting CXX compiler ABI info - done
+[1.449s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.450s] -- Detecting CXX compile features
+[1.451s] -- Detecting CXX compile features - done
+[1.483s] -- Found ament_cmake: 1.3.8 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.244s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[2.847s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[2.876s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.950s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[3.296s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.652s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[5.546s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[6.660s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[6.775s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[6.800s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[6.929s] -- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[6.930s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[6.930s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[6.931s] -- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so
+[7.034s] -- Found PythonExtra: .so  
+[7.216s] -- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[7.405s] -- Added test 'lint_cmake' to check CMake code style
+[7.416s] -- Added test 'xmllint' to check XML markup files
+[7.440s] -- Configuring done
+[7.595s] -- Generating done
+[7.608s] -- Build files have been written to: /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces
+[7.629s] Invoked command in '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/handsystem/ros2_robot_ws/install/py_pubsub:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/ros2_ws/install/py_sub:/opt/ros/humble /usr/bin/cmake /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces -DCMAKE_INSTALL_PREFIX=/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces
+[7.638s] Invoking command in '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/handsystem/ros2_robot_ws/install/py_pubsub:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/ros2_ws/install/py_sub:/opt/ros/humble /usr/bin/cmake --build /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces -- -j4 -l4
+[7.807s] [  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[7.852s] [  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[7.898s] [  6%] Built target ament_cmake_python_copy_robot_interfaces
+[9.148s] [  6%] Built target robot_interfaces__cpp
+[9.174s] [  9%] [32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o[0m
+[9.197s] [ 12%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[9.203s] [ 16%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[9.454s] [ 19%] [32m[1mLinking C shared library librobot_interfaces__rosidl_generator_c.so[0m
+[9.663s] [ 19%] Built target robot_interfaces__rosidl_generator_c
+[9.716s] [ 22%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[9.742s] running egg_info
+[9.744s] creating robot_interfaces.egg-info
+[9.745s] writing robot_interfaces.egg-info/PKG-INFO
+[9.747s] writing dependency_links to robot_interfaces.egg-info/dependency_links.txt
+[9.748s] writing top-level names to robot_interfaces.egg-info/top_level.txt
+[9.750s] writing manifest file 'robot_interfaces.egg-info/SOURCES.txt'
+[9.762s] reading manifest file 'robot_interfaces.egg-info/SOURCES.txt'
+[9.766s] writing manifest file 'robot_interfaces.egg-info/SOURCES.txt'
+[9.956s] [ 22%] Built target ament_cmake_python_build_robot_interfaces_egg
+[10.012s] [ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[10.598s] [ 29%] [32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_interfaces/msg/detail/gripper_command__type_support.cpp.o[0m
+[10.650s] [ 32%] [32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/gripper_command__type_support.cpp.o[0m
+[11.004s] [ 35%] [32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_interfaces/msg/gripper_command__type_support.cpp.o[0m
+[11.425s] [ 38%] [32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_interfaces/msg/detail/gripper_command__type_support_c.cpp.o[0m
+[12.693s] [ 41%] [32m[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_cpp.so[0m
+[12.920s] [ 41%] Built target robot_interfaces__rosidl_typesupport_cpp
+[13.019s] [ 48%] [32m[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[13.021s] [ 48%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[13.175s] [ 51%] [32m[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[13.235s] [ 51%] Built target robot_interfaces__rosidl_typesupport_introspection_cpp
+[13.296s] [ 54%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[13.608s] [ 54%] Built target robot_interfaces__rosidl_typesupport_fastrtps_cpp
+[13.716s] [ 58%] [32m[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[14.081s] [ 58%] Built target robot_interfaces__rosidl_typesupport_fastrtps_c
+[14.407s] [ 61%] [32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c.o[0m
+[14.471s] [ 64%] [32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_interfaces/msg/gripper_command__type_support.cpp.o[0m
+[14.575s] [ 67%] [32m[1mLinking C shared library librobot_interfaces__rosidl_typesupport_introspection_c.so[0m
+[14.619s] [ 70%] [32m[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_c.so[0m
+[14.705s] [ 70%] Built target robot_interfaces__rosidl_typesupport_introspection_c
+[14.783s] [ 70%] Built target robot_interfaces__rosidl_typesupport_c
+[14.868s] [ 70%] Built target robot_interfaces
+[14.956s] [ 74%] [34m[1mGenerating Python code for ROS interfaces[0m
+[16.167s] [ 74%] Built target robot_interfaces__py
+[16.259s] [ 77%] [32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_gripper_command_s.c.o[0m
+[16.690s] [ 80%] [32m[1mLinking C shared library rosidl_generator_py/robot_interfaces/librobot_interfaces__rosidl_generator_py.so[0m
+[16.872s] [ 80%] Built target robot_interfaces__rosidl_generator_py
+[16.965s] [ 83%] [32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[16.967s] [ 87%] [32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[16.972s] [ 90%] [32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[17.417s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so[0m
+[17.428s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so[0m
+[17.468s] [100%] [32m[1mLinking C shared library rosidl_generator_py/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so[0m
+[17.597s] [100%] Built target robot_interfaces__rosidl_typesupport_c__pyext
+[17.608s] [100%] Built target robot_interfaces__rosidl_typesupport_introspection_c__pyext
+[17.652s] [100%] Built target robot_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[17.694s] Invoked command in '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/handsystem/ros2_robot_ws/install/py_pubsub:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/ros2_ws/install/py_sub:/opt/ros/humble /usr/bin/cmake --build /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces -- -j4 -l4
+[18.087s] Invoking command in '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/handsystem/ros2_robot_ws/install/py_pubsub:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/ros2_ws/install/py_sub:/opt/ros/humble /usr/bin/cmake --install /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces
+[18.118s] -- Install configuration: ""
+[18.119s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/ament_index/resource_index/rosidl_interfaces/robot_interfaces
+[18.120s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces
+[18.121s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg
+[18.121s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail
+[18.122s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__functions.c
+[18.123s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__functions.h
+[18.124s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__type_support.h
+[18.126s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__struct.h
+[18.127s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/gripper_command.h
+[18.128s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_generator_c__visibility_control.h
+[18.130s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/library_path.sh
+[18.131s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/library_path.dsv
+[18.133s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_c.so
+[18.135s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_c.so" to ""
+[18.136s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces
+[18.136s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg
+[18.136s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail
+[18.137s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_fastrtps_c.h
+[18.138s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[18.139s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_c.so
+[18.142s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[18.142s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces
+[18.143s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg
+[18.143s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail
+[18.143s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__type_support.c
+[18.145s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h
+[18.146s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[18.148s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_c.so
+[18.150s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[18.151s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_c.so
+[18.153s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_c.so" to ""
+[18.154s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces
+[18.154s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg
+[18.154s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail
+[18.155s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__struct.hpp
+[18.156s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__builder.hpp
+[18.157s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__traits.hpp
+[18.158s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/gripper_command.hpp
+[18.159s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces
+[18.160s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg
+[18.160s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail
+[18.160s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/dds_fastrtps
+[18.161s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_fastrtps_cpp.hpp
+[18.163s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[18.164s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[18.167s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[18.167s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces
+[18.167s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg
+[18.168s] -- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail
+[18.168s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__type_support.cpp
+[18.169s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_cpp.hpp
+[18.171s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_cpp.so
+[18.174s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[18.174s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_cpp.so
+[18.176s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_cpp.so" to ""
+[18.177s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/pythonpath.sh
+[18.178s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/pythonpath.dsv
+[18.179s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info
+[18.180s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[18.181s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[18.182s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[18.184s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[18.185s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces
+[18.186s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[18.187s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so
+[18.188s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_c.c
+[18.190s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/librobot_interfaces__rosidl_generator_py.so
+[18.191s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[18.192s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg
+[18.193s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_gripper_command_s.c
+[18.194s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_gripper_command.py
+[18.195s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/__init__.py
+[18.196s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/__init__.py
+[18.198s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so
+[18.199s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so
+[18.357s] Listing '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces'...
+[18.358s] Compiling '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/__init__.py'...
+[18.359s] Listing '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg'...
+[18.360s] Compiling '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/__init__.py'...
+[18.361s] Compiling '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_gripper_command.py'...
+[18.382s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so
+[18.385s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so" to ""
+[18.386s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so
+[18.389s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so" to ""
+[18.391s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so
+[18.394s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so" to ""
+[18.394s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_py.so
+[18.397s] -- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_py.so" to ""
+[18.398s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/msg/GripperCommand.idl
+[18.400s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/msg/GripperCommand.msg
+[18.401s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/ament_index/resource_index/package_run_dependencies/robot_interfaces
+[18.403s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/ament_index/resource_index/parent_prefix_path/robot_interfaces
+[18.404s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/ament_prefix_path.sh
+[18.405s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/ament_prefix_path.dsv
+[18.407s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/path.sh
+[18.408s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/path.dsv
+[18.409s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/local_setup.bash
+[18.410s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/local_setup.sh
+[18.411s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/local_setup.zsh
+[18.412s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/local_setup.dsv
+[18.414s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/package.dsv
+[18.415s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/ament_index/resource_index/packages/robot_interfaces
+[18.417s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_cExport.cmake
+[18.418s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_cExport-noconfig.cmake
+[18.420s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[18.421s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[18.423s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[18.424s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[18.426s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cExport.cmake
+[18.427s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[18.429s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_cppExport.cmake
+[18.430s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[18.432s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[18.433s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[18.435s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[18.436s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cppExport.cmake
+[18.438s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[18.439s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_pyExport.cmake
+[18.441s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[18.442s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/rosidl_cmake-extras.cmake
+[18.443s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[18.444s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[18.446s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[18.447s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[18.449s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[18.450s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[18.451s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfacesConfig.cmake
+[18.452s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfacesConfig-version.cmake
+[18.454s] -- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/package.xml
+[18.461s] Invoked command in '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/handsystem/ros2_robot_ws/install/py_pubsub:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/ros2_ws/install/py_sub:/opt/ros/humble /usr/bin/cmake --install /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces

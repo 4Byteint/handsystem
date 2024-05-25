@@ -1,0 +1,477 @@
+[0.000000] (-) TimerEvent: {}
+[0.001651] (-) JobUnselected: {'identifier': 'arm_test'}
+[0.002214] (-) JobUnselected: {'identifier': 'gripper_pub'}
+[0.002754] (-) JobUnselected: {'identifier': 'gripper_sub'}
+[0.002943] (robot_interfaces) JobQueued: {'identifier': 'robot_interfaces', 'dependencies': OrderedDict()}
+[0.003218] (robot_interfaces) JobStarted: {'identifier': 'robot_interfaces'}
+[0.049633] (robot_interfaces) JobProgress: {'identifier': 'robot_interfaces', 'progress': 'cmake'}
+[0.052920] (robot_interfaces) JobProgress: {'identifier': 'robot_interfaces', 'progress': 'build'}
+[0.056187] (robot_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces', '--', '-j4', '-l4'], 'cwd': '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'pi'), ('SSH_CLIENT', '192.168.137.1 10295 22'), ('LC_TIME', 'lzh_TW'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib:/home/pi/ros2_ws/install/interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('BROWSER', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/pi'), ('OLDPWD', '/home/pi/handsystem/ros2_robot_ws/src'), ('TERM_PROGRAM_VERSION', '1.89.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-01a49f5f-f92e-4ba7-90f4-cc92f358a792.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'lzh_TW'), ('VSCODE_GIT_ASKPASS_NODE', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/pi/handsystem/ros2_robot_ws/install:/home/pi/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'pi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '71'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/bin/remote-cli:/home/pi/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'lzh_TW'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'lzh_TW'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-13811b72cf.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces:/home/pi/ros2_ws/install/py_sub:/home/pi/ros2_ws/install/cpp_pub:/home/pi/ros2_ws/install/interfaces:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'lzh_TW'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'lzh_TW'), ('LC_IDENTIFICATION', 'lzh_TW'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.137.1 10295 192.168.137.66 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub/lib/python3.10/site-packages:/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages:/home/pi/ros2_ws/install/py_sub/lib/python3.10/site-packages:/home/pi/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'lzh_TW'), ('LC_PAPER', 'lzh_TW'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces:/home/pi/ros2_ws/install/cpp_pub:/home/pi/ros2_ws/install/interfaces:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/ros2_ws/install/py_sub:/opt/ros/humble')]), 'shell': False}
+[0.098916] (-) TimerEvent: {}
+[0.194473] (robot_interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.8 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.199074] (-) TimerEvent: {}
+[0.299850] (-) TimerEvent: {}
+[0.400633] (-) TimerEvent: {}
+[0.501477] (-) TimerEvent: {}
+[0.602446] (-) TimerEvent: {}
+[0.703106] (-) TimerEvent: {}
+[0.803958] (-) TimerEvent: {}
+[0.897200] (robot_interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[0.904117] (-) TimerEvent: {}
+[0.912833] (robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.931470] (robot_interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.004302] (-) TimerEvent: {}
+[1.105165] (-) TimerEvent: {}
+[1.332407] (-) TimerEvent: {}
+[1.433613] (-) TimerEvent: {}
+[1.534465] (-) TimerEvent: {}
+[1.572286] (robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.634642] (-) TimerEvent: {}
+[1.735367] (-) TimerEvent: {}
+[1.836050] (-) TimerEvent: {}
+[1.936756] (-) TimerEvent: {}
+[2.037516] (-) TimerEvent: {}
+[2.138397] (-) TimerEvent: {}
+[2.239201] (-) TimerEvent: {}
+[2.340018] (-) TimerEvent: {}
+[2.441106] (-) TimerEvent: {}
+[2.541866] (-) TimerEvent: {}
+[2.642638] (-) TimerEvent: {}
+[2.743420] (-) TimerEvent: {}
+[2.844369] (-) TimerEvent: {}
+[2.945529] (-) TimerEvent: {}
+[2.949782] (robot_interfaces) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[3.045705] (-) TimerEvent: {}
+[3.146628] (-) TimerEvent: {}
+[3.247670] (-) TimerEvent: {}
+[3.348373] (-) TimerEvent: {}
+[3.449193] (-) TimerEvent: {}
+[3.550368] (-) TimerEvent: {}
+[3.651539] (-) TimerEvent: {}
+[3.752427] (-) TimerEvent: {}
+[3.853388] (-) TimerEvent: {}
+[3.864107] (robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.953501] (-) TimerEvent: {}
+[4.054286] (-) TimerEvent: {}
+[4.155126] (-) TimerEvent: {}
+[4.255974] (-) TimerEvent: {}
+[4.356700] (-) TimerEvent: {}
+[4.457678] (-) TimerEvent: {}
+[4.558443] (-) TimerEvent: {}
+[4.659291] (-) TimerEvent: {}
+[4.760233] (-) TimerEvent: {}
+[4.861379] (-) TimerEvent: {}
+[4.962150] (-) TimerEvent: {}
+[5.063100] (-) TimerEvent: {}
+[5.075480] (robot_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[5.163283] (-) TimerEvent: {}
+[5.197139] (robot_interfaces) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[5.263480] (-) TimerEvent: {}
+[5.324024] (robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[5.324982] (robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[5.325717] (robot_interfaces) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.10.so\n'}
+[5.363673] (-) TimerEvent: {}
+[5.379644] (robot_interfaces) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[5.463854] (-) TimerEvent: {}
+[5.465424] (robot_interfaces) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[5.477051] (robot_interfaces) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[5.491028] (robot_interfaces) StdoutLine: {'line': b'-- Configuring done\n'}
+[5.564031] (-) TimerEvent: {}
+[5.664752] (-) TimerEvent: {}
+[5.689970] (robot_interfaces) StdoutLine: {'line': b'-- Generating done\n'}
+[5.710587] (robot_interfaces) StdoutLine: {'line': b'-- Build files have been written to: /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces\n'}
+[5.764968] (-) TimerEvent: {}
+[5.810103] (robot_interfaces) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[5.857726] (robot_interfaces) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[5.865125] (-) TimerEvent: {}
+[5.922615] (robot_interfaces) StdoutLine: {'line': b'[  5%] Built target ament_cmake_python_copy_robot_interfaces\n'}
+[5.965361] (-) TimerEvent: {}
+[6.074513] (-) TimerEvent: {}
+[6.177498] (-) TimerEvent: {}
+[6.278976] (-) TimerEvent: {}
+[6.379876] (-) TimerEvent: {}
+[6.480803] (-) TimerEvent: {}
+[6.581983] (-) TimerEvent: {}
+[6.682762] (-) TimerEvent: {}
+[6.783469] (-) TimerEvent: {}
+[6.884165] (-) TimerEvent: {}
+[6.984898] (-) TimerEvent: {}
+[7.085746] (-) TimerEvent: {}
+[7.187456] (-) TimerEvent: {}
+[7.293045] (-) TimerEvent: {}
+[7.397072] (-) TimerEvent: {}
+[7.498224] (-) TimerEvent: {}
+[7.537008] (robot_interfaces) StdoutLine: {'line': b'[  5%] Built target robot_interfaces__cpp\n'}
+[7.596944] (robot_interfaces) StdoutLine: {'line': b'[  7%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[7.599868] (-) TimerEvent: {}
+[7.625127] (robot_interfaces) StdoutLine: {'line': b'[ 10%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[7.657408] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_generator_c\x1b[0m\n'}
+[7.700109] (-) TimerEvent: {}
+[7.726876] (robot_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o\x1b[0m\n'}
+[7.800289] (-) TimerEvent: {}
+[7.854375] (robot_interfaces) StdoutLine: {'line': b'running egg_info\n'}
+[7.867491] (robot_interfaces) StdoutLine: {'line': b'writing robot_interfaces.egg-info/PKG-INFO\n'}
+[7.872644] (robot_interfaces) StdoutLine: {'line': b'writing dependency_links to robot_interfaces.egg-info/dependency_links.txt\n'}
+[7.877146] (robot_interfaces) StdoutLine: {'line': b'writing top-level names to robot_interfaces.egg-info/top_level.txt\n'}
+[7.898224] (robot_interfaces) StdoutLine: {'line': b"reading manifest file 'robot_interfaces.egg-info/SOURCES.txt'\n"}
+[7.902026] (-) TimerEvent: {}
+[7.905905] (robot_interfaces) StdoutLine: {'line': b"writing manifest file 'robot_interfaces.egg-info/SOURCES.txt'\n"}
+[8.002258] (-) TimerEvent: {}
+[8.102233] (robot_interfaces) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_build_robot_interfaces_egg\n'}
+[8.105562] (-) TimerEvent: {}
+[8.166720] (robot_interfaces) StdoutLine: {'line': b'[ 15%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[8.205816] (-) TimerEvent: {}
+[8.308130] (-) TimerEvent: {}
+[8.411123] (-) TimerEvent: {}
+[8.514663] (-) TimerEvent: {}
+[8.617894] (-) TimerEvent: {}
+[8.679282] (robot_interfaces) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o\x1b[0m\n'}
+[8.718108] (-) TimerEvent: {}
+[8.819706] (-) TimerEvent: {}
+[8.921127] (-) TimerEvent: {}
+[8.996473] (robot_interfaces) StdoutLine: {'line': b'[ 20%] \x1b[32m\x1b[1mLinking C shared library librobot_interfaces__rosidl_generator_c.so\x1b[0m\n'}
+[9.014327] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_typesupport_cpp\x1b[0m\n'}
+[9.021255] (-) TimerEvent: {}
+[9.122806] (-) TimerEvent: {}
+[9.127026] (robot_interfaces) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_interfaces/msg/gripper_command__type_support.cpp.o\x1b[0m\n'}
+[9.229108] (-) TimerEvent: {}
+[9.288933] (robot_interfaces) StdoutLine: {'line': b'[ 23%] Built target robot_interfaces__rosidl_generator_c\n'}
+[9.329315] (-) TimerEvent: {}
+[9.336760] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[9.343368] (robot_interfaces) StdoutLine: {'line': b'[ 25%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[9.412346] (robot_interfaces) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/gripper_command__type_support.cpp.o\x1b[0m\n'}
+[9.429511] (-) TimerEvent: {}
+[9.533665] (-) TimerEvent: {}
+[9.634766] (-) TimerEvent: {}
+[9.739801] (-) TimerEvent: {}
+[9.786905] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[9.840427] (-) TimerEvent: {}
+[9.865983] (robot_interfaces) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_interfaces/msg/detail/gripper_command__type_support.cpp.o\x1b[0m\n'}
+[9.940511] (-) TimerEvent: {}
+[10.041999] (-) TimerEvent: {}
+[10.143557] (-) TimerEvent: {}
+[10.245365] (-) TimerEvent: {}
+[10.347108] (-) TimerEvent: {}
+[10.448772] (-) TimerEvent: {}
+[10.549686] (-) TimerEvent: {}
+[10.650640] (-) TimerEvent: {}
+[10.751954] (-) TimerEvent: {}
+[10.853146] (-) TimerEvent: {}
+[10.956255] (-) TimerEvent: {}
+[10.984571] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[11.056566] (-) TimerEvent: {}
+[11.105916] (robot_interfaces) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_interfaces/msg/detail/gripper_command__type_support_c.cpp.o\x1b[0m\n'}
+[11.156922] (-) TimerEvent: {}
+[11.260944] (-) TimerEvent: {}
+[11.362528] (-) TimerEvent: {}
+[11.464119] (-) TimerEvent: {}
+[11.565900] (-) TimerEvent: {}
+[11.644293] (robot_interfaces) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_interfaces/msg/gripper_info__type_support.cpp.o\x1b[0m\n'}
+[11.666487] (-) TimerEvent: {}
+[11.768488] (-) TimerEvent: {}
+[11.870519] (-) TimerEvent: {}
+[11.972405] (-) TimerEvent: {}
+[12.074560] (-) TimerEvent: {}
+[12.176491] (-) TimerEvent: {}
+[12.278441] (-) TimerEvent: {}
+[12.334966] (robot_interfaces) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/gripper_info__type_support.cpp.o\x1b[0m\n'}
+[12.386975] (-) TimerEvent: {}
+[12.424996] (robot_interfaces) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_interfaces/msg/detail/gripper_info__type_support.cpp.o\x1b[0m\n'}
+[12.490695] (-) TimerEvent: {}
+[12.594051] (-) TimerEvent: {}
+[12.695862] (-) TimerEvent: {}
+[12.797441] (-) TimerEvent: {}
+[12.899364] (-) TimerEvent: {}
+[13.001218] (-) TimerEvent: {}
+[13.102956] (-) TimerEvent: {}
+[13.204122] (-) TimerEvent: {}
+[13.297799] (robot_interfaces) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_interfaces/msg/detail/gripper_info__type_support_c.cpp.o\x1b[0m\n'}
+[13.304327] (-) TimerEvent: {}
+[13.405405] (-) TimerEvent: {}
+[13.454910] (robot_interfaces) StdoutLine: {'line': b'[ 46%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[13.505651] (-) TimerEvent: {}
+[13.606678] (-) TimerEvent: {}
+[13.717144] (-) TimerEvent: {}
+[13.743632] (robot_interfaces) StdoutLine: {'line': b'[ 46%] Built target robot_interfaces__rosidl_typesupport_cpp\n'}
+[13.815697] (robot_interfaces) StdoutLine: {'line': b'[ 48%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[13.817382] (-) TimerEvent: {}
+[13.919418] (-) TimerEvent: {}
+[14.021467] (-) TimerEvent: {}
+[14.123496] (-) TimerEvent: {}
+[14.225451] (-) TimerEvent: {}
+[14.327565] (-) TimerEvent: {}
+[14.429589] (-) TimerEvent: {}
+[14.532242] (-) TimerEvent: {}
+[14.635490] (-) TimerEvent: {}
+[14.738298] (-) TimerEvent: {}
+[14.840750] (-) TimerEvent: {}
+[14.942728] (-) TimerEvent: {}
+[14.967012] (robot_interfaces) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[15.042970] (-) TimerEvent: {}
+[15.145058] (-) TimerEvent: {}
+[15.187113] (robot_interfaces) StdoutLine: {'line': b'[ 51%] Built target robot_interfaces__rosidl_typesupport_introspection_cpp\n'}
+[15.212653] (robot_interfaces) StdoutLine: {'line': b'[ 53%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[15.239373] (robot_interfaces) StdoutLine: {'line': b'[ 56%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[15.245260] (-) TimerEvent: {}
+[15.346880] (-) TimerEvent: {}
+[15.448679] (-) TimerEvent: {}
+[15.538829] (robot_interfaces) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[15.548943] (-) TimerEvent: {}
+[15.651547] (-) TimerEvent: {}
+[15.682056] (robot_interfaces) StdoutLine: {'line': b'[ 58%] Built target robot_interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[15.751890] (-) TimerEvent: {}
+[15.757365] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[15.827670] (robot_interfaces) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c.o\x1b[0m\n'}
+[15.834743] (robot_interfaces) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__type_support.c.o\x1b[0m\n'}
+[15.852079] (-) TimerEvent: {}
+[15.954432] (-) TimerEvent: {}
+[16.021780] (robot_interfaces) StdoutLine: {'line': b'[ 64%] Built target robot_interfaces__rosidl_typesupport_fastrtps_c\n'}
+[16.054631] (-) TimerEvent: {}
+[16.106325] (robot_interfaces) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking C shared library librobot_interfaces__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[16.154820] (-) TimerEvent: {}
+[16.239462] (robot_interfaces) StdoutLine: {'line': b'[ 66%] Built target robot_interfaces__rosidl_typesupport_introspection_c\n'}
+[16.254983] (-) TimerEvent: {}
+[16.355892] (-) TimerEvent: {}
+[16.456610] (-) TimerEvent: {}
+[16.526127] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_typesupport_c\x1b[0m\n'}
+[16.556819] (-) TimerEvent: {}
+[16.576564] (robot_interfaces) StdoutLine: {'line': b'[ 69%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_interfaces/msg/gripper_command__type_support.cpp.o\x1b[0m\n'}
+[16.578071] (robot_interfaces) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_interfaces/msg/gripper_info__type_support.cpp.o\x1b[0m\n'}
+[16.657066] (-) TimerEvent: {}
+[16.737269] (robot_interfaces) StdoutLine: {'line': b'[ 74%] \x1b[32m\x1b[1mLinking CXX shared library librobot_interfaces__rosidl_typesupport_c.so\x1b[0m\n'}
+[16.757266] (-) TimerEvent: {}
+[16.858119] (-) TimerEvent: {}
+[16.909288] (robot_interfaces) StdoutLine: {'line': b'[ 74%] Built target robot_interfaces__rosidl_typesupport_c\n'}
+[16.958364] (-) TimerEvent: {}
+[17.003109] (robot_interfaces) StdoutLine: {'line': b'[ 74%] Built target robot_interfaces\n'}
+[17.058559] (-) TimerEvent: {}
+[17.095433] (robot_interfaces) StdoutLine: {'line': b'[ 76%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[17.158724] (-) TimerEvent: {}
+[17.259482] (-) TimerEvent: {}
+[17.360219] (-) TimerEvent: {}
+[17.461014] (-) TimerEvent: {}
+[17.561763] (-) TimerEvent: {}
+[17.662496] (-) TimerEvent: {}
+[17.763168] (-) TimerEvent: {}
+[17.863862] (-) TimerEvent: {}
+[17.964570] (-) TimerEvent: {}
+[18.065251] (-) TimerEvent: {}
+[18.165908] (-) TimerEvent: {}
+[18.266594] (-) TimerEvent: {}
+[18.367238] (-) TimerEvent: {}
+[18.467979] (-) TimerEvent: {}
+[18.569622] (-) TimerEvent: {}
+[18.647749] (robot_interfaces) StdoutLine: {'line': b'[ 76%] Built target robot_interfaces__py\n'}
+[18.669815] (-) TimerEvent: {}
+[18.696715] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_generator_py\x1b[0m\n'}
+[18.759184] (robot_interfaces) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_gripper_command_s.c.o\x1b[0m\n'}
+[18.761418] (robot_interfaces) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_gripper_info_s.c.o\x1b[0m\n'}
+[18.770024] (-) TimerEvent: {}
+[18.870954] (-) TimerEvent: {}
+[18.973301] (-) TimerEvent: {}
+[19.075584] (-) TimerEvent: {}
+[19.177541] (-) TimerEvent: {}
+[19.279370] (-) TimerEvent: {}
+[19.383725] (-) TimerEvent: {}
+[19.434715] (robot_interfaces) StdoutLine: {'line': b'[ 84%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/robot_interfaces/librobot_interfaces__rosidl_generator_py.so\x1b[0m\n'}
+[19.483948] (-) TimerEvent: {}
+[19.584755] (-) TimerEvent: {}
+[19.665839] (robot_interfaces) StdoutLine: {'line': b'[ 84%] Built target robot_interfaces__rosidl_generator_py\n'}
+[19.685602] (-) TimerEvent: {}
+[19.734575] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[19.749286] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[19.755835] (robot_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target robot_interfaces__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[19.785823] (-) TimerEvent: {}
+[19.843422] (robot_interfaces) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[19.853004] (robot_interfaces) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[19.883665] (robot_interfaces) StdoutLine: {'line': b'[ 92%] \x1b[32mBuilding C object CMakeFiles/robot_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[19.886043] (-) TimerEvent: {}
+[19.986872] (-) TimerEvent: {}
+[20.088534] (-) TimerEvent: {}
+[20.190311] (-) TimerEvent: {}
+[20.292593] (-) TimerEvent: {}
+[20.394446] (-) TimerEvent: {}
+[20.414602] (robot_interfaces) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[20.494704] (-) TimerEvent: {}
+[20.547974] (robot_interfaces) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[20.594931] (-) TimerEvent: {}
+[20.615956] (robot_interfaces) StdoutLine: {'line': b'[ 97%] Built target robot_interfaces__rosidl_typesupport_fastrtps_c__pyext\n'}
+[20.660063] (robot_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\x1b[0m\n'}
+[20.695186] (-) TimerEvent: {}
+[20.745217] (robot_interfaces) StdoutLine: {'line': b'[100%] Built target robot_interfaces__rosidl_typesupport_introspection_c__pyext\n'}
+[20.795409] (-) TimerEvent: {}
+[20.852789] (robot_interfaces) StdoutLine: {'line': b'[100%] Built target robot_interfaces__rosidl_typesupport_c__pyext\n'}
+[20.895603] (-) TimerEvent: {}
+[20.906086] (robot_interfaces) CommandEnded: {'returncode': 0}
+[20.995816] (-) TimerEvent: {}
+[21.097577] (-) TimerEvent: {}
+[21.214286] (-) TimerEvent: {}
+[21.315109] (-) TimerEvent: {}
+[21.415916] (-) TimerEvent: {}
+[21.473439] (robot_interfaces) JobProgress: {'identifier': 'robot_interfaces', 'progress': 'install'}
+[21.509087] (robot_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces'], 'cwd': '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'pi'), ('SSH_CLIENT', '192.168.137.1 10295 22'), ('LC_TIME', 'lzh_TW'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib:/home/pi/ros2_ws/install/interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('BROWSER', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/pi'), ('OLDPWD', '/home/pi/handsystem/ros2_robot_ws/src'), ('TERM_PROGRAM_VERSION', '1.89.1'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-01a49f5f-f92e-4ba7-90f4-cc92f358a792.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/extensions/git/dist/askpass-main.js'), ('LC_MONETARY', 'lzh_TW'), ('VSCODE_GIT_ASKPASS_NODE', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/node'), ('SSL_CERT_FILE', '/usr/lib/ssl/certs/ca-certificates.crt'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/pi/handsystem/ros2_robot_ws/install:/home/pi/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'pi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '71'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/pi/.vscode-server/cli/servers/Stable-dc96b837cf6bb4af9cd736aa3af08cf8279f7685/server/bin/remote-cli:/home/pi/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'lzh_TW'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('SSL_CERT_DIR', '/usr/lib/ssl/certs'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'lzh_TW'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-13811b72cf.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces:/home/pi/ros2_ws/install/py_sub:/home/pi/ros2_ws/install/cpp_pub:/home/pi/ros2_ws/install/interfaces:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'lzh_TW'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'lzh_TW'), ('LC_IDENTIFICATION', 'lzh_TW'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.137.1 10295 192.168.137.66 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub/lib/python3.10/site-packages:/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages:/home/pi/ros2_ws/install/py_sub/lib/python3.10/site-packages:/home/pi/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'lzh_TW'), ('LC_PAPER', 'lzh_TW'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces:/home/pi/ros2_ws/install/cpp_pub:/home/pi/ros2_ws/install/interfaces:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/ros2_ws/install/py_sub:/opt/ros/humble')]), 'shell': False}
+[21.516257] (-) TimerEvent: {}
+[21.548729] (robot_interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[21.549435] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/ament_index/resource_index/rosidl_interfaces/robot_interfaces\n'}
+[21.556977] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[21.557561] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[21.557909] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[21.558226] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__functions.c\n'}
+[21.558835] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__struct.h\n'}
+[21.559365] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__functions.h\n'}
+[21.559941] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__type_support.h\n'}
+[21.560739] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__type_support.h\n'}
+[21.563456] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__struct.h\n'}
+[21.569136] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__functions.h\n'}
+[21.569866] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__functions.c\n'}
+[21.570278] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/gripper_info.h\n'}
+[21.570926] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/gripper_command.h\n'}
+[21.571504] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[21.572014] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/library_path.sh\n'}
+[21.572682] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/library_path.dsv\n'}
+[21.575200] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_c.so\n'}
+[21.578325] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_c.so" to ""\n'}
+[21.578928] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[21.579542] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[21.584978] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[21.585580] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_fastrtps_c.h\n'}
+[21.585892] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__rosidl_typesupport_fastrtps_c.h\n'}
+[21.586206] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[21.586658] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[21.589768] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[21.590601] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[21.591399] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[21.593163] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[21.593685] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__type_support.c\n'}
+[21.594824] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h\n'}
+[21.596644] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__type_support.c\n'}
+[21.598563] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__rosidl_typesupport_introspection_c.h\n'}
+[21.600593] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[21.602347] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_c.so\n'}
+[21.605272] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_c.so" to ""\n'}
+[21.607003] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_c.so\n'}
+[21.610171] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_c.so" to ""\n'}
+[21.611079] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[21.611547] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[21.612059] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/gripper_info.hpp\n'}
+[21.613548] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[21.614477] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__struct.hpp\n'}
+[21.616528] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__builder.hpp\n'}
+[21.617312] (-) TimerEvent: {}
+[21.618999] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__builder.hpp\n'}
+[21.620603] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__traits.hpp\n'}
+[21.622406] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__traits.hpp\n'}
+[21.624692] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__struct.hpp\n'}
+[21.626813] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/gripper_command.hpp\n'}
+[21.628670] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[21.629340] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[21.630110] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[21.633176] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[21.634013] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/dds_fastrtps\n'}
+[21.634722] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[21.637225] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[21.638185] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[21.641366] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[21.642187] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces\n'}
+[21.642922] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg\n'}
+[21.649086] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail\n'}
+[21.649759] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__rosidl_typesupport_introspection_cpp.hpp\n'}
+[21.651151] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_info__type_support.cpp\n'}
+[21.651667] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__type_support.cpp\n'}
+[21.652144] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/include/robot_interfaces/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[21.653245] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[21.656204] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[21.665006] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_cpp.so\n'}
+[21.665679] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_typesupport_cpp.so" to ""\n'}
+[21.666151] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/pythonpath.sh\n'}
+[21.666796] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/pythonpath.dsv\n'}
+[21.667258] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info\n'}
+[21.667658] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[21.673262] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[21.673788] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[21.674249] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[21.674916] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces\n'}
+[21.675440] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[21.675901] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[21.681047] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_c.c\n'}
+[21.681672] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/librobot_interfaces__rosidl_generator_py.so\n'}
+[21.682351] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[21.682825] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg\n'}
+[21.683456] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_gripper_command_s.c\n'}
+[21.684932] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_gripper_info.py\n'}
+[21.686565] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_gripper_info_s.c\n'}
+[21.688067] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_gripper_command.py\n'}
+[21.689963] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/__init__.py\n'}
+[21.691728] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/__init__.py\n'}
+[21.693453] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[21.695729] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[21.717519] (-) TimerEvent: {}
+[21.818264] (-) TimerEvent: {}
+[21.898669] (robot_interfaces) StdoutLine: {'line': b"Listing '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces'...\n"}
+[21.900592] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/__init__.py'...\n"}
+[21.901836] (robot_interfaces) StdoutLine: {'line': b"Listing '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg'...\n"}
+[21.903291] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/__init__.py'...\n"}
+[21.904575] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_gripper_command.py'...\n"}
+[21.906094] (robot_interfaces) StdoutLine: {'line': b"Compiling '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/msg/_gripper_info.py'...\n"}
+[21.918581] (-) TimerEvent: {}
+[21.938463] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so\n'}
+[21.939250] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[21.939954] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so\n'}
+[21.940555] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[21.943539] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so\n'}
+[21.947508] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages/robot_interfaces/robot_interfaces_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so" to ""\n'}
+[21.950149] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_py.so\n'}
+[21.954219] (robot_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib/librobot_interfaces__rosidl_generator_py.so" to ""\n'}
+[21.955489] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/msg/GripperCommand.idl\n'}
+[21.956967] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/msg/GripperInfo.idl\n'}
+[21.959542] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/msg/GripperCommand.msg\n'}
+[21.961353] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/msg/GripperInfo.msg\n'}
+[21.963498] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/ament_index/resource_index/package_run_dependencies/robot_interfaces\n'}
+[21.964984] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/ament_index/resource_index/parent_prefix_path/robot_interfaces\n'}
+[21.967861] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/ament_prefix_path.sh\n'}
+[21.969712] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/ament_prefix_path.dsv\n'}
+[21.972151] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/path.sh\n'}
+[21.973432] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/environment/path.dsv\n'}
+[21.976045] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/local_setup.bash\n'}
+[21.977734] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/local_setup.sh\n'}
+[21.979334] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/local_setup.zsh\n'}
+[21.980659] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/local_setup.dsv\n'}
+[21.983059] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/package.dsv\n'}
+[21.985752] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/ament_index/resource_index/packages/robot_interfaces\n'}
+[21.987957] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_cExport.cmake\n'}
+[21.989846] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[21.991679] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[21.993094] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[21.995239] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[21.997041] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[21.999186] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cExport.cmake\n'}
+[22.000502] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[22.002151] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_cppExport.cmake\n'}
+[22.004407] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[22.006269] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[22.008440] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[22.009863] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[22.011659] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[22.013610] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[22.015891] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_pyExport.cmake\n'}
+[22.017761] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/export_robot_interfaces__rosidl_generator_pyExport-noconfig.cmake\n'}
+[22.018673] (-) TimerEvent: {}
+[22.019789] (robot_interfaces) StdoutLine: {'line': b'-- Installing: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[22.022198] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[22.023967] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[22.025708] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[22.027454] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[22.029180] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[22.030453] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[22.031590] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfacesConfig.cmake\n'}
+[22.032663] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/cmake/robot_interfacesConfig-version.cmake\n'}
+[22.034361] (robot_interfaces) StdoutLine: {'line': b'-- Up-to-date: /home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/share/robot_interfaces/package.xml\n'}
+[22.045088] (robot_interfaces) CommandEnded: {'returncode': 0}
+[22.118854] (-) TimerEvent: {}
+[22.220447] (-) TimerEvent: {}
+[22.321155] (-) TimerEvent: {}
+[22.423789] (-) TimerEvent: {}
+[22.524480] (-) TimerEvent: {}
+[22.626653] (-) TimerEvent: {}
+[22.710325] (robot_interfaces) JobEnded: {'identifier': 'robot_interfaces', 'rc': 0}
+[22.715415] (-) EventReactorShutdown: {}

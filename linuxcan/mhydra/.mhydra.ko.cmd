@@ -1,0 +1,1 @@
+cmd_/home/pi/handsystem/linuxcan/mhydra/mhydra.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/pi/handsystem/linuxcan/mhydra/mhydra.ko /home/pi/handsystem/linuxcan/mhydra/mhydra.o /home/pi/handsystem/linuxcan/mhydra/mhydra.mod.o;  true
