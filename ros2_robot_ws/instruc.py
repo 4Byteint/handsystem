@@ -33,6 +33,17 @@ class ClawMachine:
         #     break
         #   else:
         #     print("digit not found")
+
+        # while True:
+        #   # 在背景執行 process 
+        #   process = subprocess.Popen(["python3", "gripper_sub.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        #   time.sleep(3)
+        #   if process.poll() is None:
+        #     print("ros2 listener open")
+        #     self.state = "CheckConnection"
+        #     break
+        #   else:
+        #     print("ros2 listener not found")
         self.state = "CheckConnection"
     def check_connection(self):
         ask_Boot = Frame(id_=1, data=[0,1,1,1,0,0,0,0] , dlc=8)
@@ -53,7 +64,7 @@ class ClawMachine:
                 if (msg.data[2] == 2 ) and msg.data[3] == 1:        # STM
                    count +=1
                    STM_flag = True
-                elif (msg.data[2] == 3) and msg.data[3] == 1:         # UNO
+                elif (msg.data[2] == 3) and msg.data[3] == 1:       # UNO
                    count +=1
                    U_flag = True
                 if STM_flag and U_flag:
@@ -79,6 +90,7 @@ class ClawMachine:
         self.ch.write(home_STM)
         time.sleep(1)
       # 2. 等待初始化完成
+        count = 0
         U_flag = False
         STM_flag = False
         start_time = time.time()
@@ -86,10 +98,10 @@ class ClawMachine:
             try:
                 msg = self.ch.read(timeout=5000)                    # timeout 機制
                 print(msg)
-                if (msg.data[2] == 2 ) and msg.data[3] == 2:        # STM
+                if (msg.data[2] == 2) and msg.data[3] == 2:        # STM
                    count +=1
                    STM_flag = True
-                elif (msg.data[2] == 2) and msg.data[3] == 3:         # UNO
+                elif (msg.data[2] == 3) and msg.data[3] == 2:         # UNO
                    count +=1
                    U_flag = True
                 if STM_flag and U_flag:
@@ -99,11 +111,11 @@ class ClawMachine:
                     count = 0
                     if not U_flag:
                         U_flag = False
-                        print("沒收到 UNO 開機，重新發送")
+                        print("沒收到 UNO 初始化，重新發送")
                         self.ch.write(home_U)
                     if not STM_flag:
                         STM_flag = False
-                        print("沒收到 STM 開機，重新發送")
+                        print("沒收到 STM 初始化，重新發送")
                         self.ch.write(home_STM)
         if STM_flag and U_flag:
             return True
@@ -130,35 +142,34 @@ class ClawMachine:
 
 if __name__ == "__main__":
     claw_machine = ClawMachine()
-    try:
-        claw_machine.power_on()
-            
-        if claw_machine.state == "CheckConnection":
-            if claw_machine.check_connection():  # 檢查連線結果
-              print("連線成功!")
-              claw_machine.state = "Initialization"  # 連線成功，進入初始化狀態
-              
-        elif claw_machine.state == "Initialization":
-            if claw_machine.initialization():
-              print("初始化成功!")
-              claw_machine.state = "wait_for_command"
-              
-        elif claw_machine.state == "wait_for_command":
-            if claw_machine.wait_for_command():
-              print("收到手臂指令!")
-              claw_machine.state = "StartGrabbing"
-              
-        elif claw_machine.state == "StartGrabbing":
-            if claw_machine.StartGrabbing():
-              print("開始夾取!")
-            else:
-              pass
-      # 測試開合
-    #   while True:
-    #     claw_machine.Release()
-    #     time.sleep(3)
-    #     claw_machine.Hold()
-    #     time.sleep(3)
-    finally:
-        claw_machine.ch.busOff()  
-        claw_machine.ch.close()
+    claw_machine.power_on()
+    while True:
+            if claw_machine.state == "CheckConnection":
+                if claw_machine.check_connection():  # 檢查連線結果
+                    print("連線成功!")
+                    claw_machine.state = "Initialization"  # 連線成功，進入初始化狀態
+
+            elif claw_machine.state == "Initialization":
+                if claw_machine.initialization():
+                    print("初始化成功!")
+                    claw_machine.state = "wait_for_command"
+            elif claw_machine.state == "wait_for_command":
+                break
+            # elif claw_machine.state == "wait_for_command":
+            #     if claw_machine.wait_for_command():
+            #         print("收到手臂指令!")
+            #         claw_machine.state = "StartGrabbing"
+                
+            elif claw_machine.state == "StartGrabbing":
+                if claw_machine.StartGrabbing():
+                    print("開始夾取!")
+                else:
+                    pass
+        # 測試開合
+        #   while True:
+        #     claw_machine.Release()
+        #     time.sleep(3)
+        #     claw_machine.Hold()
+        #     time.sleep(3)
+    claw_machine.ch.busOff()
+    claw_machine.ch.close()
