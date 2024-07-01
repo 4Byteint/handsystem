@@ -19,6 +19,7 @@ robot_interfaces__msg__GripperCommand__init(robot_interfaces__msg__GripperComman
   }
   // id
   // num
+  // resp
   return true;
 }
 
@@ -30,6 +31,7 @@ robot_interfaces__msg__GripperCommand__fini(robot_interfaces__msg__GripperComman
   }
   // id
   // num
+  // resp
 }
 
 bool
@@ -44,6 +46,10 @@ robot_interfaces__msg__GripperCommand__are_equal(const robot_interfaces__msg__Gr
   }
   // num
   if (lhs->num != rhs->num) {
+    return false;
+  }
+  // resp
+  if (lhs->resp != rhs->resp) {
     return false;
   }
   return true;
@@ -61,6 +67,8 @@ robot_interfaces__msg__GripperCommand__copy(
   output->id = input->id;
   // num
   output->num = input->num;
+  // resp
+  output->resp = input->resp;
   return true;
 }
 

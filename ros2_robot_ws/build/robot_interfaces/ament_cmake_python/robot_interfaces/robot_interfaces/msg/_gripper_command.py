@@ -57,14 +57,17 @@ class GripperCommand(metaclass=Metaclass_GripperCommand):
     __slots__ = [
         '_id',
         '_num',
+        '_resp',
     ]
 
     _fields_and_field_types = {
         'id': 'int32',
         'num': 'int32',
+        'resp': 'int32',
     }
 
     SLOT_TYPES = (
+        rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
         rosidl_parser.definition.BasicType('int32'),  # noqa: E501
     )
@@ -75,6 +78,7 @@ class GripperCommand(metaclass=Metaclass_GripperCommand):
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.id = kwargs.get('id', int())
         self.num = kwargs.get('num', int())
+        self.resp = kwargs.get('resp', int())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -108,6 +112,8 @@ class GripperCommand(metaclass=Metaclass_GripperCommand):
         if self.id != other.id:
             return False
         if self.num != other.num:
+            return False
+        if self.resp != other.resp:
             return False
         return True
 
@@ -145,3 +151,18 @@ class GripperCommand(metaclass=Metaclass_GripperCommand):
             assert value >= -2147483648 and value < 2147483648, \
                 "The 'num' field must be an integer in [-2147483648, 2147483647]"
         self._num = value
+
+    @builtins.property
+    def resp(self):
+        """Message field 'resp'."""
+        return self._resp
+
+    @resp.setter
+    def resp(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'resp' field must be of type 'int'"
+            assert value >= -2147483648 and value < 2147483648, \
+                "The 'resp' field must be an integer in [-2147483648, 2147483647]"
+        self._resp = value

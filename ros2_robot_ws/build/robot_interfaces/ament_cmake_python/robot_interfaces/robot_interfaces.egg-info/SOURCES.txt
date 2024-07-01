@@ -6,3 +6,4 @@ robot_interfaces.egg-info/dependency_links.txt
 robot_interfaces.egg-info/top_level.txt
 robot_interfaces/msg/__init__.py
 robot_interfaces/msg/_gripper_command.py
+robot_interfaces/msg/_gripper_info.py

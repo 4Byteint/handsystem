@@ -21,16 +21,32 @@ namespace msg
 namespace builder
 {
 
+class Init_GripperCommand_resp
+{
+public:
+  explicit Init_GripperCommand_resp(::robot_interfaces::msg::GripperCommand & msg)
+  : msg_(msg)
+  {}
+  ::robot_interfaces::msg::GripperCommand resp(::robot_interfaces::msg::GripperCommand::_resp_type arg)
+  {
+    msg_.resp = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::robot_interfaces::msg::GripperCommand msg_;
+};
+
 class Init_GripperCommand_num
 {
 public:
   explicit Init_GripperCommand_num(::robot_interfaces::msg::GripperCommand & msg)
   : msg_(msg)
   {}
-  ::robot_interfaces::msg::GripperCommand num(::robot_interfaces::msg::GripperCommand::_num_type arg)
+  Init_GripperCommand_resp num(::robot_interfaces::msg::GripperCommand::_num_type arg)
   {
     msg_.num = std::move(arg);
-    return std::move(msg_);
+    return Init_GripperCommand_resp(msg_);
   }
 
 private:

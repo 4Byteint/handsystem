@@ -1,0 +1,41 @@
+[3.880s] Invoking command in '/home/pi/handsystem/ros2_robot_ws/src/gripper_sub': PYTHONPATH=/home/pi/handsystem/ros2_robot_ws/build/gripper_sub/prefix_override:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/gripper_sub build --build-base /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build install --record /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/install.log --single-version-externally-managed install_data
+[5.290s] running egg_info
+[5.293s] creating ../../build/gripper_sub/gripper_sub.egg-info
+[5.294s] writing ../../build/gripper_sub/gripper_sub.egg-info/PKG-INFO
+[5.295s] writing dependency_links to ../../build/gripper_sub/gripper_sub.egg-info/dependency_links.txt
+[5.296s] writing entry points to ../../build/gripper_sub/gripper_sub.egg-info/entry_points.txt
+[5.297s] writing requirements to ../../build/gripper_sub/gripper_sub.egg-info/requires.txt
+[5.298s] writing top-level names to ../../build/gripper_sub/gripper_sub.egg-info/top_level.txt
+[5.299s] writing manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+[5.307s] reading manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+[5.308s] adding license file 'LICENSE'
+[5.315s] writing manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+[5.316s] running build
+[5.317s] running build_py
+[5.318s] creating /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build
+[5.319s] creating /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib
+[5.320s] creating /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub
+[5.320s] copying gripper_sub/subscriber_member_function.py -> /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub
+[5.321s] copying gripper_sub/taskset.py -> /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub
+[5.322s] copying gripper_sub/__init__.py -> /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub
+[5.322s] running install
+[5.323s] running install_lib
+[5.327s] creating /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+[5.327s] copying /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub/subscriber_member_function.py -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+[5.328s] copying /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub/taskset.py -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+[5.329s] copying /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub/__init__.py -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+[5.332s] byte-compiling /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/subscriber_member_function.py to subscriber_member_function.cpython-310.pyc
+[5.337s] byte-compiling /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/taskset.py to taskset.cpython-310.pyc
+[5.339s] byte-compiling /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/__init__.py to __init__.cpython-310.pyc
+[5.341s] running install_data
+[5.342s] creating /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/ament_index
+[5.342s] creating /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/ament_index/resource_index
+[5.343s] creating /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/ament_index/resource_index/packages
+[5.344s] copying resource/gripper_sub -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/ament_index/resource_index/packages
+[5.345s] copying package.xml -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/share/gripper_sub
+[5.346s] running install_egg_info
+[5.353s] Copying ../../build/gripper_sub/gripper_sub.egg-info to /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub-0.0.0-py3.10.egg-info
+[5.359s] running install_scripts
+[5.445s] Installing listener script to /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/gripper_sub
+[5.447s] writing list of installed files to '/home/pi/handsystem/ros2_robot_ws/build/gripper_sub/install.log'
+[5.578s] Invoked command in '/home/pi/handsystem/ros2_robot_ws/src/gripper_sub' returned '0': PYTHONPATH=/home/pi/handsystem/ros2_robot_ws/build/gripper_sub/prefix_override:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/gripper_sub build --build-base /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build install --record /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/install.log --single-version-externally-managed install_data

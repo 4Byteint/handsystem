@@ -68,6 +68,15 @@ bool robot_interfaces__msg__gripper_command__convert_from_py(PyObject * _pymsg, 
     ros_message->num = (int32_t)PyLong_AsLong(field);
     Py_DECREF(field);
   }
+  {  // resp
+    PyObject * field = PyObject_GetAttrString(_pymsg, "resp");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->resp = (int32_t)PyLong_AsLong(field);
+    Py_DECREF(field);
+  }
 
   return true;
 }
@@ -106,6 +115,17 @@ PyObject * robot_interfaces__msg__gripper_command__convert_to_py(void * raw_ros_
     field = PyLong_FromLong(ros_message->num);
     {
       int rc = PyObject_SetAttrString(_pymessage, "num", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // resp
+    PyObject * field = NULL;
+    field = PyLong_FromLong(ros_message->resp);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "resp", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

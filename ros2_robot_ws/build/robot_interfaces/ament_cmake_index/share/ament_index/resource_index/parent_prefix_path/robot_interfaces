@@ -1,1 +1,1 @@
-/home/pi/ros2_ws/install/py_sub:/home/pi/ros2_ws/install/cpp_pub:/home/pi/ros2_ws/install/interfaces:/opt/ros/humble
+/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/handsystem/ros2_robot_ws/install/arm_test:/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces:/home/pi/ros2_ws/install/py_sub:/home/pi/ros2_ws/install/cpp_pub:/home/pi/ros2_ws/install/interfaces:/opt/ros/humble

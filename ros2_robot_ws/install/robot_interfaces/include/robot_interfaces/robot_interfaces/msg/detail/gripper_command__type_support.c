@@ -31,7 +31,7 @@ void robot_interfaces__msg__GripperCommand__rosidl_typesupport_introspection_c__
   robot_interfaces__msg__GripperCommand__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__GripperCommand__rosidl_typesupport_introspection_c__GripperCommand_message_member_array[2] = {
+static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__GripperCommand__rosidl_typesupport_introspection_c__GripperCommand_message_member_array[3] = {
   {
     "id",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_INT32,  // type
@@ -65,13 +65,30 @@ static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__
     NULL,  // fetch(index, &value) function pointer
     NULL,  // assign(index, value) function pointer
     NULL  // resize(index) function pointer
+  },
+  {
+    "resp",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_INT32,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(robot_interfaces__msg__GripperCommand, resp),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
   }
 };
 
 static const rosidl_typesupport_introspection_c__MessageMembers robot_interfaces__msg__GripperCommand__rosidl_typesupport_introspection_c__GripperCommand_message_members = {
   "robot_interfaces__msg",  // message namespace
   "GripperCommand",  // message name
-  2,  // number of fields
+  3,  // number of fields
   sizeof(robot_interfaces__msg__GripperCommand),
   robot_interfaces__msg__GripperCommand__rosidl_typesupport_introspection_c__GripperCommand_message_member_array,  // message members
   robot_interfaces__msg__GripperCommand__rosidl_typesupport_introspection_c__GripperCommand_init_function,  // function to initialize message memory (memory has to be allocated)

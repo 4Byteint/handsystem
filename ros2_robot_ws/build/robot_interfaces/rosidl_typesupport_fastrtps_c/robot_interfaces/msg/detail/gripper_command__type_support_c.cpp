@@ -59,6 +59,11 @@ static bool _GripperCommand__cdr_serialize(
     cdr << ros_message->num;
   }
 
+  // Field name: resp
+  {
+    cdr << ros_message->resp;
+  }
+
   return true;
 }
 
@@ -79,6 +84,11 @@ static bool _GripperCommand__cdr_deserialize(
   // Field name: num
   {
     cdr >> ros_message->num;
+  }
+
+  // Field name: resp
+  {
+    cdr >> ros_message->resp;
   }
 
   return true;
@@ -107,6 +117,12 @@ size_t get_serialized_size_robot_interfaces__msg__GripperCommand(
   // field.name num
   {
     size_t item_size = sizeof(ros_message->num);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name resp
+  {
+    size_t item_size = sizeof(ros_message->resp);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -155,6 +171,14 @@ size_t max_serialized_size_robot_interfaces__msg__GripperCommand(
     current_alignment += array_size * sizeof(uint32_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
+  // member: resp
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint32_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
 
   size_t ret_val = current_alignment - initial_alignment;
   if (is_plain) {
@@ -164,7 +188,7 @@ size_t max_serialized_size_robot_interfaces__msg__GripperCommand(
     using DataType = robot_interfaces__msg__GripperCommand;
     is_plain =
       (
-      offsetof(DataType, num) +
+      offsetof(DataType, resp) +
       last_member_size
       ) == ret_val;
   }

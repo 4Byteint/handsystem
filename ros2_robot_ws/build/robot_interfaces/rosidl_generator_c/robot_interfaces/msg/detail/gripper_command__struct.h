@@ -22,6 +22,7 @@ typedef struct robot_interfaces__msg__GripperCommand
 {
   int32_t id;
   int32_t num;
+  int32_t resp;
 } robot_interfaces__msg__GripperCommand;
 
 // Struct for a sequence of robot_interfaces__msg__GripperCommand.

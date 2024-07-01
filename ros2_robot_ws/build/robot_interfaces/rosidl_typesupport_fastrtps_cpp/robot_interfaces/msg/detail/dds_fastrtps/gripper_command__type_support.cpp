@@ -36,6 +36,8 @@ cdr_serialize(
   cdr << ros_message.id;
   // Member: num
   cdr << ros_message.num;
+  // Member: resp
+  cdr << ros_message.resp;
   return true;
 }
 
@@ -50,6 +52,9 @@ cdr_deserialize(
 
   // Member: num
   cdr >> ros_message.num;
+
+  // Member: resp
+  cdr >> ros_message.resp;
 
   return true;
 }
@@ -76,6 +81,12 @@ get_serialized_size(
   // Member: num
   {
     size_t item_size = sizeof(ros_message.num);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: resp
+  {
+    size_t item_size = sizeof(ros_message.resp);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -121,6 +132,15 @@ max_serialized_size_GripperCommand(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
 
+  // Member: resp
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint32_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
   size_t ret_val = current_alignment - initial_alignment;
   if (is_plain) {
     // All members are plain, and type is not empty.
@@ -129,7 +149,7 @@ max_serialized_size_GripperCommand(
     using DataType = robot_interfaces::msg::GripperCommand;
     is_plain =
       (
-      offsetof(DataType, num) +
+      offsetof(DataType, resp) +
       last_member_size
       ) == ret_val;
   }

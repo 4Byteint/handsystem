@@ -40,6 +40,7 @@ struct GripperCommand_
     {
       this->id = 0l;
       this->num = 0l;
+      this->resp = 0l;
     }
   }
 
@@ -51,6 +52,7 @@ struct GripperCommand_
     {
       this->id = 0l;
       this->num = 0l;
+      this->resp = 0l;
     }
   }
 
@@ -61,6 +63,9 @@ struct GripperCommand_
   using _num_type =
     int32_t;
   _num_type num;
+  using _resp_type =
+    int32_t;
+  _resp_type resp;
 
   // setters for named parameter idiom
   Type & set__id(
@@ -73,6 +78,12 @@ struct GripperCommand_
     const int32_t & _arg)
   {
     this->num = _arg;
+    return *this;
+  }
+  Type & set__resp(
+    const int32_t & _arg)
+  {
+    this->resp = _arg;
     return *this;
   }
 
@@ -122,6 +133,9 @@ struct GripperCommand_
       return false;
     }
     if (this->num != other.num) {
+      return false;
+    }
+    if (this->resp != other.resp) {
       return false;
     }
     return true;
