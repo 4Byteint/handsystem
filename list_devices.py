@@ -1,4 +1,4 @@
-# list_devices.py
+# can_list_devices.py
 
 import canlib
 

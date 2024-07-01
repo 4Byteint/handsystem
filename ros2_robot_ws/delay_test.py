@@ -10,7 +10,7 @@ class Claw:
         )
         self.ch.setBusOutputControl(canlib.Driver.NORMAL)
         self.ch.busOn()
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BOARD) #BOARD:物理腳位 BCM:GPIO
         GPIO.setup(7, GPIO.OUT)
         GPIO.output(7, False)
 

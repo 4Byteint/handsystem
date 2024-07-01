@@ -1,3 +1,4 @@
+# 6/30 整合
 import rclpy
 from rclpy.node import Node
 from robot_interfaces.msg import GripperCommand, GripperInfo

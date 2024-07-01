@@ -43,7 +43,7 @@ class ClawMachine:
     def check_connection(self):
         ask_UBoot = Frame(id_=1, data=[0,1,1,1,0,0,0,0] , dlc=8)
         ready, _, _ = select.select([sys.stdin],[],[],0.1)
-       	if ready:
+        if ready:
            user_input = input()
            if user_input == 'a':
              self.ch.write(ask_UBoot)

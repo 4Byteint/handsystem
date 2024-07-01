@@ -11,7 +11,7 @@ ch = canlib.openChannel(
 
 # Set the CAN bus driver type to NORMAL.
 ch.setBusOutputControl(canlib.Driver.NORMAL)
- 
+
 # Activate the CAN chip.
 ch.busOn()
  
@@ -22,10 +22,6 @@ ask_STMBoot = Frame(id_=1, data=[0,0,0,0,0,0,0,2] , dlc=8)
 ch.canAccept(2,canlib.AcceptFilterFlag.SET_CODE_STD) # code = 0010 
 ch.canAccept(6,canlib.AcceptFilterFlag.SET_MASK_STD) # mask = 0110
 
-
-
-
-
 while True:
 	ready, _, _ = select.select([sys.stdin],[],[],0.1)
 	if ready:
@@ -35,16 +31,16 @@ while True:
       #ch.write(ask_STMBoot)
 			time.sleep(0.1)
 	else:
-	    try:
+		try:
   			msg = ch.read()
-  			print(msg)
-        if (msg.id=3 && msg.data=[0,2,3,1,0,0,0,1]):
-          print("goto init_status")
-  			time.sleep(0.1) 
-  		except canlib.CanNoMsg: #it will stuck at ch.read() if not add this 
-  			continue
-  		except KeyboardInterrupt:
-  			pass
+			print(msg)
+        	if msg.id=3 and msg.data=[0,2,3,1,0,0,0,1]:
+			print("goto init_status")
+			time.sleep(0.1) 
+		except canlib.CanNoMsg: #it will stuck at ch.read() if not add this 
+			continue
+		except KeyboardInterrupt:
+			pass
 
 ch.busOff()
 ch.close()

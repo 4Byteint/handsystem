@@ -14,7 +14,7 @@ class MinimalPublisher(Node):
         self.i = 0
 
     def timer_callback(self):
-        msg = GipperInfo()                                                # CHANGE
+        msg = GripperInfo()                                                # CHANGE
         msg.result = self.i                                           # CHANGE
         self.publisher_.publish(msg)
         self.get_logger().info('Publishing: "%d"' % msg.result)       # CHANGE
