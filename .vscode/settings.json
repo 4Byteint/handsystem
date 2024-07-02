@@ -1,0 +1,5 @@
+{
+  // "python.formatting.blackPath": "\\home\\pi\\.local\\bin\\black",
+  // "python.formatting.provider": "black",
+  "editor.formatOnSave": true
+}

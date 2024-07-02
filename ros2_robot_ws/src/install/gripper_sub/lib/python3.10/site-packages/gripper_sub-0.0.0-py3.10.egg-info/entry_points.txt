@@ -1,0 +1,3 @@
+[console_scripts]
+listener = gripper_sub.subscriber_member_function:main
+
