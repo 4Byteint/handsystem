@@ -258,5 +258,8 @@ def main(args=None):
         pubsub_instance.claw.shutdown()
         rclpy.shutdown()
 
+def testForGit():
+    print("放下完成")
+
 if __name__ == '__main__':
     main()
