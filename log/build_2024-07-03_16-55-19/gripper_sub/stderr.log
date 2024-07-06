@@ -1,0 +1,5 @@
+  File "/home/pi/handsystem/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/subscriber_member_function.py", line 128
+    else
+        ^
+SyntaxError: expected ':'
+

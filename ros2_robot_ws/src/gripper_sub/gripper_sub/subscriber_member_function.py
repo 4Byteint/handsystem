@@ -19,6 +19,10 @@ class Claw:
         self.ch.busOn()
         self.power_flag = False
         self.ros_flag = False
+        self.sendSTM_flag = False
+        self.sendUNO_flag = False
+        self.sendingTimeStart_STM = 0
+        self.sendingTimeStart_UNO = 0
 
     def power_on(self):
         # 上電後的初始化操作，例如檢查電源、啟動系統、檢查各個device是否開啟
@@ -112,17 +116,62 @@ class Claw:
             return True
 
     def grabbing(self):
-        print("grabbing... ")
-        grab_action = Frame(id_=2, data=[0, 1, 1, 4, 200, 0, 0, 0], dlc=8)
-        self.ch.write(grab_action)
-        sensor_request = Frame(id_=3, data=[0, 1, 1, 6, 0, 0, 0, 0], dlc=8)
-        self.ch.write(sensor_request)
-        return True
+
+        if self.sendUNO_flag:
+            sensor_request = Frame(id_=3, data=[0, 1, 1, 6, 0, 0, 0, 0], dlc=8)
+            self.ch.write(sensor_request)
+            self.sendUNO_flag = False
+
+        if self.sendSTM_flag:
+            print("grabbing... ")
+            grab_action = Frame(id_=2, data=[0, 1, 1, 4, 200, 0, 0, 0], dlc=8)
+            self.ch.write(grab_action)
+            self.sendSTM_flag = False
+            self.sendingTimeStart_STM = time.time()
+        else:
+            try:
+                msg = self.ch.read(timeout=5000)  # timeout 機制
+                print(msg)
+                if (msg.data[2] == 2) and msg.data[3] == 4:  # STM
+                    print("STM開始夾")
+                    return True
+                # elif :
+                #     print("STM尚未開夾,重新發送")
+                #     self.sendSTM_flag = True
+                #     return False
+            except canlib.CanNoMsg:
+                if time.time() - self.sendingTimeStart_STM > 5:
+                    self.sendSTM_flag = True
+                    print("未收到STM是否開夾,重新發送")
+                    return False
 
     def Release(self):
-        start_release = Frame(id_=2, data=[0, 1, 1, 5, 10, 0, 0, 0], dlc=8)
-        self.ch.write(start_release)
-        return True
+
+        print("sendSTM_flag")
+        print(self.sendSTM_flag)
+        if self.sendSTM_flag:
+            start_release = Frame(id_=2, data=[0, 1, 1, 5, 10, 0, 0, 0], dlc=8)
+            self.ch.write(start_release)
+            self.sendSTM_flag = False
+            # self.sendingTimeStart_STM = time.time()
+            print(time.time() - self.sendingTimeStart_STM)
+        else:
+            try:
+                msg = self.ch.read(timeout=5000)  # timeout 機制
+                print(msg)
+                if (msg.data[2] == 2) and msg.data[3] == 5:  # STM
+                    print("c8 c8 c8 88c8 8c88 c88c 8c88 8c")
+                    print("STM開始放開")
+                    return True
+                # else:
+                #     print("STM尚未放開,重新發送")
+                #     self.sendSTM_flag = True
+                #     return False
+            except canlib.CanNoMsg:
+                if time.time() - self.sendingTimeStart_STM > 5:
+                    self.sendSTM_flag = True
+                    print("未收到STM是否放開,重新發送")
+                    return False
 
     def shutdown(self):
         # 關閉機器
@@ -130,7 +179,11 @@ class Claw:
         self.ch.close()
 
 
-#
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
 
 
 class pubsub(Node, Claw):
@@ -203,22 +256,29 @@ class pubsub(Node, Claw):
             print("開始夾取流程")
             # 執行夾取流程的邏輯
             # 發布夾取狀態
-            msg = GripperCommand()
-            msg.id = 5
-            msg.num = 1
-            msg.resp = 1
-            self.publisher_resp.publish(msg)
+            # msg = GripperCommand()
+            # msg.id = 5
+            # msg.num = 1
+            # msg.resp = 1
+            # self.publisher_resp.publish(msg)
+
+            self.claw.sendSTM_flag = True
+            self.claw.sendUNO_flag = True
+            print(self.claw.sendSTM_flag)
+            print("開始傳")
             self.claw.state = "grabbing"
         elif self.gripper_state == "release":
             print("開始放下流程")
             # 執行放下流程的邏輯
             # 發布放下狀態
-            msg = GripperCommand()
-            msg.id = 5
-            msg.num = 2
-            msg.resp = 2
-            self.publisher_resp.publish(msg)
+            # msg = GripperCommand()
+            # msg.id = 5
+            # msg.num = 2
+            # msg.resp = 2
+            # self.publisher_resp.publish(msg)
+            self.claw.sendSTM_flag = True
             self.claw.state = "releasing"
+            self.sendingTimeStart_STM = time.time()
 
     def claw_callback(self):
         if not self.claw.power_flag:
@@ -236,17 +296,27 @@ class pubsub(Node, Claw):
 
         if self.claw.state == "wait_for_command":
             print("等待命令...")
-            time.sleep(1)
+            # time.sleep(1)
 
         if self.claw.state == "grabbing":
-            print("開始夾取流程")
+            # print("開始夾取流程")
             if self.claw.grabbing():
-                print("夾取完成")
+                msg = GripperInfo()
+                msg.result = 1
+                self.publisher_info.publish(msg)
+                print("回傳已夾取")
+                self.claw.state = "wait_for_command"
 
         if self.claw.state == "releasing":
-            print("開始放下流程")
+            # print("開始放下流程")
             if self.claw.Release():
-                print("放下完成")
+                msg = GripperInfo()
+                msg.result = 3
+                self.publisher_info.publish(msg)
+                print("回傳已放開")
+                self.claw.state = "wait_for_command"
+            else:
+                print("Release失敗")
 
         # elif not ros_flag:
         #             self.claw.state = "wait_for_command"

@@ -1,0 +1,36 @@
+running egg_info
+creating ../../../build/gripper_pub/gripper_pub.egg-info
+writing ../../../build/gripper_pub/gripper_pub.egg-info/PKG-INFO
+writing dependency_links to ../../../build/gripper_pub/gripper_pub.egg-info/dependency_links.txt
+writing entry points to ../../../build/gripper_pub/gripper_pub.egg-info/entry_points.txt
+writing requirements to ../../../build/gripper_pub/gripper_pub.egg-info/requires.txt
+writing top-level names to ../../../build/gripper_pub/gripper_pub.egg-info/top_level.txt
+writing manifest file '../../../build/gripper_pub/gripper_pub.egg-info/SOURCES.txt'
+reading manifest file '../../../build/gripper_pub/gripper_pub.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../../build/gripper_pub/gripper_pub.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/pi/handsystem/build/gripper_pub/build
+creating /home/pi/handsystem/build/gripper_pub/build/lib
+creating /home/pi/handsystem/build/gripper_pub/build/lib/gripper_pub
+copying gripper_pub/publisher_member_function.py -> /home/pi/handsystem/build/gripper_pub/build/lib/gripper_pub
+copying gripper_pub/__init__.py -> /home/pi/handsystem/build/gripper_pub/build/lib/gripper_pub
+running install
+running install_lib
+creating /home/pi/handsystem/install/gripper_pub/lib/python3.10/site-packages/gripper_pub
+copying /home/pi/handsystem/build/gripper_pub/build/lib/gripper_pub/publisher_member_function.py -> /home/pi/handsystem/install/gripper_pub/lib/python3.10/site-packages/gripper_pub
+copying /home/pi/handsystem/build/gripper_pub/build/lib/gripper_pub/__init__.py -> /home/pi/handsystem/install/gripper_pub/lib/python3.10/site-packages/gripper_pub
+byte-compiling /home/pi/handsystem/install/gripper_pub/lib/python3.10/site-packages/gripper_pub/publisher_member_function.py to publisher_member_function.cpython-310.pyc
+byte-compiling /home/pi/handsystem/install/gripper_pub/lib/python3.10/site-packages/gripper_pub/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/pi/handsystem/install/gripper_pub/share/ament_index
+creating /home/pi/handsystem/install/gripper_pub/share/ament_index/resource_index
+creating /home/pi/handsystem/install/gripper_pub/share/ament_index/resource_index/packages
+copying resource/gripper_pub -> /home/pi/handsystem/install/gripper_pub/share/ament_index/resource_index/packages
+copying package.xml -> /home/pi/handsystem/install/gripper_pub/share/gripper_pub
+running install_egg_info
+Copying ../../../build/gripper_pub/gripper_pub.egg-info to /home/pi/handsystem/install/gripper_pub/lib/python3.10/site-packages/gripper_pub-0.0.0-py3.10.egg-info
+running install_scripts
+Installing talker script to /home/pi/handsystem/install/gripper_pub/lib/gripper_pub
+writing list of installed files to '/home/pi/handsystem/build/gripper_pub/install.log'
