@@ -4,7 +4,6 @@ import time
 
 class Claw:
     def __init__(self):
-        print("111")
         self.state = "PowerOn"  # 初始狀態
         self.ch = canlib.openChannel(
             channel=0, flags=canlib.Open.EXCLUSIVE, bitrate=canlib.canBITRATE_1M

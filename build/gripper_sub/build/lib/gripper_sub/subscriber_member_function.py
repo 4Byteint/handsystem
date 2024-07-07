@@ -1,7 +1,7 @@
 # 6/30 整合
 import time
 import threading
-from claw import Claw
+from gripper_sub.claw import Claw
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from robot_interfaces.msg import GripperCommand, GripperInfo

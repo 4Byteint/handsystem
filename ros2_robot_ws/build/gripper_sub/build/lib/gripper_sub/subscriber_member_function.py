@@ -6,7 +6,6 @@ from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from robot_interfaces.msg import GripperCommand, GripperInfo
 
-from canlib import canlib, Frame
 
 #########################################################################
 #########################################################################
@@ -18,13 +17,6 @@ from canlib import canlib, Frame
 class pubsub(Node, Claw):
 
     def __init__(self):
-
-        self.ch = canlib.openChannel(
-            channel=0, flags=canlib.Open.EXCLUSIVE, bitrate=canlib.canBITRATE_1M
-        )
-        self.ch.setBusOutputControl(canlib.Driver.NORMAL)
-        self.ch.busOn()
-
         super().__init__("pubsub")
         # 使用 ReentrantCallbackGroup
         self.callback_group1 = ReentrantCallbackGroup()
