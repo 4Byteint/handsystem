@@ -209,7 +209,7 @@ class pubsub(Node):
             try:
                 self.claw.canMsg = self.claw.ch.read(timeout=100)
                 print(self.claw.canMsg.data)
-                print(tuple(self.claw.canMsg.data[0:4]))
+                # print(tuple(self.claw.canMsg.data[0:4]))
 
                 # for nextByCAN
                 try:
@@ -279,13 +279,20 @@ class pubsub(Node):
         with self.lock:
             self.currentCmd = ArmCmd.CMD_NO_NEWCMD
 
+        # for connection check
         if time.time() - self.checkTimeStart > 3 and (
             self.claw.connectStatus[Device.STM] == Status.UNKNOWN
             or self.claw.connectStatus[Device.UNO] == Status.UNKNOWN
         ):
+            print("connection failed")
             infoMsg.result = GripperInfomation.GRIPPER_OFFLINE
             self.publisher_info.publish(infoMsg)
-            """"""
+
+        if (
+            self.claw.connectStatus[Device.STM] == Status.SUCCESS
+            and self.claw.connectStatus[Device.UNO] == Status.SUCCESS
+        ):
+            print("connection success")
         ########################################################
         ########################################################
         ########################################################
@@ -344,7 +351,7 @@ class pubsub(Node):
 
     def clawConnectionCheck_CallBack(self):
         """"""
-        print("connection check")
+        # print("connection check sending")
         self.checkTimeStart = time.time()
         self.claw.connectStatus[Device.UNO] == Status.UNKNOWN
         self.claw.connectStatus[Device.STM] == Status.UNKNOWN
@@ -358,8 +365,6 @@ class pubsub(Node):
 
     def ConnectionCheck(self):
         """"""
-        print("SUCCESS")
-        print()
         if tuple(self.claw.canMsg.data[0:4]) == CanData.STATE_UNO_CONNECTCHECK:
             self.claw.connectStatus[Device.UNO] = Status.SUCCESS
         elif tuple(self.claw.canMsg.data[0:4]) == CanData.STATE_STM_CONNECTCHECK:

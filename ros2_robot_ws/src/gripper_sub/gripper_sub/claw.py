@@ -59,14 +59,15 @@ class Claw:
         #     print("digit not found")
 
         # self.state = "CheckConnection"
-        print("connectStatus")
-        print(self.connectStatus[Device.UNO])
-        print(self.connectStatus[Device.STM])
         if (
             self.connectStatus[Device.UNO] == Status.SUCCESS
             and self.connectStatus[Device.STM] == Status.SUCCESS
         ):
+            # **************************************************************************************
+            # automatically into init state
             self.state = GripperState.STATE_INITIALIZING
+            self.firstTimeFlag[Device.UNO] = True
+            self.firstTimeFlag[Device.STM] = True
             return Status.SUCCESS
 
     # def CheckConnection(self):
@@ -111,7 +112,12 @@ class Claw:
     def Initialization(self):
         print("init")
 
+        print("firstTimeFlag")
+        print(self.firstTimeFlag[Device.UNO])
+        print(self.firstTimeFlag[Device.STM])
+
         if self.firstTimeFlag[Device.UNO]:
+            print("init UNO send")
             self.ch.write(
                 Frame(
                     id_=CanId.CANID_PI_TO_UNO,
@@ -122,9 +128,11 @@ class Claw:
             self.firstTimeFlag[Device.UNO] = False
         else:
             try:
-                if self.canMsg.data[0:4] == list(CanData.STATE_UNO_INIT_OK):
+                received = tuple(self.canMsg.data[0:4])
+                if received == CanData.STATE_UNO_INIT_OK:
                     self.initStatus[Device.UNO] = Status.SUCCESS
-                elif self.canMsg.data[0:4] == list(CanData.STATE_UNO_INIT_NOTOK):
+                elif received == CanData.STATE_UNO_INIT_NOTOK:
+                    print("STM INIT FAILED")
                     self.initStatus[Device.UNO] = Status.FAILED
             except canlib.CanNoMsg:
                 self.firstTimeFlag[Device.UNO] = True
@@ -132,19 +140,22 @@ class Claw:
                 # return False
 
         if self.firstTimeFlag[Device.STM]:
+            print("init STM send")
             self.ch.write(
                 Frame(
                     id_=CanId.CANID_PI_TO_STM,
-                    data=list(CanData.CMD_PI_STM_INIT) + [0, 0, 0, 0],
+                    data=list(CanData.CMD_PI_STM_INIT) + [10, 0, 0, 0],
                     dlc=8,
                 )
             )
             self.firstTimeFlag[Device.STM] = False
         else:
             try:
-                if self.canMsg.data[0:4] == list(CanData.STATE_STM_INIT_OK):
+                received = tuple(self.canMsg.data[0:4])
+                if received == CanData.STATE_STM_INIT_OK:
                     self.initStatus[Device.STM] = Status.SUCCESS
-                elif self.canMsg.data[0:4] == list(CanData.STATE_STM_INIT_NOTOK):
+                elif received == CanData.STATE_STM_INIT_NOTOK:
+                    print("STM INIT FAILED")
                     self.initStatus[Device.STM] = Status.FAILED
             except canlib.CanNoMsg:
                 self.firstTimeFlag[Device.STM] = True
@@ -154,10 +165,11 @@ class Claw:
             self.initStatus[Device.STM] == Status.SUCCESS
             and self.initStatus[Device.STM] == Status.SUCCESS
         ):
+            print(" INIT sucess")
             return Status.SUCCESS
         elif (
             self.initStatus[Device.STM] == Status.FAILED
-            and self.initStatus[Device.STM] == Status.FAILED
+            or self.initStatus[Device.STM] == Status.FAILED
         ):
             return Status.FAILED
         else:
@@ -233,7 +245,7 @@ class Claw:
                 # msg = self.ch.read(timeout=5000)  # timeout 機制
                 # print(msg)
 
-                if self.canMsg.data[0:4] == list(CanData.STATE_STM_START_GRABBING):
+                if tuple(self.canMsg.data[0:4]) == CanData.STATE_STM_START_GRABBING:
                     return Status.SUCCESS
 
                 # if (msg.data[2] == 2) and msg.data[3] == 4:  # STM
