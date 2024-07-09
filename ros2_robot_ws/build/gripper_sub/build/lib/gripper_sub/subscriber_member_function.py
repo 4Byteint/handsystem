@@ -6,14 +6,14 @@ from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from robot_interfaces.msg import GripperCommand, GripperInfo
 from canlib import canlib, Frame
-from gripper_sub.table import ArmCmd
 from gripper_sub.table import (
     GripperState,
+    ArmCmd,
     GripperInfomation,
     CanData,
+    CanId,
     Device,
     Status,
-    CanId,
 )
 
 
@@ -33,15 +33,16 @@ class pubsub(Node):
         self.pub1stTimeFlag = False
         self.checkTimeStart = 0
         self.currentCmd = ArmCmd.CMD_NO_NEWCMD
+        self.canMsg = Frame(id_=0, data=[0, 0, 0, 0, 0, 0, 0, 0], dlc=8)
         self.claw = Claw()
 
         # Using ReentrantCallbackGroup
-        self.callback_group1 = ReentrantCallbackGroup()
-        self.callback_group2 = ReentrantCallbackGroup()
-        self.callback_group3 = ReentrantCallbackGroup()
-        self.callback_group4 = ReentrantCallbackGroup()
-        self.callback_group5 = ReentrantCallbackGroup()
-        self.callback_group6 = ReentrantCallbackGroup()
+        self.callback_group = ReentrantCallbackGroup()
+        # self.callback_group2 = ReentrantCallbackGroup()
+        # self.callback_group3 = ReentrantCallbackGroup()
+        # self.callback_group4 = ReentrantCallbackGroup()
+        # self.callback_group5 = ReentrantCallbackGroup()
+        # self.callback_group6 = ReentrantCallbackGroup()
 
         # Subscriber, subscribe to topic "gripper_command"
         self.subscription = self.create_subscription(
@@ -49,7 +50,7 @@ class pubsub(Node):
             "/gripper_command",
             self.listener_callback,
             10,
-            callback_group=self.callback_group1,
+            callback_group=self.callback_group,
         )
 
         # # 發布者:回傳 response
@@ -57,7 +58,7 @@ class pubsub(Node):
             GripperCommand,
             "/gripper_response",  # 請確認回傳的 topic 名稱
             10,
-            callback_group=self.callback_group2,
+            callback_group=self.callback_group,
         )
 
         # Publisher, publish gripper infomation(state, error...)
@@ -65,17 +66,21 @@ class pubsub(Node):
             GripperInfo,
             "/gripper_info",  # 請確認回傳的 topic 名稱
             10,
-            callback_group=self.callback_group3,
+            callback_group=self.callback_group,
         )
 
         # 狀態變數 called every 0.01 sec
         self.clawCtrlTimer = self.create_timer(
-            0.2, self.clawControll_CallBack, callback_group=self.callback_group4
+            0.1, self.clawControll_CallBack, callback_group=self.callback_group
         )
 
-        # Monitor CAN every  0.05 sec
+        # # Monitor CAN every  0.05 sec
+        # self.readCanTimer = self.create_timer(
+        #     0.1, self.readCan_CallBack, callback_group=self.callback_group
+        # )
+
         self.clawConnectTimer = self.create_timer(
-            5, self.clawConnectionCheck_CallBack, callback_group=self.callback_group5
+            10, self.clawConnectionCheck_CallBack, callback_group=self.callback_group
         )
 
         self.lock = threading.Lock()
@@ -205,25 +210,41 @@ class pubsub(Node):
 
         # Can processing part
         # ****************************************************************** #
-        with self.lock:
-            try:
-                self.claw.canMsg = self.claw.ch.read(timeout=100)
-                print(self.claw.canMsg.data)
-                # print(tuple(self.claw.canMsg.data[0:4]))
 
-                # for nextByCAN
-                try:
-                    self.claw.state = self.nextByCAN[tuple(self.claw.canMsg.data)]
-                    self.pub1stTimeFlag = True
-                    self.claw.firstTimeFlag[Device.STM] = True
-                    self.claw.firstTimeFlag[Device.UNO] = True
-                # for toDoTaskByCan
-                except KeyError:
-                    self.toDoTaskByCan.get(
-                        tuple(self.claw.canMsg.data[0:4]), self.NoTask
-                    )()
-                    self.claw.state = self.claw.state
-            except canlib.canNoMsg:
+        # self.claw.canData = tuple(self.canMsg.data)
+        # with self.lock:
+        #     # for nextByCAN
+        #     try:
+        #         self.claw.state = self.nextByCAN[self.claw.canData]
+        #         self.pub1stTimeFlag = True
+        #         self.claw.firstTimeFlag[Device.STM] = True
+        #         self.claw.firstTimeFlag[Device.UNO] = True
+        #     # for toDoTaskByCan
+        #     except KeyError:
+        #         self.toDoTaskByCan.get(self.claw.canData[0:4], self.NoTask)()
+        #         self.claw.state = self.claw.state
+        ###########################################################################################
+
+        try:
+            self.canMsg = self.claw.ch.read(timeout=100)
+            self.claw.canData = tuple(self.canMsg.data)
+            print(self.canMsg)
+        except canlib.canNoMsg:
+            pass
+
+        with self.lock:
+
+            # print(tuple(self.claw.canMsg.data[0:4]))
+
+            # for nextByCAN
+            try:
+                self.claw.state = self.nextByCAN[self.claw.canData]
+                self.pub1stTimeFlag = True
+                self.claw.firstTimeFlag[Device.STM] = True
+                self.claw.firstTimeFlag[Device.UNO] = True
+            # for toDoTaskByCan
+            except KeyError:
+                self.toDoTaskByCan.get(self.claw.canData[0:4], self.NoTask)()
                 self.claw.state = self.claw.state
 
         # ArmCmd processing part
@@ -255,38 +276,49 @@ class pubsub(Node):
 
         infoMsg = GripperInfo()
 
-        if self.currentCmd == ArmCmd.CMD_INIT:
-            self.claw.initStatus[Device.UNO] = Status.UNKNOWN
+        with self.lock:
+            if self.currentCmd == ArmCmd.CMD_INIT:
+                self.claw.initStatus[Device.UNO] = Status.UNKNOWN
 
-        # claw.toDoTask function return  Status.SUCCESS  Status.FAILED / Status.UNKNOWN
-        taskStatus = self.claw.toDoTask.get(self.claw.state, self.claw.NoTask)()
+            # claw.toDoTask function return  Status.SUCCESS  Status.FAILED / Status.UNKNOWN
+            taskStatus = self.claw.toDoTask.get(self.claw.state, self.claw.NoTask)()
 
-        if taskStatus == Status.SUCCESS and self.pub1stTimeFlag:
-            # success task response for the first time
-            infoMsg.result = self.clawTaskSuccessInfo.get(self.claw.state, 0)
-            if infoMsg.result != 0:
-                self.publisher_info.publish(infoMsg)
-            with self.lock:
+            print("firstFlag")
+            print(self.pub1stTimeFlag)
+            if taskStatus == Status.SUCCESS and self.pub1stTimeFlag:
+                # success task response for the first time
+                infoMsg.result = self.clawTaskSuccessInfo.get(self.claw.state, 0)
+                if infoMsg.result != 0:
+                    self.publisher_info.publish(infoMsg)
+                # with self.lock:
                 self.pub1stTimeFlag = False
-        elif taskStatus == Status.FAILED and self.pub1stTimeFlag:
-            # failed task response for the first time
-            infoMsg.result = self.clawTaskFailedInfo.get(self.claw.state, 0)
-            if infoMsg.result != 0:
-                self.publisher_info.publish(infoMsg)
-            with self.lock:
+            elif taskStatus == Status.FAILED and self.pub1stTimeFlag:
+                # failed task response for the first time
+                infoMsg.result = self.clawTaskFailedInfo.get(self.claw.state, 0)
+                if infoMsg.result != 0:
+                    self.publisher_info.publish(infoMsg)
+                # with self.lock:
                 self.pub1stTimeFlag = False
 
         with self.lock:
             self.currentCmd = ArmCmd.CMD_NO_NEWCMD
 
         # for connection check
-        if time.time() - self.checkTimeStart > 3 and (
+        if (
             self.claw.connectStatus[Device.STM] == Status.UNKNOWN
             or self.claw.connectStatus[Device.UNO] == Status.UNKNOWN
         ):
-            print("connection failed")
-            infoMsg.result = GripperInfomation.GRIPPER_OFFLINE
-            self.publisher_info.publish(infoMsg)
+            timePass = time.time() - self.checkTimeStart
+            if timePass > 5:
+                self.checkTimeStart = time.time()
+                print("connection resend")
+                self.claw.ch.write(
+                    Frame(
+                        id_=CanId.CANID_PI_TO_ALL,
+                        data=list(CanData.CMD_PI_CONNECTION_CHECK) + [0, 0, 0, 0],
+                        dlc=8,
+                    )
+                )
 
         if (
             self.claw.connectStatus[Device.STM] == Status.SUCCESS
@@ -351,10 +383,10 @@ class pubsub(Node):
 
     def clawConnectionCheck_CallBack(self):
         """"""
-        # print("connection check sending")
+        print("connection check sending")
         self.checkTimeStart = time.time()
-        self.claw.connectStatus[Device.UNO] == Status.UNKNOWN
-        self.claw.connectStatus[Device.STM] == Status.UNKNOWN
+        self.claw.connectStatus[Device.UNO] = Status.UNKNOWN
+        self.claw.connectStatus[Device.STM] = Status.UNKNOWN
         self.claw.ch.write(
             Frame(
                 id_=CanId.CANID_PI_TO_ALL,
@@ -363,11 +395,22 @@ class pubsub(Node):
             )
         )
 
+    def readCan_CallBack(self):
+        """"""
+
+        # with self.lock:
+        try:
+            self.canMsg = self.claw.ch.read(timeout=5000)
+            print(self.canMsg)
+            # print(tuple(self.claw.canMsg.data[0:4]))
+        except canlib.canNoMsg:
+            pass
+
     def ConnectionCheck(self):
         """"""
-        if tuple(self.claw.canMsg.data[0:4]) == CanData.STATE_UNO_CONNECTCHECK:
+        if self.claw.canData[0:4] == CanData.STATE_UNO_CONNECTCHECK:
             self.claw.connectStatus[Device.UNO] = Status.SUCCESS
-        elif tuple(self.claw.canMsg.data[0:4]) == CanData.STATE_STM_CONNECTCHECK:
+        elif self.claw.canData[0:4] == CanData.STATE_STM_CONNECTCHECK:
             self.claw.connectStatus[Device.STM] = Status.SUCCESS
 
     def StateCheckReturn(self):
@@ -379,7 +422,7 @@ class pubsub(Node):
     def SensorDataProcess(self):
         """"""
         # need some value transformation
-        self.sensorValue = self.claw.canMsg.data[4]
+        self.sensorValue = self.claw.canData[4]
 
     def NoTask(self):
         pass

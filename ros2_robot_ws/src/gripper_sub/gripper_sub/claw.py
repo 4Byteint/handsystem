@@ -1,7 +1,14 @@
 from canlib import canlib, Frame
 import time
-from gripper_sub.table import GripperState
-from gripper_sub.table import Device, CanId, CanData, Status
+from gripper_sub.table import (
+    GripperState,
+    ArmCmd,
+    GripperInfomation,
+    CanData,
+    CanId,
+    Device,
+    Status,
+)
 
 
 class Claw:
@@ -20,7 +27,7 @@ class Claw:
         self.sendUNO_flag = False
         self.sendingTimeStart_STM = 0
         self.sendingTimeStart_UNO = 0
-        self.canMsg = Frame(id_=0, data=[0, 0, 0, 0, 0, 0, 0, 0], dlc=8)
+        self.canData = (0, 0, 0, 0, 0, 0, 0, 0)
         self.firstTimeFlag = {Device.STM: False, Device.UNO: False}
         self.connectStatus = {Device.STM: Status.UNKNOWN, Device.UNO: Status.UNKNOWN}
         self.initStatus = {Device.STM: Status.UNKNOWN, Device.UNO: Status.UNKNOWN}
@@ -59,6 +66,8 @@ class Claw:
         #     print("digit not found")
 
         # self.state = "CheckConnection"
+
+        # wait for connection check
         if (
             self.connectStatus[Device.UNO] == Status.SUCCESS
             and self.connectStatus[Device.STM] == Status.SUCCESS
@@ -128,7 +137,7 @@ class Claw:
             self.firstTimeFlag[Device.UNO] = False
         else:
             try:
-                received = tuple(self.canMsg.data[0:4])
+                received = self.canData[0:4]
                 if received == CanData.STATE_UNO_INIT_OK:
                     self.initStatus[Device.UNO] = Status.SUCCESS
                 elif received == CanData.STATE_UNO_INIT_NOTOK:
@@ -151,7 +160,7 @@ class Claw:
             self.firstTimeFlag[Device.STM] = False
         else:
             try:
-                received = tuple(self.canMsg.data[0:4])
+                received = self.canData[0:4]
                 if received == CanData.STATE_STM_INIT_OK:
                     self.initStatus[Device.STM] = Status.SUCCESS
                 elif received == CanData.STATE_STM_INIT_NOTOK:
@@ -245,7 +254,7 @@ class Claw:
                 # msg = self.ch.read(timeout=5000)  # timeout 機制
                 # print(msg)
 
-                if tuple(self.canMsg.data[0:4]) == CanData.STATE_STM_START_GRABBING:
+                if self.canData[0:4] == CanData.STATE_STM_START_GRABBING:
                     return Status.SUCCESS
 
                 # if (msg.data[2] == 2) and msg.data[3] == 4:  # STM
@@ -276,7 +285,7 @@ class Claw:
                 # msg = self.ch.read(timeout=5000)  # timeout 機制
                 # print(msg)
 
-                if self.canMsg.data[0:4] == list(CanData.STATE_STM_START_RELEASING):
+                if self.canData[0:4] == CanData.STATE_STM_START_RELEASING:
                     return Status.SUCCESS
 
                 # if (msg.data[2] == 2) and msg.data[3] == 5:  # STM

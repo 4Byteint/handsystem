@@ -2,7 +2,15 @@ from gripper_sub.subscriber_member_function import pubsub
 import rclpy
 from rclpy.executors import MultiThreadedExecutor
 
-from gripper_sub.table import GripperState
+from gripper_sub.table import (
+    GripperState,
+    ArmCmd,
+    GripperInfomation,
+    CanData,
+    CanId,
+    Device,
+    Status,
+)
 
 
 def main(args=None):
@@ -10,7 +18,7 @@ def main(args=None):
 
     pubsub_instance = pubsub()
 
-    user_input = input(" enter a to directly initialize, enter b to wait for ArmCmd: ")
+    user_input = input(" enter a to directly power on, enter b to wait for ArmCmd: ")
     if user_input == "a":
         pubsub_instance.claw.state = GripperState.STATE_POWER_ON
     elif user_input == "b":
