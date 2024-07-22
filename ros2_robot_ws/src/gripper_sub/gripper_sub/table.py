@@ -66,6 +66,10 @@ class CanData:
     # (0, instruction, from whom , index)
     # instruction :  --- 1 : CMD --- 2 : DATA --- 3 : STATE
     # from whom : --- 1 : PI --- 2 : STM --- 3 : UNO
+
+    CAN_ERROR = (1, 0, 0, 0)
+    CAN_NO_MSG = (0, 0, 0, 0)
+
     CMD_PI_CONNECTION_CHECK = (0, 1, 1, 1)
     CMD_PI_UNO_INIT = (0, 1, 1, 2)
     CMD_PI_STM_INIT = (0, 1, 1, 3)
@@ -76,15 +80,16 @@ class CanData:
     STATE_UNO_CONNECTCHECK = (0, 3, 3, 1)
     STATE_UNO_INIT_OK = (0, 3, 3, 2)
     STATE_UNO_INIT_NOTOK = (0, 3, 3, 3)
+    STATE_UNO_REQUEST_OK = (0, 3, 3, 4)
 
     STATE_STM_CONNECTCHECK = (0, 3, 2, 1)
     STATE_STM_INIT_OK = (0, 3, 2, 2)
     STATE_STM_INIT_NOTOK = (0, 3, 2, 3)
     STATE_STM_START_GRABBING = (0, 3, 2, 4)
     STATE_STM_START_RELEASING = (0, 3, 2, 5)
-    STATE_STM_MOTOR_OFFLINE = (0, 3, 2, 6)
-    STATE_STM_GRABBING_MISS = (0, 3, 2, 7)
-    STATE_STM_RELEASING_MISS = (0, 3, 2, 8)
+    STATE_STM_GRABBING_MISS = (0, 3, 2, 6)
+    STATE_STM_RELEASING_MISS = (0, 3, 2, 7)
+    STATE_STM_MOTOR_OFFLINE = (0, 3, 2, 8)
 
     DATA_UNO_SENSOR_DATA = (0, 2, 3, 1)
 
@@ -96,8 +101,8 @@ class CanId:
 
 
 class Device:
-    STM = 1
-    UNO = 2
+    STM = 2
+    UNO = 3
 
 
 class Status:

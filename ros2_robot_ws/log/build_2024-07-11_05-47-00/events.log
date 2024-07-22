@@ -1,0 +1,6 @@
+[0.000000] (-) TimerEvent: {}
+[0.001094] (-) JobUnselected: {'identifier': 'arm_test'}
+[0.001660] (-) JobUnselected: {'identifier': 'gripper_pub'}
+[0.001899] (-) JobUnselected: {'identifier': 'gripper_sub'}
+[0.002003] (-) JobUnselected: {'identifier': 'robot_interfaces'}
+[0.002641] (-) EventReactorShutdown: {}

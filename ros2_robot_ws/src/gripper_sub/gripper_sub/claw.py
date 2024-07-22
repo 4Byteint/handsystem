@@ -28,6 +28,8 @@ class Claw:
         self.sendingTimeStart_STM = 0
         self.sendingTimeStart_UNO = 0
         self.canData = (0, 0, 0, 0, 0, 0, 0, 0)
+
+        #  True for CAN first time been transmitted
         self.firstTimeFlag = {Device.STM: False, Device.UNO: False}
         self.connectStatus = {Device.STM: Status.UNKNOWN, Device.UNO: Status.UNKNOWN}
         self.initStatus = {Device.STM: Status.UNKNOWN, Device.UNO: Status.UNKNOWN}
@@ -73,57 +75,18 @@ class Claw:
             and self.connectStatus[Device.STM] == Status.SUCCESS
         ):
             # **************************************************************************************
-            # automatically into init state
+            # automatically go into init state
             self.state = GripperState.STATE_INITIALIZING
             self.firstTimeFlag[Device.UNO] = True
             self.firstTimeFlag[Device.STM] = True
             return Status.SUCCESS
 
-    # def CheckConnection(self):
-    #     print("connection check")
-
-    #     ask_Boot = Frame(id_=1, data=[0, 1, 1, 1, 0, 0, 0, 0], dlc=8)
-    #     while True:
-    #         user_input = input("please enter a to start: ")
-    #         if user_input == "a":
-    #             self.ch.write(ask_Boot)
-    #             time.sleep(0.1)
-    #             break
-    #     count = 0
-    #     U_flag = False
-    #     STM_flag = False
-    #     start_time = time.time()
-    #     while count < 2:
-    #         try:
-    #             msg = self.ch.read(timeout=5000)  # timeout 機制
-    #             print(msg)
-    #             if (msg.data[2] == 2) and msg.data[3] == 1:  # STM
-    #                 count += 1
-    #                 STM_flag = True
-    #             elif (msg.data[2] == 3) and msg.data[3] == 1:  # UNO
-    #                 count += 1
-    #                 U_flag = True
-    #             if STM_flag and U_flag:
-    #                 break
-    #         except canlib.CanNoMsg:
-    #             if time.time() - start_time > 5:
-    #                 count = 0
-    #                 if not U_flag:
-    #                     U_flag = False
-    #                     print("沒收到 UNO 開機，重新發送")
-    #                 if not STM_flag:
-    #                     STM_flag = False
-    #                     print("沒收到 STM 開機，重新發送")
-    #                 self.ch.write(ask_Boot)
-    #     if STM_flag and U_flag:
-    #         return True
-
     def Initialization(self):
         print("init")
 
-        print("firstTimeFlag")
-        print(self.firstTimeFlag[Device.UNO])
-        print(self.firstTimeFlag[Device.STM])
+        # print("firstTimeFlag")
+        # print(self.firstTimeFlag[Device.UNO])
+        # print(self.firstTimeFlag[Device.STM])
 
         if self.firstTimeFlag[Device.UNO]:
             print("init UNO send")
@@ -135,18 +98,22 @@ class Claw:
                 )
             )
             self.firstTimeFlag[Device.UNO] = False
+            self.sendingTimeStart_UNO = time.time()
         else:
-            try:
-                received = self.canData[0:4]
-                if received == CanData.STATE_UNO_INIT_OK:
-                    self.initStatus[Device.UNO] = Status.SUCCESS
-                elif received == CanData.STATE_UNO_INIT_NOTOK:
-                    print("STM INIT FAILED")
-                    self.initStatus[Device.UNO] = Status.FAILED
-            except canlib.CanNoMsg:
+            received = self.canData[0:4]
+            if received == CanData.STATE_UNO_INIT_OK:
+                self.initStatus[Device.UNO] = Status.SUCCESS
+            elif received == CanData.STATE_UNO_INIT_NOTOK:
+                print("UNO INIT FAILED")
+                self.initStatus[Device.UNO] = Status.FAILED
+            elif (
+                # received == CanData.CAN_NO_MSG and
+                time.time() - self.sendingTimeStart_UNO
+                > 1500
+            ):
                 self.firstTimeFlag[Device.UNO] = True
+                self.initStatus[Device.UNO] = Status.FAILED
                 print("未收到UNO INIT,重新發送")
-                # return False
 
         if self.firstTimeFlag[Device.STM]:
             print("init STM send")
@@ -158,69 +125,37 @@ class Claw:
                 )
             )
             self.firstTimeFlag[Device.STM] = False
+            self.sendingTimeStart_STM = time.time()
         else:
-            try:
-                received = self.canData[0:4]
-                if received == CanData.STATE_STM_INIT_OK:
-                    self.initStatus[Device.STM] = Status.SUCCESS
-                elif received == CanData.STATE_STM_INIT_NOTOK:
-                    print("STM INIT FAILED")
-                    self.initStatus[Device.STM] = Status.FAILED
-            except canlib.CanNoMsg:
+            received = self.canData[0:4]
+            if received == CanData.STATE_STM_INIT_OK:
+                self.initStatus[Device.STM] = Status.SUCCESS
+            elif received == CanData.STATE_STM_INIT_NOTOK:
+                print("STM INIT FAILED")
+                self.initStatus[Device.STM] = Status.FAILED
+            elif (
+                # received == CanData.CAN_NO_MSG and
+                time.time() - self.sendingTimeStart_STM
+                > 1500
+            ):
                 self.firstTimeFlag[Device.STM] = True
+                self.initStatus[Device.STM] = Status.FAILED
                 print("未收到STM INIT,重新發送")
-                # return False
+
         if (
             self.initStatus[Device.STM] == Status.SUCCESS
-            and self.initStatus[Device.STM] == Status.SUCCESS
+            and self.initStatus[Device.UNO] == Status.SUCCESS
         ):
             print(" INIT sucess")
             return Status.SUCCESS
         elif (
             self.initStatus[Device.STM] == Status.FAILED
-            or self.initStatus[Device.STM] == Status.FAILED
+            or self.initStatus[Device.UNO] == Status.FAILED
         ):
+            print(" INIT failed")
             return Status.FAILED
         else:
             return Status.UNKNOWN
-
-        # # 1. 發送初始化指令
-        # U_init = Frame(id_=3, data=[0, 1, 1, 2, 0, 0, 0, 0], dlc=8)
-        # STM_init = Frame(
-        #     id_=2, data=[0, 1, 1, 3, 10, 0, 0, 0], dlc=8
-        # )  # 初始值10 (for STM)
-        # self.ch.write(U_init)
-        # self.ch.write(STM_init)
-        # # 2. 等待初始化完成
-        # count = 0
-        # U_flag = False
-        # STM_flag = False
-        # start_time = time.time()
-        # while count < 2:
-        #     try:
-        #         msg = self.ch.read(timeout=5000)  # timeout 機制
-        #         print(msg)
-        #         if (msg.data[2] == 2) and msg.data[3] == 2:  # STM
-        #             count += 1
-        #             STM_flag = True
-        #         elif (msg.data[2] == 3) and msg.data[3] == 2:  # UNO
-        #             count += 1
-        #             U_flag = True
-        #         if STM_flag and U_flag:
-        #             break
-        #     except canlib.CanNoMsg:
-        #         if time.time() - start_time > 5:
-        #             count = 0
-        #             if not U_flag:
-        #                 U_flag = False
-        #                 print("沒收到 UNO 初始化，重新發送")
-        #                 self.ch.write(U_init)
-        #             if not STM_flag:
-        #                 STM_flag = False
-        #                 print("沒收到 STM 初始化，重新發送")
-        #                 self.ch.write(STM_init)
-        # if STM_flag and U_flag:
-        #     return True
 
     def Grab(self):
 
@@ -255,11 +190,9 @@ class Claw:
                 # print(msg)
 
                 if self.canData[0:4] == CanData.STATE_STM_START_GRABBING:
+                    print("start grabbing success")
                     return Status.SUCCESS
 
-                # if (msg.data[2] == 2) and msg.data[3] == 4:  # STM
-                #     print("STM開始夾")
-                #     return True
             except canlib.CanNoMsg:
                 # if time.time() - self.sendingTimeStart_STM > 5:
                 self.firstTimeFlag[Device.STM] = True
@@ -278,6 +211,7 @@ class Claw:
                     dlc=8,
                 )
             )
+            self.firstTimeFlag[Device.STM] = False
             # self.sendingTimeStart_STM = time.time()
             # print(time.time() - self.sendingTimeStart_STM)
         else:
@@ -302,22 +236,22 @@ class Claw:
                 print("未收到STM是否放開,重新發送")
                 return Status.UNKNOWN
 
-    def OffLine():
+    def OffLine(self):
         """nothing to do with STM,UNO"""
         print("offline")
         return Status.SUCCESS
 
-    def GrabbingMiss():
+    def GrabbingMiss(self):
         """nothing to do with STM,UNO"""
         print("grabing miss")
         return Status.SUCCESS
 
-    def ReleasingMiss():
+    def ReleasingMiss(self):
         """nothing to do with STM,UNO"""
         print("releasing miss")
         return Status.SUCCESS
 
-    def NoTask():
+    def NoTask(self):
         """nothing to do with STM,UNO"""
         print("no task")
         return Status.SUCCESS
