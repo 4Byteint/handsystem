@@ -282,8 +282,8 @@ class pubsub(Node):
 
         # ***************************************************************
 
-    def CanFailedInterrupt(self):
-        self.pubFirstTimeFlag = True
+    # def CanFailedInterrupt(self):
+    #     self.pubFirstTimeFlag = True
 
     def CmdInitTask(self):
         """"""

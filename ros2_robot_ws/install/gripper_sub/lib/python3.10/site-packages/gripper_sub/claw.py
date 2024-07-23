@@ -13,6 +13,11 @@ import os
 
 
 class Claw:
+    """this class basically contains every CAN-related task needed to deal with"""
+
+    """private variables are internally used only"""
+    """public variables can be accessed and rewriten externally"""
+
     def __init__(self):
 
         # private
@@ -56,7 +61,7 @@ class Claw:
     # ********************************************************************* #
     # ********************************************************************* #
     def readCanBlocking(self):
-        """"""
+        """a blocking CAN data reading method"""
         try:
             # this line is a fucking blocking method
             self.canMsg = self.ch.read(timeout=10)
@@ -123,6 +128,8 @@ class Claw:
             self.connectCheckPrintFlag = False
 
     def ConnectStatusUpdate(self):
+        """called before self.canData cleared or covered"""
+
         if self.canData[0:4] == CanData.STATE_UNO_CONNECTCHECK:
             self.connectStatus[Device.UNO] = Status.SUCCESS
             print("UNO_CONNNECT_SUCCESS")
@@ -134,6 +141,8 @@ class Claw:
     # ********************************************************************* #
     # ********************* State Machine Task **************************** #
     # ********************************************************************* #
+    # Every state has its own state-task todo, task return class "Status"   #
+    # when it's done.   *************************************************** #
     # ********************************************************************* #
 
     def PowerOff(self):

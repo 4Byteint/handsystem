@@ -24,7 +24,6 @@ def main(args=None):
     elif user_input == "b":
         pass
 
-    # Claw_instance = Claw()
     # 使用 MultiThreadedExecutor 運行節點
     executor = MultiThreadedExecutor()
     executor.add_node(pubsub_instance)
@@ -36,9 +35,6 @@ def main(args=None):
         pubsub_instance.shutdown()
         rclpy.shutdown()
 
-
-# def testForGit():
-#     print("放下完成")
 
 if __name__ == "__main__":
     main()

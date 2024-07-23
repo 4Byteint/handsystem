@@ -88,9 +88,6 @@ class GripperPublisher(Node):
         print("callback2")
         print(f"Received: result={msg.result}")
 
-    def shutdown(self):
-        self.Timer.cancel()
-
 
 def main(args=None):
     rclpy.init(args=args)
@@ -103,40 +100,16 @@ def main(args=None):
     input_thread.start()
 
     try:
+        # while running:
         executor.spin()
-        # while rclpy.ok():
-        #     user_input = input(
-        #         # "輸入 'a' 設定 num=1 / 'b' 設定 num=2: / 'c' 設定 num=-1: "
-        #         "輸入 1~6 or 'e': "
-        #     )
-        #     if user_input == "1":
-        #         gripper_publisher.publish_message(4, ArmCmd.CMD_RELEASE)
-        #     elif user_input == "2":
-        #         gripper_publisher.publish_message(4, ArmCmd.CMD_GRAB)
-        #     elif user_input == "3":
-        #         gripper_publisher.publish_message(4, ArmCmd.CMD_INIT)
-        #     elif user_input == "4":
-        #         gripper_publisher.publish_message(4, ArmCmd.CMD_POWERON)
-        #     elif user_input == "5":
-        #         gripper_publisher.publish_message(4, ArmCmd.CMD_POWEROFF)
-        #     elif user_input == "6":
-        #         gripper_publisher.publish_message(4, ArmCmd.CMD_STATE_CHECK)
-        #     elif user_input == "e":
-        #         gripper_publisher.publish_message(4, ArmCmd.CMD_ERROR)
-        #     else:
-        #         print("無效的輸入")
-
-        #     # 处理一次ROS2的回调，确保订阅消息的处理
-        #     rclpy.spin_once(gripper_publisher, timeout_sec=10)
 
     except KeyboardInterrupt:
         pass
     finally:
         executor.shutdown()
         gripper_publisher.destroy_node()
-        gripper_publisher.shutdown()
-        rclpy.shutdown()
         input_thread.join()
+        rclpy.shutdown()
 
 
 if __name__ == "__main__":
