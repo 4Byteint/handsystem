@@ -1,155 +1,321 @@
-# 6/30 整合
 import time
 import threading
 from gripper_sub.claw import Claw
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from robot_interfaces.msg import GripperCommand, GripperInfo
+from canlib import canlib, Frame, exceptions
+from gripper_sub.table import (
+    GripperState,
+    ArmCmd,
+    GripperInfomation,
+    CanData,
+    CanId,
+    Device,
+    Status,
+)
 
 
 #########################################################################
-#########################################################################
-#########################################################################
-#########################################################################
-#########################################################################
 
 
-class pubsub(Node, Claw):
+class pubsub(Node):
 
     def __init__(self):
         super().__init__("pubsub")
-        # 使用 ReentrantCallbackGroup
-        self.callback_group1 = ReentrantCallbackGroup()
-        self.callback_group2 = ReentrantCallbackGroup()
-        self.callback_group3 = ReentrantCallbackGroup()
-        self.callback_group4 = ReentrantCallbackGroup()
-        # 訂閱者
+
+        self.sensorValue = 0
+
+        self.pubFirstTimeFlag = False
+        self.canFailedFirstTimeFlag = False
+        self.stateTaskPrintFlag = True
+
+        self.currentCmd = ArmCmd.CMD_NO_NEWCMD
+
+        # self.delayStart = 0
+        # self.time1 = 0
+        # self.cmdStartTime = 0
+        # self.canStartTime = 0
+
+        self.claw = Claw()
+
+        # Using ReentrantCallbackGroup
+        self.callback_group = ReentrantCallbackGroup()
+
+        # Subscriber, subscribe to topic "gripper_command"
         self.subscription = self.create_subscription(
             GripperCommand,
             "/gripper_command",
             self.listener_callback,
             10,
-            callback_group=self.callback_group1,
+            callback_group=self.callback_group,
         )
-        self.subscription
-        self.lock = threading.Lock()
 
-        # 發布者:回傳 response
+        # # 發布者:回傳 response
         self.publisher_resp = self.create_publisher(
             GripperCommand,
             "/gripper_response",  # 請確認回傳的 topic 名稱
             10,
-            callback_group=self.callback_group2,
+            callback_group=self.callback_group,
         )
-        # 發布者:發布 result
+
+        # Publisher, publish gripper infomation(state, error...)
         self.publisher_info = self.create_publisher(
             GripperInfo,
             "/gripper_info",  # 請確認回傳的 topic 名稱
             10,
-            callback_group=self.callback_group3,
+            callback_group=self.callback_group,
         )
 
         # 狀態變數 called every 0.01 sec
-        self.gripper_state = None
-        self.claw_callback_timer = self.create_timer(
-            0.01, self.claw_callback, callback_group=self.callback_group4
+        self.clawCtrlTimer = self.create_timer(
+            0.01, self.clawControll_CallBack, callback_group=self.callback_group
         )
-        self.claw = Claw()
 
+        # Monitor CAN every  0.05 sec
+        self.readCanTimer = self.create_timer(
+            0.05, self.readCan_CallBack, callback_group=self.callback_group
+        )
+
+        self.clawConnectTimer = self.create_timer(
+            0.1,
+            self.clawCanConnectCheckTask_CallBack,
+            callback_group=self.callback_group,
+        )
+
+        self.lock = threading.Lock()
+
+        # ************************************************************************************************************#
+        # four dictionaries below are used for next state and to-do task assignment
+        # ************************************************************************************************************#
+        # Cmd from arm and CanMsg from STM or UNO may change state or decides what to do but keep the state unchange
+        # State switches depends on nextByCmd and nextByCAN, those not in the dictionary keep the state unchange
+        # toDoTaskByCmd and toDoTaskByCan decide what to do when receiving the message
+        # ************************************************************************************************************#
+        # ************************************************************************************************************#
+
+        # next state after receiving cmd
+        # only depends on cmd received
+        self.nextByCmd = {
+            ArmCmd.CMD_POWEROFF: GripperState.STATE_POWER_OFF,
+            ArmCmd.CMD_POWERON: GripperState.STATE_POWER_ON,
+            ArmCmd.CMD_INIT: GripperState.STATE_INITIALIZING,
+            ArmCmd.CMD_RELEASE: GripperState.STATE_RELEASING,
+            ArmCmd.CMD_GRAB: GripperState.STATE_GRABBING,
+        }
+
+        # next state after receiving CAN msg
+        # only depends on CAN received
+        self.nextByCAN = {
+            CanData.STATE_STM_MOTOR_OFFLINE: GripperState.STATE_OFFLINE,
+            CanData.STATE_STM_GRABBING_MISS: GripperState.STATE_GRABBING_MISS,
+            CanData.STATE_STM_RELEASING_MISS: GripperState.STATE_RELEASING_MISS,
+        }
+
+        self.toDoTaskByCmd = {
+            ArmCmd.CMD_STATE_CHECK: self.CmdStateCheckTask,
+            ArmCmd.CMD_INIT: self.CmdInitTask,
+        }
+
+        self.toDoTaskByCan = {
+            CanData.DATA_UNO_SENSOR_DATA: self.CanSensorDataTask,
+            CanData.STATE_UNO_CONNECTCHECK: self.CanConnectCheckTask,
+            CanData.STATE_STM_CONNECTCHECK: self.CanConnectCheckTask,
+            # CanData.STATE_STM_INIT_NOTOK: self.CanFailedInterrupt,
+        }
+
+        # ************************************************************************************************************#
+        # ************************************************************************************************************#
+        # msg to published when task finished or failed
+        # ************************************************************************************************************#
+        # ************************************************************************************************************#
+        self.clawTaskSuccessInfo = {
+            GripperState.STATE_POWER_OFF: GripperInfomation.NO_INFO,
+            GripperState.STATE_POWER_ON: GripperInfomation.NO_INFO,
+            GripperState.STATE_INITIALIZING: GripperInfomation.GRIPPER_INITIAL_OK,
+            GripperState.STATE_RELEASING: GripperInfomation.GRIPPER_START_RELEASING,
+            GripperState.STATE_GRABBING: GripperInfomation.GRIPPER_START_GRABBING,
+            GripperState.STATE_OFFLINE: GripperInfomation.GRIPPER_OFFLINE,
+            GripperState.STATE_GRABBING_MISS: GripperInfomation.GRABBING_MISS,
+            GripperState.STATE_RELEASING_MISS: GripperInfomation.RELEASING_MISS,
+        }
+
+        self.clawTaskFailedInfo = {
+            GripperState.STATE_POWER_OFF: GripperInfomation.NO_INFO,
+            GripperState.STATE_POWER_ON: GripperInfomation.NO_INFO,
+            GripperState.STATE_INITIALIZING: GripperInfomation.GRIPPER_INITIAL_NOTOK,
+        }
+
+    # ********************************************************************* #
+    # ********************************************************************* #
+    # *************** listener_callback and  related func. **************** #
+    # ********************************************************************* #
+    # ********************************************************************* #
     def listener_callback(self, msg):
+        """listener callback only processed when new msg on topic "GripperCommand" arrived"""
+        """mainly assigning next state or some flags"""
+
+        # for delay test
+        # info = GripperInfo()
+        # info.result = 10
+        # self.publisher_info.publish(info)
+        # *****************************************
+        # for  delay test
+        # self.delayStart = time.time()
+        # *************************************
+
         with self.lock:
+
             print(f'I heard: "{msg.num}"')
-
-            # 更新狀態變數
             try:
-                if msg.num == 1:
-                    self.gripper_state = "grab"
-                    self.Arm_action_grip()
+                # get new cmd and change the claw state
+                self.currentCmd = msg.num
 
-                elif msg.num == 2:
-                    self.gripper_state = "release"
-                    self.Arm_action_grip()
-
-                elif msg.num == -1:
+                print(
+                    f'Arm cmd receieved : "{ArmCmd.cmdDict.get(msg.num,"unknown cmd")}"'
+                )
+                if self.currentCmd == ArmCmd.CMD_ERROR:
                     raise ValueError("例外發生")
+
             except ValueError as e:
                 print(f"Exception occurred: {e}")
 
-    def shutdown(self):
-        self.claw_callback_timer.cancel()
-        self.claw.shutdown()
+    # ********************************************************************* #
+    # ********************************************************************* #
+    # ******** clawCanConnectCheckTask_CallBack and  related func. ******** #
+    # ********************************************************************* #
+    # ********************************************************************* #
+    def clawCanConnectCheckTask_CallBack(self):
+        """"""
+        with self.lock:
+            self.claw.ConnectCheck()
 
-    def Arm_action_grip(self):
-        if self.gripper_state == "grab":
-            print("開始夾取流程")
-            # 執行夾取流程的邏輯
-            # 發布夾取狀態
-            # msg = GripperCommand()
-            # msg.id = 5
-            # msg.num = 1
-            # msg.resp = 1
-            # self.publisher_resp.publish(msg)
+    # ********************************************************************* #
+    # ********************************************************************* #
+    # **************** readCan_CallBack and  related func. **************** #
+    # ********************************************************************* #
+    # ********************************************************************* #
+    def readCan_CallBack(self):
+        """"""
+        # use the new-build independent thread to deal with blocking process
+        with self.lock:
+            threading.Thread(target=self.claw.readCanBlocking).start()
 
-            self.claw.sendSTM_flag = True
-            self.claw.sendUNO_flag = True
-            print(self.claw.sendSTM_flag)
-            print("開始傳")
-            self.claw.state = "grabbing"
-        elif self.gripper_state == "release":
-            print("開始放下流程")
-            # 執行放下流程的邏輯
-            # 發布放下狀態
-            # msg = GripperCommand()
-            # msg.id = 5
-            # msg.num = 2
-            # msg.resp = 2
-            # self.publisher_resp.publish(msg)
-            self.claw.sendSTM_flag = True
-            self.claw.state = "releasing"
-            self.sendingTimeStart_STM = time.time()
+    # ********************************************************************* #
+    # ********************************************************************* #
+    # ************* clawControll_CallBack and  related func. ************** #
+    # ********************************************************************* #
+    # ********************************************************************* #
+    def clawControll_CallBack(self):
+        """state machine"""
+        """assigning next state and do task based on state or messege"""
 
-    def claw_callback(self):
-        if not self.claw.power_flag:
-            self.claw.power_on()
-            self.claw.power_flag = True
-        if self.claw.state == "CheckConnection":
-            if self.claw.check_connection():
-                print("連線成功!")
-                self.claw.state = "Initialization"
+        # print("timr")
+        # print(time.time() - self.time1)
+        # self.time1 = time.time()
 
-        if self.claw.state == "Initialization":
-            if self.claw.initialization():
-                print("初始化成功!")
-                self.claw.state = "wait_for_command"
+        #  lock for self.claw.canData, self.claw.connectStatus
+        with self.lock:
 
-        if self.claw.state == "wait_for_command":
-            print("等待命令...")
-            # time.sleep(1)
+            # CanData processing part
+            # ****************************************************************** #
+            # print(self.claw.canData)
+            try:
+                # for nextByCAN
+                self.claw.state = self.nextByCAN[self.claw.canData[0:4]]
+                self.stateTaskPrintFlag = True
+                self.pubFirstTimeFlag = True
+                self.claw.sendFirstTimeFlag[Device.STM] = True
+                self.claw.sendFirstTimeFlag[Device.UNO] = True
+            except KeyError:
+                # for toDoTaskByCan
+                self.toDoTaskByCan.get(self.claw.canData[0:4], self.NoTask)()
 
-        if self.claw.state == "grabbing":
-            # print("開始夾取流程")
-            if self.claw.grabbing():
-                msg = GripperInfo()
-                msg.result = 1
-                self.publisher_info.publish(msg)
-                print("回傳已夾取")
-                self.claw.state = "wait_for_command"
+            # ArmCmd processing part
+            # ****************************************************************** #
+            # print(self.currentCmd)
+            try:
+                # for nextByCmd
+                self.claw.state = self.nextByCmd[self.currentCmd]
+                self.stateTaskPrintFlag = True
+                self.pubFirstTimeFlag = True
+                self.claw.sendFirstTimeFlag[Device.STM] = True
+                self.claw.sendFirstTimeFlag[Device.UNO] = True
+            except KeyError:
+                # for toDoTaskByCmd
+                self.toDoTaskByCmd.get(self.currentCmd, self.NoTask)()
+            #
+            #
+            if self.stateTaskPrintFlag:
 
-        if self.claw.state == "releasing":
-            # print("開始放下流程")
-            if self.claw.Release():
-                msg = GripperInfo()
-                msg.result = 3
-                self.publisher_info.publish(msg)
-                print("回傳已放開")
-                self.claw.state = "wait_for_command"
+                print(
+                    f'Current state: "{GripperState.stateDict.get(self.claw.state,"unknown state")}"'
+                )
+                self.stateTaskPrintFlag = False
+            #
+            #
+
+            # claw.toDoTask function return  Status.SUCCESS/  Status.FAILED/  Status.UNKNOWN
+            taskStatus = self.claw.toDoTask.get(self.claw.state, self.claw.NoTask)()
+
+            # clean data buffer
+            self.claw.canData = CanData.CAN_NO_MSG + (0, 0, 0, 0)
+            self.currentCmd = ArmCmd.CMD_NO_NEWCMD
+
+        infoMsg = GripperInfo()
+
+        if self.pubFirstTimeFlag:
+            if taskStatus == Status.SUCCESS:
+                infoMsg.result = self.clawTaskSuccessInfo.get(
+                    self.claw.state, GripperInfomation.NO_INFO
+                )
+            elif taskStatus == Status.FAILED:
+                infoMsg.result = self.clawTaskFailedInfo.get(
+                    self.claw.state, GripperInfomation.NO_INFO
+                )
             else:
-                print("Release失敗")
+                infoMsg.result = GripperInfomation.NO_INFO
 
-        # elif not ros_flag:
-        #             self.claw.state = "wait_for_command"
+            if infoMsg.result != GripperInfomation.NO_INFO:
+                self.publisher_info.publish(infoMsg)
+                self.pubFirstTimeFlag = False
 
-        # if self.claw.state == "hold":
-        #     if self.claw.Hold():
-        #         print("開始夾取!")
-        #         pass
+        # ***************************************************************
+
+    # def CanFailedInterrupt(self):
+    #     self.pubFirstTimeFlag = True
+
+    def CmdInitTask(self):
+        """"""
+        self.claw.initStatus[Device.STM] = Status.UNKNOWN
+        self.claw.initStatus[Device.UNO] = Status.UNKNOWN
+
+    def CmdStateCheckTask(self):
+        """"""
+        respMsg = GripperCommand()
+        respMsg.resp = self.claw.state
+        self.publisher_resp.publish(respMsg)
+
+    def CanSensorDataTask(self):
+        """"""
+        # need some value transformation
+        self.sensorValue = self.claw.canData[4]
+
+    def CanConnectCheckTask(self):
+        """"""
+        self.claw.ConnectStatusUpdate()
+
+    def NoTask(self):
+        pass
+
+    # ********************************************************************* #
+    # ********************************************************************* #
+    # *************************  other  func. ***************************** #
+    # ********************************************************************* #
+    # ********************************************************************* #
+
+    def shutdown(self):
+        self.clawCtrlTimer.cancel()
+        self.clawConnectTimer.cancel()
+        self.readCanTimer.cancel()
+        self.claw.shutdown()

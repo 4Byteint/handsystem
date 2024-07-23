@@ -1,8 +1,8 @@
 # pi 指令
 
-a = 3
+a = None
 
-
-b = 3
-
-print("e04")
+if a:
+    print("e04")
+else:
+    print(a)
