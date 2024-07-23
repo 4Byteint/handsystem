@@ -29,10 +29,10 @@ class ArmCmd:
     # state switching cmd
     CMD_ERROR = -1
     CMD_NO_NEWCMD = 0
-    CMD_RELEASE = 1  #:
+    CMD_RELEASE = 1
     CMD_GRAB = 2
-    CMD_INIT = 3  #:初始化, 各裝置接初始化狀態(等待夾取相關命令到來前皆進入初始化),夾爪到初始位置,目前位置與放開狀態相同
-    CMD_POWERON = 4  #: 重開機, 包含開機確認,各裝置初始化確認
+    CMD_INIT = 3
+    CMD_POWERON = 4
     CMD_POWEROFF = 5
 
     # state remaining cmd
@@ -63,7 +63,7 @@ class GripperInfomation:
 
 class CanData:
 
-    # (0, instruction, from whom , index)
+    # format : (0, instruction, from whom , index)
     # instruction :  --- 1 : CMD --- 2 : DATA --- 3 : STATE
     # from whom : --- 1 : PI --- 2 : STM --- 3 : UNO
 
