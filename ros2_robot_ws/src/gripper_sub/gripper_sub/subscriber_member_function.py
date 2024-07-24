@@ -32,6 +32,9 @@ class pubsub(Node):
 
         self.currentCmd = ArmCmd.CMD_NO_NEWCMD
 
+        self.preTaskStatus = Status.UNKNOWN
+        self.curTaskStatus = Status.UNKNOWN
+
         # self.delayStart = 0
         # self.time1 = 0
         # self.cmdStartTime = 0
@@ -255,8 +258,13 @@ class pubsub(Node):
             #
             #
 
+            self.preTaskStatus = self.curTaskStatus
             # claw.toDoTask function return  Status.SUCCESS/  Status.FAILED/  Status.UNKNOWN
-            taskStatus = self.claw.toDoTask.get(self.claw.state, self.claw.NoTask)()
+            self.curTaskStatus = self.claw.toDoTask.get(
+                self.claw.state, self.claw.NoTask
+            )()
+            if self.preTaskStatus != self.curTaskStatus:
+                self.pubFirstTimeFlag = True
 
             # clean data buffer
             self.claw.canData = CanData.CAN_NO_MSG + (0, 0, 0, 0)
@@ -265,11 +273,11 @@ class pubsub(Node):
         infoMsg = GripperInfo()
 
         if self.pubFirstTimeFlag:
-            if taskStatus == Status.SUCCESS:
+            if self.curTaskStatus == Status.SUCCESS:
                 infoMsg.result = self.clawTaskSuccessInfo.get(
                     self.claw.state, GripperInfomation.NO_INFO
                 )
-            elif taskStatus == Status.FAILED:
+            elif self.curTaskStatus == Status.FAILED:
                 infoMsg.result = self.clawTaskFailedInfo.get(
                     self.claw.state, GripperInfomation.NO_INFO
                 )
