@@ -1,0 +1,83 @@
+[0.000000] (-) TimerEvent: {}
+[0.001827] (-) JobUnselected: {'identifier': 'arm_test'}
+[0.002550] (-) JobUnselected: {'identifier': 'gripper_pub'}
+[0.003153] (-) JobUnselected: {'identifier': 'robot_interfaces'}
+[0.003720] (gripper_sub) JobQueued: {'identifier': 'gripper_sub', 'dependencies': OrderedDict([('robot_interfaces', '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces')])}
+[0.003902] (gripper_sub) JobStarted: {'identifier': 'gripper_sub'}
+[0.098947] (-) TimerEvent: {}
+[0.200375] (-) TimerEvent: {}
+[0.301070] (-) TimerEvent: {}
+[0.401799] (-) TimerEvent: {}
+[0.502614] (-) TimerEvent: {}
+[0.603386] (-) TimerEvent: {}
+[0.704096] (-) TimerEvent: {}
+[0.804854] (-) TimerEvent: {}
+[0.905534] (-) TimerEvent: {}
+[1.006244] (-) TimerEvent: {}
+[1.106935] (-) TimerEvent: {}
+[1.207611] (-) TimerEvent: {}
+[1.308302] (-) TimerEvent: {}
+[1.409068] (-) TimerEvent: {}
+[1.510193] (-) TimerEvent: {}
+[1.610924] (-) TimerEvent: {}
+[1.712308] (-) TimerEvent: {}
+[1.813083] (-) TimerEvent: {}
+[1.913860] (-) TimerEvent: {}
+[2.014599] (-) TimerEvent: {}
+[2.115314] (-) TimerEvent: {}
+[2.216010] (-) TimerEvent: {}
+[2.316679] (-) TimerEvent: {}
+[2.417339] (-) TimerEvent: {}
+[2.518027] (-) TimerEvent: {}
+[2.618758] (-) TimerEvent: {}
+[2.719461] (-) TimerEvent: {}
+[2.820182] (-) TimerEvent: {}
+[2.921016] (-) TimerEvent: {}
+[3.021957] (-) TimerEvent: {}
+[3.122746] (-) TimerEvent: {}
+[3.223467] (-) TimerEvent: {}
+[3.324262] (-) TimerEvent: {}
+[3.425106] (gripper_sub) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/gripper_sub', 'build', '--build-base', '/home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build', 'install', '--record', '/home/pi/handsystem/ros2_robot_ws/build/gripper_sub/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/pi/handsystem/ros2_robot_ws/src/gripper_sub', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'pi', 'SSH_CLIENT': '192.168.0.9 59035 22', 'LC_TIME': 'lzh_TW', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/pi/.vscode-server/cli/servers/Stable-5437499feb04f7a586f677b155b039bc2b3669eb/server/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/lib:/home/pi/ros2_ws/install/interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'BROWSER': '/home/pi/.vscode-server/cli/servers/Stable-5437499feb04f7a586f677b155b039bc2b3669eb/server/bin/helpers/browser.sh', 'MOTD_SHOWN': 'pam', 'HOME': '/home/pi', 'OLDPWD': '/home/pi/handsystem', 'TERM_PROGRAM_VERSION': '1.90.2', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-dea586ea-15c0-4a2e-a656-d096959e4576.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/pi/.vscode-server/cli/servers/Stable-5437499feb04f7a586f677b155b039bc2b3669eb/server/extensions/git/dist/askpass-main.js', 'LC_MONETARY': 'lzh_TW', 'VSCODE_GIT_ASKPASS_NODE': '/home/pi/.vscode-server/cli/servers/Stable-5437499feb04f7a586f677b155b039bc2b3669eb/server/node', 'SSL_CERT_FILE': '/usr/lib/ssl/certs/ca-certificates.crt', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'COLCON_PREFIX_PATH': '/home/pi/handsystem/ros2_robot_ws/install:/home/pi/ros2_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'pi', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '49', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/home/pi/.vscode-server/cli/servers/Stable-5437499feb04f7a586f677b155b039bc2b3669eb/server/bin/remote-cli:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/bin:/usr/bin:/bin:/usr/bin', 'LC_ADDRESS': 'lzh_TW', 'XDG_RUNTIME_DIR': '/run/user/1000', 'SSL_CERT_DIR': '/usr/lib/ssl/certs', 'LANG': 'en_US.UTF-8', 'LC_TELEPHONE': 'lzh_TW', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-e2b84aca98.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/pi/handsystem/ros2_robot_ws/install/gripper_sub:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub:/home/pi/handsystem/ros2_robot_ws/install/arm_test:/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces:/home/pi/ros2_ws/install/py_sub:/home/pi/ros2_ws/install/cpp_pub:/home/pi/ros2_ws/install/interfaces:/opt/ros/humble', 'SHELL': '/bin/bash', 'LC_NAME': 'lzh_TW', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'lzh_TW', 'LC_IDENTIFICATION': 'lzh_TW', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/pi/handsystem/ros2_robot_ws/build/gripper_sub', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '192.168.0.9 59035 192.168.0.6 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/pi/handsystem/ros2_robot_ws/build/gripper_sub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:/home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:/home/pi/handsystem/ros2_robot_ws/install/gripper_pub/lib/python3.10/site-packages:/home/pi/handsystem/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages:/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages:/home/pi/ros2_ws/install/py_sub/lib/python3.10/site-packages:/home/pi/ros2_ws/install/interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'LC_NUMERIC': 'lzh_TW', 'LC_PAPER': 'lzh_TW', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/pi/handsystem/ros2_robot_ws/install/robot_interfaces:/home/pi/ros2_ws/install/cpp_pub:/home/pi/ros2_ws/install/interfaces'}, 'shell': False}
+[3.428274] (-) TimerEvent: {}
+[3.538952] (-) TimerEvent: {}
+[3.640225] (-) TimerEvent: {}
+[3.741623] (-) TimerEvent: {}
+[3.842467] (-) TimerEvent: {}
+[3.943198] (-) TimerEvent: {}
+[4.043881] (-) TimerEvent: {}
+[4.144601] (-) TimerEvent: {}
+[4.245296] (-) TimerEvent: {}
+[4.346018] (-) TimerEvent: {}
+[4.446705] (-) TimerEvent: {}
+[4.547425] (-) TimerEvent: {}
+[4.648105] (-) TimerEvent: {}
+[4.720933] (gripper_sub) StdoutLine: {'line': b'running egg_info\n'}
+[4.724169] (gripper_sub) StdoutLine: {'line': b'writing ../../build/gripper_sub/gripper_sub.egg-info/PKG-INFO\n'}
+[4.725405] (gripper_sub) StdoutLine: {'line': b'writing dependency_links to ../../build/gripper_sub/gripper_sub.egg-info/dependency_links.txt\n'}
+[4.726368] (gripper_sub) StdoutLine: {'line': b'writing entry points to ../../build/gripper_sub/gripper_sub.egg-info/entry_points.txt\n'}
+[4.727191] (gripper_sub) StdoutLine: {'line': b'writing requirements to ../../build/gripper_sub/gripper_sub.egg-info/requires.txt\n'}
+[4.728105] (gripper_sub) StdoutLine: {'line': b'writing top-level names to ../../build/gripper_sub/gripper_sub.egg-info/top_level.txt\n'}
+[4.737568] (gripper_sub) StdoutLine: {'line': b"reading manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'\n"}
+[4.739188] (gripper_sub) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[4.746423] (gripper_sub) StdoutLine: {'line': b"writing manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'\n"}
+[4.747301] (gripper_sub) StdoutLine: {'line': b'running build\n'}
+[4.747789] (gripper_sub) StdoutLine: {'line': b'running build_py\n'}
+[4.748150] (-) TimerEvent: {}
+[4.748755] (gripper_sub) StdoutLine: {'line': b'copying gripper_sub/subscriber_member_function.py -> /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub\n'}
+[4.751100] (gripper_sub) StdoutLine: {'line': b'running install\n'}
+[4.752502] (gripper_sub) StdoutLine: {'line': b'running install_lib\n'}
+[4.756570] (gripper_sub) StdoutLine: {'line': b'copying /home/pi/handsystem/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub/subscriber_member_function.py -> /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub\n'}
+[4.761126] (gripper_sub) StdoutLine: {'line': b'byte-compiling /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/subscriber_member_function.py to subscriber_member_function.cpython-310.pyc\n'}
+[4.768746] (gripper_sub) StdoutLine: {'line': b'running install_data\n'}
+[4.769533] (gripper_sub) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.777445] (gripper_sub) StdoutLine: {'line': b"removing '/home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[4.779507] (gripper_sub) StdoutLine: {'line': b'Copying ../../build/gripper_sub/gripper_sub.egg-info to /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub-0.0.0-py3.10.egg-info\n'}
+[4.787348] (gripper_sub) StdoutLine: {'line': b'running install_scripts\n'}
+[4.848344] (-) TimerEvent: {}
+[4.872057] (gripper_sub) StdoutLine: {'line': b'Installing listener script to /home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/gripper_sub\n'}
+[4.874112] (gripper_sub) StdoutLine: {'line': b"writing list of installed files to '/home/pi/handsystem/ros2_robot_ws/build/gripper_sub/install.log'\n"}
+[4.948675] (-) TimerEvent: {}
+[4.999025] (gripper_sub) CommandEnded: {'returncode': 0}
+[5.048885] (-) TimerEvent: {}
+[5.051646] (gripper_sub) JobEnded: {'identifier': 'gripper_sub', 'rc': 0}
+[5.055729] (-) EventReactorShutdown: {}

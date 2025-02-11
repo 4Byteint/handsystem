@@ -1,0 +1,29 @@
+running egg_info
+writing ../../../build/gripper_sub/gripper_sub.egg-info/PKG-INFO
+writing dependency_links to ../../../build/gripper_sub/gripper_sub.egg-info/dependency_links.txt
+writing entry points to ../../../build/gripper_sub/gripper_sub.egg-info/entry_points.txt
+writing requirements to ../../../build/gripper_sub/gripper_sub.egg-info/requires.txt
+writing top-level names to ../../../build/gripper_sub/gripper_sub.egg-info/top_level.txt
+reading manifest file '../../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+running build
+running build_py
+copying gripper_sub/subscriber_member_function.py -> /home/pi/handsystem/build/gripper_sub/build/lib/gripper_sub
+copying gripper_sub/claw.py -> /home/pi/handsystem/build/gripper_sub/build/lib/gripper_sub
+copying gripper_sub/gripper_sub_main.py -> /home/pi/handsystem/build/gripper_sub/build/lib/gripper_sub
+running install
+running install_lib
+copying /home/pi/handsystem/build/gripper_sub/build/lib/gripper_sub/subscriber_member_function.py -> /home/pi/handsystem/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+copying /home/pi/handsystem/build/gripper_sub/build/lib/gripper_sub/claw.py -> /home/pi/handsystem/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+copying /home/pi/handsystem/build/gripper_sub/build/lib/gripper_sub/gripper_sub_main.py -> /home/pi/handsystem/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+byte-compiling /home/pi/handsystem/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/subscriber_member_function.py to subscriber_member_function.cpython-310.pyc
+byte-compiling /home/pi/handsystem/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/claw.py to claw.cpython-310.pyc
+byte-compiling /home/pi/handsystem/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/gripper_sub_main.py to gripper_sub_main.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/pi/handsystem/install/gripper_sub/lib/python3.10/site-packages/gripper_sub-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../../build/gripper_sub/gripper_sub.egg-info to /home/pi/handsystem/install/gripper_sub/lib/python3.10/site-packages/gripper_sub-0.0.0-py3.10.egg-info
+running install_scripts
+Installing listener script to /home/pi/handsystem/install/gripper_sub/lib/gripper_sub
+writing list of installed files to '/home/pi/handsystem/build/gripper_sub/install.log'
