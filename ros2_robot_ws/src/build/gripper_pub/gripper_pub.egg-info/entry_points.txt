@@ -1,3 +1,0 @@
-[console_scripts]
-talker = gripper_pub.publisher_member_function:main
-

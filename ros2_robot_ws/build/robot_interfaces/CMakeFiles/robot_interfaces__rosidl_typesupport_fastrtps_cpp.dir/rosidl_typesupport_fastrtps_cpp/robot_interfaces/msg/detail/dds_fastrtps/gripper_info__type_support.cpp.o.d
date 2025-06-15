@@ -1,12 +1,12 @@
 CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/gripper_info__type_support.cpp.o: \
- /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/gripper_info__type_support.cpp \
+ /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/dds_fastrtps/gripper_info__type_support.cpp \
  /usr/include/stdc-predef.h \
- /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/gripper_info__rosidl_typesupport_fastrtps_cpp.hpp \
+ /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/detail/gripper_info__rosidl_typesupport_fastrtps_cpp.hpp \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_type_support_struct.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h \
  /opt/ros/humble/include/rosidl_typesupport_interface/rosidl_typesupport_interface/macros.h \
- /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h \
- /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__struct.hpp \
+ /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_fastrtps_cpp/robot_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h \
+ /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__struct.hpp \
  /usr/include/c++/11/algorithm /usr/include/c++/11/utility \
  /usr/include/aarch64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/aarch64-linux-gnu/c++/11/bits/os_defines.h \

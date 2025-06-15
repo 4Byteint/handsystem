@@ -1,10 +1,10 @@
 {
   "package_name": "robot_interfaces",
-  "output_dir": "/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_cpp/robot_interfaces",
+  "output_dir": "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_cpp/robot_interfaces",
   "template_dir": "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../resource",
   "idl_tuples": [
-    "/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/GripperCommand.idl",
-    "/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/GripperInfo.idl"
+    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/GripperCommand.idl",
+    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/GripperInfo.idl"
   ],
   "target_dependencies": [
     "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp",
@@ -22,7 +22,7 @@
     "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../resource/srv__builder.hpp.em",
     "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../resource/srv__struct.hpp.em",
     "/opt/ros/humble/share/rosidl_generator_cpp/cmake/../resource/srv__traits.hpp.em",
-    "/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces/msg/GripperCommand.idl",
-    "/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces/msg/GripperInfo.idl"
+    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces/msg/GripperCommand.idl",
+    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces/msg/GripperInfo.idl"
   ]
 }

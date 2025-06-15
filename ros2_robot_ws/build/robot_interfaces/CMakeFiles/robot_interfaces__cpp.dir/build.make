@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces
+CMAKE_SOURCE_DIR = /workspace/ros2_robot_ws/src/robot_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces
+CMAKE_BINARY_DIR = /workspace/ros2_robot_ws/build/robot_interfaces
 
 # Utility rule file for robot_interfaces__cpp.
 
@@ -70,10 +70,13 @@ CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/grip
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__builder.hpp
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__struct.hpp
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__traits.hpp
+CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__type_support.hpp
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_info.hpp
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__builder.hpp
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__struct.hpp
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__traits.hpp
+CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__type_support.hpp
+CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
 
 rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: /opt/ros/humble/lib/rosidl_generator_cpp/rosidl_generator_cpp
 rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_cpp/__init__.py
@@ -92,8 +95,8 @@ rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: /opt/ros/humble/s
 rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__traits.hpp.em
 rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: rosidl_adapter/robot_interfaces/msg/GripperCommand.idl
 rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: rosidl_adapter/robot_interfaces/msg/GripperInfo.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
-	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_cpp__arguments.json
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
+	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_cpp__arguments.json
 
 rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__builder.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__builder.hpp
@@ -103,6 +106,9 @@ rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__struct.hpp: ro
 
 rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__traits.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__traits.hpp
+
+rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__type_support.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__type_support.hpp
 
 rosidl_generator_cpp/robot_interfaces/msg/gripper_info.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/gripper_info.hpp
@@ -116,13 +122,18 @@ rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__struct.hpp: rosid
 rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__traits.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__traits.hpp
 
+rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__type_support.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__type_support.hpp
+
 robot_interfaces__cpp: CMakeFiles/robot_interfaces__cpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__builder.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__struct.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__traits.hpp
+robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__type_support.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__builder.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__struct.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__traits.hpp
+robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__type_support.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_info.hpp
 robot_interfaces__cpp: CMakeFiles/robot_interfaces__cpp.dir/build.make
@@ -137,6 +148,6 @@ CMakeFiles/robot_interfaces__cpp.dir/clean:
 .PHONY : CMakeFiles/robot_interfaces__cpp.dir/clean
 
 CMakeFiles/robot_interfaces__cpp.dir/depend:
-	cd /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/CMakeFiles/robot_interfaces__cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /workspace/ros2_robot_ws/build/robot_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /workspace/ros2_robot_ws/src/robot_interfaces /workspace/ros2_robot_ws/src/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles/robot_interfaces__cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/robot_interfaces__cpp.dir/depend
 

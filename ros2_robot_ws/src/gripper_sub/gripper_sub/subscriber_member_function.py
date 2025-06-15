@@ -1,11 +1,11 @@
 import time
 import threading
-from gripper_sub.claw import Claw
+from utils.claw import Claw
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from robot_interfaces.msg import GripperCommand, GripperInfo
-from canlib import canlib, Frame, exceptions
-from gripper_sub.table import (
+
+from utils.table import (
     GripperState,
     ArmCmd,
     GripperInfomation,

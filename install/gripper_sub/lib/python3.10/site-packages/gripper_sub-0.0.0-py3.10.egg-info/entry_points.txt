@@ -1,3 +1,0 @@
-[console_scripts]
-listener = gripper_sub.gripper_sub_main:main
-

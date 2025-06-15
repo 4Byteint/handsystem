@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces
+CMAKE_SOURCE_DIR = /workspace/ros2_robot_ws/src/robot_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces
+CMAKE_BINARY_DIR = /workspace/ros2_robot_ws/build/robot_interfaces
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /workspace/ros2_robot_ws/build/robot_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /workspace/ros2_robot_ws/src/robot_interfaces /workspace/ros2_robot_ws/src/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

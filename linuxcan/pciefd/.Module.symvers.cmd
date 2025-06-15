@@ -1,1 +1,0 @@
-cmd_/home/pi/handsystem/linuxcan/pciefd/Module.symvers := sed 's/\.ko$$/\.o/' /home/pi/handsystem/linuxcan/pciefd/modules.order | scripts/mod/modpost -m -a  -o /home/pi/handsystem/linuxcan/pciefd/Module.symvers -e -i Module.symvers -i /home/pi/handsystem/linuxcan/pciefd/../common/Module.symvers   -T -

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces
+CMAKE_SOURCE_DIR = /workspace/ros2_robot_ws/src/robot_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces
+CMAKE_BINARY_DIR = /workspace/ros2_robot_ws/build/robot_interfaces
 
 # Utility rule file for robot_interfaces__py.
 
@@ -90,8 +90,8 @@ rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_f
 rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_srv.py.em
 rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/robot_interfaces/msg/GripperCommand.idl
 rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/robot_interfaces/msg/GripperInfo.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
-	cd /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
+	cd /workspace/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
 
 rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c
@@ -131,10 +131,10 @@ robot_interfaces__py/CMakeFiles/robot_interfaces__py.dir/build: robot_interfaces
 .PHONY : robot_interfaces__py/CMakeFiles/robot_interfaces__py.dir/build
 
 robot_interfaces__py/CMakeFiles/robot_interfaces__py.dir/clean:
-	cd /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py && $(CMAKE_COMMAND) -P CMakeFiles/robot_interfaces__py.dir/cmake_clean.cmake
+	cd /workspace/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py && $(CMAKE_COMMAND) -P CMakeFiles/robot_interfaces__py.dir/cmake_clean.cmake
 .PHONY : robot_interfaces__py/CMakeFiles/robot_interfaces__py.dir/clean
 
 robot_interfaces__py/CMakeFiles/robot_interfaces__py.dir/depend:
-	cd /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py/CMakeFiles/robot_interfaces__py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /workspace/ros2_robot_ws/build/robot_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /workspace/ros2_robot_ws/src/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py /workspace/ros2_robot_ws/build/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py /workspace/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py/CMakeFiles/robot_interfaces__py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : robot_interfaces__py/CMakeFiles/robot_interfaces__py.dir/depend
 

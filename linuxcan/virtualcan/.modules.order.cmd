@@ -1,1 +1,0 @@
-cmd_/home/pi/handsystem/linuxcan/virtualcan/modules.order := {   echo /home/pi/handsystem/linuxcan/virtualcan/kvvirtualcan.ko; :; } | awk '!x[$$0]++' - > /home/pi/handsystem/linuxcan/virtualcan/modules.order

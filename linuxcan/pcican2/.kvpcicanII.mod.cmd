@@ -1,1 +1,0 @@
-cmd_/home/pi/handsystem/linuxcan/pcican2/kvpcicanII.mod := { echo  /home/pi/handsystem/linuxcan/pcican2/PciCan2HwIf.o /home/pi/handsystem/linuxcan/pcican2/memQ.o;  echo; } > /home/pi/handsystem/linuxcan/pcican2/kvpcicanII.mod

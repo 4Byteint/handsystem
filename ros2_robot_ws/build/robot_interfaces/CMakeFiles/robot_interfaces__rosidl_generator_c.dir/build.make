@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces
+CMAKE_SOURCE_DIR = /workspace/ros2_robot_ws/src/robot_interfaces
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces
+CMAKE_BINARY_DIR = /workspace/ros2_robot_ws/build/robot_interfaces
 
 # Include any dependencies generated for this target.
 include CMakeFiles/robot_interfaces__rosidl_generator_c.dir/depend.make
@@ -84,8 +84,8 @@ rosidl_generator_c/robot_interfaces/msg/gripper_command.h: /opt/ros/humble/share
 rosidl_generator_c/robot_interfaces/msg/gripper_command.h: /opt/ros/humble/share/rosidl_generator_c/resource/srv__type_support.h.em
 rosidl_generator_c/robot_interfaces/msg/gripper_command.h: rosidl_adapter/robot_interfaces/msg/GripperCommand.idl
 rosidl_generator_c/robot_interfaces/msg/gripper_command.h: rosidl_adapter/robot_interfaces/msg/GripperInfo.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C code for ROS interfaces"
-	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c --generator-arguments-file /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c__arguments.json
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C code for ROS interfaces"
+	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c --generator-arguments-file /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c__arguments.json
 
 rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.h: rosidl_generator_c/robot_interfaces/msg/gripper_command.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.h
@@ -117,30 +117,30 @@ rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c: rosidl
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o: CMakeFiles/robot_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o: rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o: CMakeFiles/robot_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o -MF CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o.d -o CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o -c /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o -MF CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o.d -o CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.o -c /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c
 
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c > CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c > CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.i
 
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c -o CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c -o CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.c.s
 
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o: CMakeFiles/robot_interfaces__rosidl_generator_c.dir/flags.make
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o: rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o: CMakeFiles/robot_interfaces__rosidl_generator_c.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o -MF CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o.d -o CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o -c /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o -MF CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o.d -o CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.o -c /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c
 
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c > CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c > CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.i
 
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c -o CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c -o CMakeFiles/robot_interfaces__rosidl_generator_c.dir/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.c.s
 
 # Object files for target robot_interfaces__rosidl_generator_c
 robot_interfaces__rosidl_generator_c_OBJECTS = \
@@ -156,7 +156,7 @@ librobot_interfaces__rosidl_generator_c.so: CMakeFiles/robot_interfaces__rosidl_
 librobot_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 librobot_interfaces__rosidl_generator_c.so: /opt/ros/humble/lib/librcutils.so
 librobot_interfaces__rosidl_generator_c.so: CMakeFiles/robot_interfaces__rosidl_generator_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared library librobot_interfaces__rosidl_generator_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared library librobot_interfaces__rosidl_generator_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/robot_interfaces__rosidl_generator_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -177,6 +177,6 @@ CMakeFiles/robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/r
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__type_support.h
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_interfaces/msg/gripper_command.h
 CMakeFiles/robot_interfaces__rosidl_generator_c.dir/depend: rosidl_generator_c/robot_interfaces/msg/gripper_info.h
-	cd /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces /home/pi/handsystem/ros2_robot_ws/src/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces /home/pi/handsystem/ros2_robot_ws/build/robot_interfaces/CMakeFiles/robot_interfaces__rosidl_generator_c.dir/DependInfo.cmake --color=$(COLOR)
+	cd /workspace/ros2_robot_ws/build/robot_interfaces && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /workspace/ros2_robot_ws/src/robot_interfaces /workspace/ros2_robot_ws/src/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces /workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles/robot_interfaces__rosidl_generator_c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/robot_interfaces__rosidl_generator_c.dir/depend
 

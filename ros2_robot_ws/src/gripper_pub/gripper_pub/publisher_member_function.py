@@ -4,7 +4,7 @@ from robot_interfaces.msg import GripperCommand, GripperInfo
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 import threading
-from gripper_sub.table import (
+from utils.table import (
     GripperState,
     ArmCmd,
     GripperInfomation,

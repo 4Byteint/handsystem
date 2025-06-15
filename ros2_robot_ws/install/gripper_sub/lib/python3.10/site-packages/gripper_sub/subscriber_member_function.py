@@ -20,6 +20,8 @@ from gripper_sub.table import (
 
 
 class pubsub(Node):
+    """this class contains all the callback func. and related func in this ROS2 system
+    see readme to know more detail"""
 
     def __init__(self):
         super().__init__("pubsub")

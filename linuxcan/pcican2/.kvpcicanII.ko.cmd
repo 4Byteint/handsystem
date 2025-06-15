@@ -1,1 +1,0 @@
-cmd_/home/pi/handsystem/linuxcan/pcican2/kvpcicanII.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/pi/handsystem/linuxcan/pcican2/kvpcicanII.ko /home/pi/handsystem/linuxcan/pcican2/kvpcicanII.o /home/pi/handsystem/linuxcan/pcican2/kvpcicanII.mod.o;  true

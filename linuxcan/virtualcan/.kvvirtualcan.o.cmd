@@ -1,1 +1,0 @@
-cmd_/home/pi/handsystem/linuxcan/virtualcan/kvvirtualcan.o := ld -EL  -maarch64elf -z noexecstack   -r -o /home/pi/handsystem/linuxcan/virtualcan/kvvirtualcan.o /home/pi/handsystem/linuxcan/virtualcan/virtualcan.o

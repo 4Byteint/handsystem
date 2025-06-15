@@ -1,1 +1,0 @@
-cmd_/home/pi/handsystem/linuxcan/leaf/leaf.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/pi/handsystem/linuxcan/leaf/leaf.ko /home/pi/handsystem/linuxcan/leaf/leaf.o /home/pi/handsystem/linuxcan/leaf/leaf.mod.o;  true

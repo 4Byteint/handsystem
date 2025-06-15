@@ -7,5 +7,6 @@
 #include "robot_interfaces/msg/detail/gripper_info__struct.hpp"
 #include "robot_interfaces/msg/detail/gripper_info__builder.hpp"
 #include "robot_interfaces/msg/detail/gripper_info__traits.hpp"
+#include "robot_interfaces/msg/detail/gripper_info__type_support.hpp"
 
 #endif  // ROBOT_INTERFACES__MSG__GRIPPER_INFO_HPP_

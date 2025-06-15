@@ -1,5 +1,0 @@
-  File "/home/pi/handsystem/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/subscriber_member_function.py", line 150
-    print("sendSTM_flag" self.sendSTM_flag)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-SyntaxError: invalid syntax. Perhaps you forgot a comma?
-

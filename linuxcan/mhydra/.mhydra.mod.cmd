@@ -1,1 +1,0 @@
-cmd_/home/pi/handsystem/linuxcan/mhydra/mhydra.mod := { echo  /home/pi/handsystem/linuxcan/mhydra/mhydraHWIf.o /home/pi/handsystem/linuxcan/mhydra/mhydraHWIf_TRP.o /home/pi/handsystem/linuxcan/mhydra/ioctl_handler.o;  echo; } > /home/pi/handsystem/linuxcan/mhydra/mhydra.mod

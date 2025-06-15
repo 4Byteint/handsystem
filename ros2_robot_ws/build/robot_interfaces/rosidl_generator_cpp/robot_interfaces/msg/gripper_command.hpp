@@ -7,5 +7,6 @@
 #include "robot_interfaces/msg/detail/gripper_command__struct.hpp"
 #include "robot_interfaces/msg/detail/gripper_command__builder.hpp"
 #include "robot_interfaces/msg/detail/gripper_command__traits.hpp"
+#include "robot_interfaces/msg/detail/gripper_command__type_support.hpp"
 
 #endif  // ROBOT_INTERFACES__MSG__GRIPPER_COMMAND_HPP_
