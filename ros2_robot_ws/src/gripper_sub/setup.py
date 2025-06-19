@@ -19,7 +19,9 @@ setup(
     tests_require=["pytest"],
     entry_points={
         "console_scripts": [
+            # <CLI名稱> = <Python模組路徑>:<函數名稱>
             "listener = gripper_sub.gripper_sub_main:main",
+            "socket_server = gripper_sub.ros_socket_receive_test:main",
         ],
     },
 )

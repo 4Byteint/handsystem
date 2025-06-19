@@ -79,17 +79,24 @@ rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__
 rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__type_support.c.em
 rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h: rosidl_adapter/robot_interfaces/msg/GripperCommand.idl
 rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h: rosidl_adapter/robot_interfaces/msg/GripperInfo.idl
+rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h: rosidl_adapter/robot_interfaces/msg/GraspPose.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C introspection for ROS interfaces"
 	/usr/bin/python3 /opt/ros/humble/lib/rosidl_typesupport_introspection_c/rosidl_typesupport_introspection_c --generator-arguments-file /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_introspection_c__arguments.json
 
 rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__rosidl_typesupport_introspection_c.h: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__rosidl_typesupport_introspection_c.h
 
+rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__rosidl_typesupport_introspection_c.h: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__rosidl_typesupport_introspection_c.h
+
 rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c
 
 rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__type_support.c: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__type_support.c
+
+rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c
 
 CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c.o: CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/flags.make
 CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c.o: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c
@@ -119,23 +126,39 @@ CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_types
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__type_support.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__type_support.c -o CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__type_support.c.s
 
+CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.o: CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/flags.make
+CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.o: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c
+CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.o: CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.o -MF CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.o.d -o CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.o -c /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c
+
+CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c > CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.i
+
+CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c -o CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.s
+
 # Object files for target robot_interfaces__rosidl_typesupport_introspection_c
 robot_interfaces__rosidl_typesupport_introspection_c_OBJECTS = \
 "CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c.o" \
-"CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__type_support.c.o"
+"CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__type_support.c.o" \
+"CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.o"
 
 # External object files for target robot_interfaces__rosidl_typesupport_introspection_c
 robot_interfaces__rosidl_typesupport_introspection_c_EXTERNAL_OBJECTS =
 
 librobot_interfaces__rosidl_typesupport_introspection_c.so: CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c.o
 librobot_interfaces__rosidl_typesupport_introspection_c.so: CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__type_support.c.o
+librobot_interfaces__rosidl_typesupport_introspection_c.so: CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c.o
 librobot_interfaces__rosidl_typesupport_introspection_c.so: CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/build.make
 librobot_interfaces__rosidl_typesupport_introspection_c.so: librobot_interfaces__rosidl_generator_c.so
 librobot_interfaces__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
 librobot_interfaces__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 librobot_interfaces__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librcutils.so
 librobot_interfaces__rosidl_typesupport_introspection_c.so: CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C shared library librobot_interfaces__rosidl_typesupport_introspection_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C shared library librobot_interfaces__rosidl_typesupport_introspection_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -146,6 +169,8 @@ CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/clean
 
+CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__rosidl_typesupport_introspection_c.h
+CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/grasp_pose__type_support.c
 CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__rosidl_typesupport_introspection_c.h
 CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_command__type_support.c
 CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/robot_interfaces/msg/detail/gripper_info__rosidl_typesupport_introspection_c.h

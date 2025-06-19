@@ -76,6 +76,11 @@ CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/deta
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__struct.hpp
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__traits.hpp
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__type_support.hpp
+CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/grasp_pose.hpp
+CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__builder.hpp
+CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__struct.hpp
+CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__traits.hpp
+CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__type_support.hpp
 CMakeFiles/robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
 
 rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: /opt/ros/humble/lib/rosidl_generator_cpp/rosidl_generator_cpp
@@ -95,6 +100,7 @@ rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: /opt/ros/humble/s
 rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__traits.hpp.em
 rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: rosidl_adapter/robot_interfaces/msg/GripperCommand.idl
 rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: rosidl_adapter/robot_interfaces/msg/GripperInfo.idl
+rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp: rosidl_adapter/robot_interfaces/msg/GraspPose.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
 	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_cpp__arguments.json
 
@@ -125,7 +131,26 @@ rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__traits.hpp: rosid
 rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__type_support.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__type_support.hpp
 
+rosidl_generator_cpp/robot_interfaces/msg/grasp_pose.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/grasp_pose.hpp
+
+rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__builder.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__builder.hpp
+
+rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__struct.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__struct.hpp
+
+rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__traits.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__traits.hpp
+
+rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__type_support.hpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__type_support.hpp
+
 robot_interfaces__cpp: CMakeFiles/robot_interfaces__cpp
+robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__builder.hpp
+robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__struct.hpp
+robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__traits.hpp
+robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/grasp_pose__type_support.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__builder.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__struct.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_command__traits.hpp
@@ -134,6 +159,7 @@ robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__struct.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__traits.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/detail/gripper_info__type_support.hpp
+robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/grasp_pose.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_command.hpp
 robot_interfaces__cpp: rosidl_generator_cpp/robot_interfaces/msg/gripper_info.hpp
 robot_interfaces__cpp: CMakeFiles/robot_interfaces__cpp.dir/build.make

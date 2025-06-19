@@ -68,6 +68,7 @@ include CMakeFiles/robot_interfaces.dir/progress.make
 
 CMakeFiles/robot_interfaces: /workspace/ros2_robot_ws/src/robot_interfaces/msg/GripperCommand.msg
 CMakeFiles/robot_interfaces: /workspace/ros2_robot_ws/src/robot_interfaces/msg/GripperInfo.msg
+CMakeFiles/robot_interfaces: /workspace/ros2_robot_ws/src/robot_interfaces/msg/GraspPose.msg
 
 robot_interfaces: CMakeFiles/robot_interfaces
 robot_interfaces: CMakeFiles/robot_interfaces.dir/build.make

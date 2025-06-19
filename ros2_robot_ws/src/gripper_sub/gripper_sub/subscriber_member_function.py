@@ -31,6 +31,7 @@ class pubsub(Node):
         self.pubFirstTimeFlag = False
         self.canFailedFirstTimeFlag = False
         self.stateTaskPrintFlag = True
+        self.lastPrintedState = None  # 添加变量来跟踪上一次打印的状态
 
         self.currentCmd = ArmCmd.CMD_NO_NEWCMD
 
@@ -71,6 +72,8 @@ class pubsub(Node):
             10,
             callback_group=self.callback_group,
         )
+        
+        
 
         # 狀態變數 called every 0.01 sec
         self.clawCtrlTimer = self.create_timer(
@@ -252,10 +255,13 @@ class pubsub(Node):
             #
             #
             if self.stateTaskPrintFlag:
-
-                print(
-                    f'Current state: "{GripperState.stateDict.get(self.claw.state,"unknown state")}"'
-                )
+                current_state = self.claw.state
+                # 只有当状态真正改变时才打印
+                if self.lastPrintedState != current_state:
+                    print(
+                        f'Current state: "{GripperState.stateDict.get(current_state,"unknown state")}"'
+                    )
+                    self.lastPrintedState = current_state
                 self.stateTaskPrintFlag = False
             #
             #
@@ -269,7 +275,7 @@ class pubsub(Node):
                 self.pubFirstTimeFlag = True
 
             # clean data buffer
-            self.claw.canData = CanData.CAN_NO_MSG + (0, 0, 0, 0)
+            self.claw.canData = CanData.CAN_ERROR_FRAME + (0, 0, 0, 0)
             self.currentCmd = ArmCmd.CMD_NO_NEWCMD
 
         infoMsg = GripperInfo()

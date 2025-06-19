@@ -1,0 +1,34 @@
+running egg_info
+writing ../../build/utils/utils.egg-info/PKG-INFO
+writing dependency_links to ../../build/utils/utils.egg-info/dependency_links.txt
+writing entry points to ../../build/utils/utils.egg-info/entry_points.txt
+writing requirements to ../../build/utils/utils.egg-info/requires.txt
+writing top-level names to ../../build/utils/utils.egg-info/top_level.txt
+reading manifest file '../../build/utils/utils.egg-info/SOURCES.txt'
+writing manifest file '../../build/utils/utils.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /workspace/ros2_robot_ws/build/utils/build
+creating /workspace/ros2_robot_ws/build/utils/build/lib
+creating /workspace/ros2_robot_ws/build/utils/build/lib/utils
+copying ./utils/claw.py -> /workspace/ros2_robot_ws/build/utils/build/lib/utils
+copying ./utils/table.py -> /workspace/ros2_robot_ws/build/utils/build/lib/utils
+copying ./utils/__init__.py -> /workspace/ros2_robot_ws/build/utils/build/lib/utils
+copying ./utils/can_sender.py -> /workspace/ros2_robot_ws/build/utils/build/lib/utils
+running install
+running install_lib
+creating /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils
+copying /workspace/ros2_robot_ws/build/utils/build/lib/utils/claw.py -> /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils
+copying /workspace/ros2_robot_ws/build/utils/build/lib/utils/table.py -> /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils
+copying /workspace/ros2_robot_ws/build/utils/build/lib/utils/__init__.py -> /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils
+copying /workspace/ros2_robot_ws/build/utils/build/lib/utils/can_sender.py -> /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils
+byte-compiling /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils/claw.py to claw.cpython-310.pyc
+byte-compiling /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils/table.py to table.cpython-310.pyc
+byte-compiling /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils/__init__.py to __init__.cpython-310.pyc
+byte-compiling /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils/can_sender.py to can_sender.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/utils/utils.egg-info to /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/workspace/ros2_robot_ws/build/utils/install.log'

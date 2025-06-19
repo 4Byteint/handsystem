@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_grasp_pose_s.c.o"
+  "CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_grasp_pose_s.c.o.d"
   "CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_gripper_command_s.c.o"
   "CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_gripper_command_s.c.o.d"
   "CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_interfaces/msg/_gripper_info_s.c.o"

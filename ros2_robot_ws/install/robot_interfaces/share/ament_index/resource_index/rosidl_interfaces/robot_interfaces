@@ -1,3 +1,5 @@
+msg/GraspPose.idl
+msg/GraspPose.msg
 msg/GripperCommand.idl
 msg/GripperCommand.msg
 msg/GripperInfo.idl

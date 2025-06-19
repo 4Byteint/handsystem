@@ -14,6 +14,7 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/GripperCommand.msg"
   "msg/GripperInfo.msg"
+  "msg/GraspPose.msg"
 )
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

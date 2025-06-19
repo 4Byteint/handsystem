@@ -4,7 +4,7 @@ from robot_interfaces.msg import GripperCommand, GripperInfo
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 import threading
-from gripper_sub.table import (
+from utils.table import (
     GripperState,
     ArmCmd,
     GripperInfomation,
@@ -61,7 +61,14 @@ class GripperPublisher(Node):
         while rclpy.ok():
             user_input = input(
                 # "輸入 'a' 設定 num=1 / 'b' 設定 num=2: / 'c' 設定 num=-1: "
-                "輸入 1~6 or 'e': "
+                "輸入 1~6 or 'e': \n"
+                "1: release\n"
+                "2: grab\n"
+                "3: init\n"
+                "4: poweron\n"
+                "5: poweroff\n"
+                "6: state check\n"
+                "e: error\n"
             )
             if user_input == "1":
                 self.publish_message(4, ArmCmd.CMD_RELEASE)

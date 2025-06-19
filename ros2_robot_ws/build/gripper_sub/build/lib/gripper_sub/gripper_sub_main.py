@@ -1,8 +1,8 @@
-from gripper_sub.subscriber_member_function import pubsub
+from .subscriber_member_function import pubsub
 import rclpy
 from rclpy.executors import MultiThreadedExecutor
 
-from gripper_sub.table import (
+from utils.table import (
     GripperState,
     ArmCmd,
     GripperInfomation,

@@ -207,4 +207,7 @@ CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_gen
  /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_command__functions.h \
  /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__type_support.h \
  /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__struct.h \
- /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.h
+ /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/gripper_info__functions.h \
+ /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/grasp_pose__type_support.h \
+ /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/grasp_pose__struct.h \
+ /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/grasp_pose__functions.h

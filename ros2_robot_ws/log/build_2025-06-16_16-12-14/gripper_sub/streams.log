@@ -1,0 +1,25 @@
+[3.249s] Invoking command in '/workspace/ros2_robot_ws/src/gripper_sub': AMENT_PREFIX_PATH=/workspace/ros2_robot_ws/install/utils:/workspace/ros2_robot_ws/install/robot_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/workspace/ros2_robot_ws/install/robot_interfaces LD_LIBRARY_PATH=/workspace/ros2_robot_ws/install/robot_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/workspace/ros2_robot_ws/build/gripper_sub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/gripper_sub build --build-base /workspace/ros2_robot_ws/build/gripper_sub/build install --record /workspace/ros2_robot_ws/build/gripper_sub/install.log --single-version-externally-managed install_data
+[4.110s] running egg_info
+[4.113s] writing ../../build/gripper_sub/gripper_sub.egg-info/PKG-INFO
+[4.114s] writing dependency_links to ../../build/gripper_sub/gripper_sub.egg-info/dependency_links.txt
+[4.116s] writing entry points to ../../build/gripper_sub/gripper_sub.egg-info/entry_points.txt
+[4.118s] writing requirements to ../../build/gripper_sub/gripper_sub.egg-info/requires.txt
+[4.120s] writing top-level names to ../../build/gripper_sub/gripper_sub.egg-info/top_level.txt
+[4.129s] reading manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+[4.129s] adding license file 'LICENSE'
+[4.132s] writing manifest file '../../build/gripper_sub/gripper_sub.egg-info/SOURCES.txt'
+[4.133s] running build
+[4.133s] running build_py
+[4.134s] copying gripper_sub/gripper_sub_main.py -> /workspace/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub
+[4.135s] running install
+[4.137s] running install_lib
+[4.141s] copying /workspace/ros2_robot_ws/build/gripper_sub/build/lib/gripper_sub/gripper_sub_main.py -> /workspace/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub
+[4.144s] byte-compiling /workspace/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub/gripper_sub_main.py to gripper_sub_main.cpython-310.pyc
+[4.146s] running install_data
+[4.147s] running install_egg_info
+[4.159s] removing '/workspace/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub-0.0.0-py3.10.egg-info' (and everything under it)
+[4.160s] Copying ../../build/gripper_sub/gripper_sub.egg-info to /workspace/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages/gripper_sub-0.0.0-py3.10.egg-info
+[4.165s] running install_scripts
+[4.289s] Installing listener script to /workspace/ros2_robot_ws/install/gripper_sub/lib/gripper_sub
+[4.291s] writing list of installed files to '/workspace/ros2_robot_ws/build/gripper_sub/install.log'
+[4.431s] Invoked command in '/workspace/ros2_robot_ws/src/gripper_sub' returned '0': AMENT_PREFIX_PATH=/workspace/ros2_robot_ws/install/utils:/workspace/ros2_robot_ws/install/robot_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/workspace/ros2_robot_ws/install/robot_interfaces LD_LIBRARY_PATH=/workspace/ros2_robot_ws/install/robot_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/workspace/ros2_robot_ws/build/gripper_sub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/gripper_sub build --build-base /workspace/ros2_robot_ws/build/gripper_sub/build install --record /workspace/ros2_robot_ws/build/gripper_sub/install.log --single-version-externally-managed install_data

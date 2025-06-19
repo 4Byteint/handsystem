@@ -71,9 +71,11 @@ robot_interfaces__py/CMakeFiles/robot_interfaces__py: rosidl_generator_py/robot_
 robot_interfaces__py/CMakeFiles/robot_interfaces__py: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_c.c
 robot_interfaces__py/CMakeFiles/robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_gripper_command.py
 robot_interfaces__py/CMakeFiles/robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_gripper_info.py
+robot_interfaces__py/CMakeFiles/robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_grasp_pose.py
 robot_interfaces__py/CMakeFiles/robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/__init__.py
 robot_interfaces__py/CMakeFiles/robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_gripper_command_s.c
 robot_interfaces__py/CMakeFiles/robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_gripper_info_s.c
+robot_interfaces__py/CMakeFiles/robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_grasp_pose_s.c
 
 rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/lib/rosidl_generator_py/rosidl_generator_py
 rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_py/__init__.py
@@ -90,6 +92,7 @@ rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_f
 rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_srv.py.em
 rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/robot_interfaces/msg/GripperCommand.idl
 rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/robot_interfaces/msg/GripperInfo.idl
+rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/robot_interfaces/msg/GraspPose.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/workspace/ros2_robot_ws/build/robot_interfaces/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
 	cd /workspace/ros2_robot_ws/build/robot_interfaces/robot_interfaces__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
 
@@ -105,6 +108,9 @@ rosidl_generator_py/robot_interfaces/msg/_gripper_command.py: rosidl_generator_p
 rosidl_generator_py/robot_interfaces/msg/_gripper_info.py: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/robot_interfaces/msg/_gripper_info.py
 
+rosidl_generator_py/robot_interfaces/msg/_grasp_pose.py: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/robot_interfaces/msg/_grasp_pose.py
+
 rosidl_generator_py/robot_interfaces/msg/__init__.py: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/robot_interfaces/msg/__init__.py
 
@@ -114,11 +120,16 @@ rosidl_generator_py/robot_interfaces/msg/_gripper_command_s.c: rosidl_generator_
 rosidl_generator_py/robot_interfaces/msg/_gripper_info_s.c: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/robot_interfaces/msg/_gripper_info_s.c
 
+rosidl_generator_py/robot_interfaces/msg/_grasp_pose_s.c: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/robot_interfaces/msg/_grasp_pose_s.c
+
 robot_interfaces__py: robot_interfaces__py/CMakeFiles/robot_interfaces__py
 robot_interfaces__py: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_c.c
 robot_interfaces__py: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
 robot_interfaces__py: rosidl_generator_py/robot_interfaces/_robot_interfaces_s.ep.rosidl_typesupport_introspection_c.c
 robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/__init__.py
+robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_grasp_pose.py
+robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_grasp_pose_s.c
 robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_gripper_command.py
 robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_gripper_command_s.c
 robot_interfaces__py: rosidl_generator_py/robot_interfaces/msg/_gripper_info.py

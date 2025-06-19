@@ -4,7 +4,8 @@
   "template_dir": "/opt/ros/humble/share/rosidl_generator_c/cmake/../resource",
   "idl_tuples": [
     "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/GripperCommand.idl",
-    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/GripperInfo.idl"
+    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/GripperInfo.idl",
+    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces:msg/GraspPose.idl"
   ],
   "target_dependencies": [
     "/opt/ros/humble/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c",
@@ -21,6 +22,7 @@
     "/opt/ros/humble/share/rosidl_generator_c/cmake/../resource/msg__type_support.h.em",
     "/opt/ros/humble/share/rosidl_generator_c/cmake/../resource/srv__type_support.h.em",
     "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces/msg/GripperCommand.idl",
-    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces/msg/GripperInfo.idl"
+    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces/msg/GripperInfo.idl",
+    "/workspace/ros2_robot_ws/build/robot_interfaces/rosidl_adapter/robot_interfaces/msg/GraspPose.idl"
   ]
 }

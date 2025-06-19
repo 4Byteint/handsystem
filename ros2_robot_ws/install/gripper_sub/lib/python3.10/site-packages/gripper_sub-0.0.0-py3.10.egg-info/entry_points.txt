@@ -1,3 +1,4 @@
 [console_scripts]
 listener = gripper_sub.gripper_sub_main:main
+socket_server = gripper_sub.ros_socket_receive_test:main
 

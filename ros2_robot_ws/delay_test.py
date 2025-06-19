@@ -1,27 +1,38 @@
 import RPi.GPIO as GPIO
-from canlib import canlib, Frame
-
+import can
 
 class Claw:
     def __init__(self):
-        self.ch = canlib.openChannel(
-            channel=0, flags=canlib.Open.EXCLUSIVE, bitrate=canlib.canBITRATE_1M
-        )
-        self.ch.setBusOutputControl(canlib.Driver.NORMAL)
-        self.ch.busOn()
+        # 初始化 CAN 总线
+        self.bus = can.interface.Bus(channel='can0', bustype='socketcan', bitrate=1000000)
         GPIO.setmode(GPIO.BOARD)  # BOARD:物理腳位 BCM:GPIO
         GPIO.setup(7, GPIO.OUT)
         GPIO.output(7, False)
 
     def grabbing(self):
         print("grab")
-        grab_action = Frame(id_=2, data=[0, 1, 1, 6, 100, 0, 0, 0], dlc=8)
-        self.ch.write(grab_action)
+        # 创建 CAN 消息
+        grab_msg = can.Message(
+            arbitration_id=2,
+            data=[0, 1, 1, 6, 100, 0, 0, 0],
+            is_extended_id=False
+        )
+        self.bus.send(grab_msg)
 
     def release(self):
         print("release")
-        release_action = Frame(id_=2, data=[0, 1, 1, 7, 10, 0, 0, 0], dlc=8)
-        self.ch.write(release_action)
+        # 创建 CAN 消息
+        release_msg = can.Message(
+            arbitration_id=2,
+            data=[0, 1, 1, 7, 10, 0, 0, 0],
+            is_extended_id=False
+        )
+        self.bus.send(release_msg)
+
+    def __del__(self):
+        # 确保在对象销毁时关闭 CAN 总线
+        if hasattr(self, 'bus'):
+            self.bus.shutdown()
 
 
 def main(args=None):
