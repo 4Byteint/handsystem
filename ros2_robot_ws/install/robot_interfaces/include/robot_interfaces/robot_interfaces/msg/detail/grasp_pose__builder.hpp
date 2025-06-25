@@ -37,16 +37,32 @@ private:
   ::robot_interfaces::msg::GraspPose msg_;
 };
 
+class Init_GraspPose_z
+{
+public:
+  explicit Init_GraspPose_z(::robot_interfaces::msg::GraspPose & msg)
+  : msg_(msg)
+  {}
+  Init_GraspPose_angle z(::robot_interfaces::msg::GraspPose::_z_type arg)
+  {
+    msg_.z = std::move(arg);
+    return Init_GraspPose_angle(msg_);
+  }
+
+private:
+  ::robot_interfaces::msg::GraspPose msg_;
+};
+
 class Init_GraspPose_y
 {
 public:
   explicit Init_GraspPose_y(::robot_interfaces::msg::GraspPose & msg)
   : msg_(msg)
   {}
-  Init_GraspPose_angle y(::robot_interfaces::msg::GraspPose::_y_type arg)
+  Init_GraspPose_z y(::robot_interfaces::msg::GraspPose::_y_type arg)
   {
     msg_.y = std::move(arg);
-    return Init_GraspPose_angle(msg_);
+    return Init_GraspPose_z(msg_);
   }
 
 private:

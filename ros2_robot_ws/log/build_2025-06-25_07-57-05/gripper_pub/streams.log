@@ -1,0 +1,22 @@
+[4.533s] Invoking command in '/workspace/ros2_robot_ws/src/gripper_pub': AMENT_PREFIX_PATH=/workspace/ros2_robot_ws/install/utils:/workspace/ros2_robot_ws/install/gripper_sub:/workspace/ros2_robot_ws/install/gripper_pub:/workspace/ros2_robot_ws/install/arm_test:/workspace/ros2_robot_ws/install/robot_interfaces:/opt/ros/humble PYTHONPATH=/workspace/ros2_robot_ws/build/gripper_pub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/ros2_robot_ws/install/gripper_pub/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/gripper_pub/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/gripper_pub build --build-base /workspace/ros2_robot_ws/build/gripper_pub/build install --record /workspace/ros2_robot_ws/build/gripper_pub/install.log --single-version-externally-managed install_data
+[5.736s] running egg_info
+[5.740s] writing ../../build/gripper_pub/gripper_pub.egg-info/PKG-INFO
+[5.743s] writing dependency_links to ../../build/gripper_pub/gripper_pub.egg-info/dependency_links.txt
+[5.746s] writing entry points to ../../build/gripper_pub/gripper_pub.egg-info/entry_points.txt
+[5.747s] writing requirements to ../../build/gripper_pub/gripper_pub.egg-info/requires.txt
+[5.748s] writing top-level names to ../../build/gripper_pub/gripper_pub.egg-info/top_level.txt
+[5.754s] reading manifest file '../../build/gripper_pub/gripper_pub.egg-info/SOURCES.txt'
+[5.756s] adding license file 'LICENSE'
+[5.758s] writing manifest file '../../build/gripper_pub/gripper_pub.egg-info/SOURCES.txt'
+[5.764s] running build
+[5.772s] running build_py
+[5.773s] running install
+[5.773s] running install_lib
+[5.777s] running install_data
+[5.780s] running install_egg_info
+[5.788s] removing '/workspace/ros2_robot_ws/install/gripper_pub/lib/python3.10/site-packages/gripper_pub-0.0.0-py3.10.egg-info' (and everything under it)
+[5.796s] Copying ../../build/gripper_pub/gripper_pub.egg-info to /workspace/ros2_robot_ws/install/gripper_pub/lib/python3.10/site-packages/gripper_pub-0.0.0-py3.10.egg-info
+[5.799s] running install_scripts
+[5.899s] Installing talker script to /workspace/ros2_robot_ws/install/gripper_pub/lib/gripper_pub
+[5.902s] writing list of installed files to '/workspace/ros2_robot_ws/build/gripper_pub/install.log'
+[6.087s] Invoked command in '/workspace/ros2_robot_ws/src/gripper_pub' returned '0': AMENT_PREFIX_PATH=/workspace/ros2_robot_ws/install/utils:/workspace/ros2_robot_ws/install/gripper_sub:/workspace/ros2_robot_ws/install/gripper_pub:/workspace/ros2_robot_ws/install/arm_test:/workspace/ros2_robot_ws/install/robot_interfaces:/opt/ros/humble PYTHONPATH=/workspace/ros2_robot_ws/build/gripper_pub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/ros2_robot_ws/install/gripper_pub/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/gripper_sub/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/gripper_pub/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages:/workspace/ros2_robot_ws/install/robot_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/gripper_pub build --build-base /workspace/ros2_robot_ws/build/gripper_pub/build install --record /workspace/ros2_robot_ws/build/gripper_pub/install.log --single-version-externally-managed install_data

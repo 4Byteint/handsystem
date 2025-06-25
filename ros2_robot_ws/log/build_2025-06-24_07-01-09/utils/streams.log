@@ -1,0 +1,20 @@
+[6.756s] Invoking command in '/workspace/ros2_robot_ws/src/utils': PYTHONPATH=/workspace/ros2_robot_ws/build/utils/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/utils build --build-base /workspace/ros2_robot_ws/build/utils/build install --record /workspace/ros2_robot_ws/build/utils/install.log --single-version-externally-managed install_data
+[8.722s] running egg_info
+[8.734s] writing ../../build/utils/utils.egg-info/PKG-INFO
+[8.741s] writing dependency_links to ../../build/utils/utils.egg-info/dependency_links.txt
+[8.743s] writing entry points to ../../build/utils/utils.egg-info/entry_points.txt
+[8.744s] writing requirements to ../../build/utils/utils.egg-info/requires.txt
+[8.751s] writing top-level names to ../../build/utils/utils.egg-info/top_level.txt
+[8.766s] reading manifest file '../../build/utils/utils.egg-info/SOURCES.txt'
+[8.771s] writing manifest file '../../build/utils/utils.egg-info/SOURCES.txt'
+[8.772s] running build
+[8.774s] running build_py
+[8.775s] running install
+[8.780s] running install_lib
+[8.800s] running install_data
+[8.801s] running install_egg_info
+[8.814s] removing '/workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils-0.0.0-py3.10.egg-info' (and everything under it)
+[8.822s] Copying ../../build/utils/utils.egg-info to /workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages/utils-0.0.0-py3.10.egg-info
+[8.837s] running install_scripts
+[9.037s] writing list of installed files to '/workspace/ros2_robot_ws/build/utils/install.log'
+[9.725s] Invoked command in '/workspace/ros2_robot_ws/src/utils' returned '0': PYTHONPATH=/workspace/ros2_robot_ws/build/utils/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/ros2_robot_ws/install/utils/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/utils build --build-base /workspace/ros2_robot_ws/build/utils/build install --record /workspace/ros2_robot_ws/build/utils/install.log --single-version-externally-managed install_data

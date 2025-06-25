@@ -31,7 +31,7 @@ void robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__Grasp
   robot_interfaces__msg__GraspPose__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_message_member_array[3] = {
+static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_message_member_array[4] = {
   {
     "x",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
@@ -67,6 +67,23 @@ static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__
     NULL  // resize(index) function pointer
   },
   {
+    "z",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(robot_interfaces__msg__GraspPose, z),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL,  // fetch(index, &value) function pointer
+    NULL,  // assign(index, value) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
     "angle",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
@@ -88,7 +105,7 @@ static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__
 static const rosidl_typesupport_introspection_c__MessageMembers robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_message_members = {
   "robot_interfaces__msg",  // message namespace
   "GraspPose",  // message name
-  3,  // number of fields
+  4,  // number of fields
   sizeof(robot_interfaces__msg__GraspPose),
   robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_message_member_array,  // message members
   robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_init_function,  // function to initialize message memory (memory has to be allocated)

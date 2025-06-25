@@ -59,6 +59,11 @@ static bool _GraspPose__cdr_serialize(
     cdr << ros_message->y;
   }
 
+  // Field name: z
+  {
+    cdr << ros_message->z;
+  }
+
   // Field name: angle
   {
     cdr << ros_message->angle;
@@ -84,6 +89,11 @@ static bool _GraspPose__cdr_deserialize(
   // Field name: y
   {
     cdr >> ros_message->y;
+  }
+
+  // Field name: z
+  {
+    cdr >> ros_message->z;
   }
 
   // Field name: angle
@@ -117,6 +127,12 @@ size_t get_serialized_size_robot_interfaces__msg__GraspPose(
   // field.name y
   {
     size_t item_size = sizeof(ros_message->y);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name z
+  {
+    size_t item_size = sizeof(ros_message->z);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -164,6 +180,14 @@ size_t max_serialized_size_robot_interfaces__msg__GraspPose(
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
   }
   // member: y
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint32_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+  // member: z
   {
     size_t array_size = 1;
 

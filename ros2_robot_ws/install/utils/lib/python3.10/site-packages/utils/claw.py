@@ -1,4 +1,6 @@
 import time
+
+import numpy as np
 from .table import (
     GripperState,
     ArmCmd,
@@ -11,6 +13,7 @@ from .table import (
 import os
 import can
 from .can_sender import CANInterface
+from robot_interfaces.msg import  GraspPose
 
 class Claw:
     """This class handles all CAN-related tasks using python-can."""
@@ -21,8 +24,7 @@ class Claw:
         os.system("sudo ip link set can0 up")
         
         self.can = CANInterface(channel=channel, bitrate=bitrate)
-        
-        print("[Claw] 初始化完成")
+
         self.connectCheckTimeStart = 0
         self.sendingTimeStart_STM = 0
         # self.sendingTimeStart_UNO = 0
@@ -32,6 +34,8 @@ class Claw:
         # public
         self.canData = (0, 0, 0, 0, 0, 0, 0, 0)
         self.state = GripperState.STATE_POWER_OFF  # 初始狀態
+        self.R_j62sensor = np.zeros((4, 4))
+        self.R_sensor2conn = np.zeros((4, 4))
 
         #  True for CAN  been transmitted for the first time
         self.sendFirstTimeFlag = {Device.STM: False, Device.UNO: False}
@@ -48,6 +52,7 @@ class Claw:
             GripperState.STATE_OFFLINE: self.OffLine,
             GripperState.STATE_GRABBING_MISS: self.GrabbingMiss,
             GripperState.STATE_RELEASING_MISS: self.ReleasingMiss,
+            GripperState.STATE_GRABBING_MOTOR_ANGLE: self.GrabbingMotorAngle,
         }
 
     # ********************************************************************* #
@@ -61,7 +66,7 @@ class Claw:
             msg = self.can.receive(timeout=timeout)
             if msg:
                 self.canData = tuple(msg.data)
-                print(f"[Claw] claw Received: ID={hex(msg.arbitration_id)} Data={list(msg.data)}")
+                # print(f"[Claw] claw Received: ID={hex(msg.arbitration_id)} Data={list(msg.data)}")
             else:
                 # print("[Claw] No CAN message received within timeout.")
                 self.canData = CanData.CAN_ERROR_FRAME + (0, 0, 0, 0)
@@ -258,16 +263,11 @@ class Claw:
 
                     print("[Claw] STM start grabbing success")
                     return Status.SUCCESS
-            except can.CanNoMsg as e:
-                # if time.time() - self.sendingTimeStart_STM > 5:
+            except can.CanError as e:
                 self.sendFirstTimeFlag[Device.STM] = True
                 print(f"[Claw] 未收到STM是否開夾,重新發送 ,{e}")
-                return Status.UNKNOWN
-            # except canlib.CanNoMsg:
-            #     # if time.time() - self.sendingTimeStart_STM > 5:
-            #     self.sendFirstTimeFlag[Device.STM] = True
-            #     print("未收到STM是否開夾,重新發送")
-            #     return Status.UNKNOWN
+                return Status.FAILED
+          
 
     def Release(self):
         if self.sendFirstTimeFlag[Device.STM]:
@@ -298,13 +298,70 @@ class Claw:
 
     def GrabbingMiss(self):
         """nothing to do with STM,UNO"""
-        # print("grabing miss")
         return Status.SUCCESS
 
     def ReleasingMiss(self):
         """nothing to do with STM,UNO"""
         # print("releasing miss")
         return Status.SUCCESS
+
+    # ********************************************************************* #
+    # ********************************************************************* #
+    # ********************* return motor data **************************** #
+    # ********************************************************************* #
+    # ********************************************************************* #
+    
+    
+    def calculate_transfer_matrix(self, motor_deg):
+        L1 = 15
+        L2 = 32.5
+        offset = -27.5
+        theta = np.radians(motor_deg) # radius
+        dz = (
+            L1 * np.cos(theta)
+            + L2 * np.cos(np.arcsin(np.sin(theta) / L2))
+            + offset
+        )
+
+        # print("dz= ", dz)
+        
+        self.R_j62sensor = np.array([
+            [0, 0, 1, 0],
+            [1, 0, 0, 201.62],
+            [0, 1, 1, dz],
+            [0, 0, 0, 1]
+        ])
+    
+    def calculate_grasp_pose(self, x, y, vision_deg):
+        vision_deg = np.radians(vision_deg)
+        tx = x
+        ty = y
+        tz = 2.2
+        cos_a = np.cos(vision_deg)
+        sin_a = np.sin(vision_deg)
+        R_sensor2conn = np.array([
+            [cos_a, -sin_a, 0, tx],
+            [sin_a, cos_a, 0, ty],
+            [0, 0, 1, tz],
+            [0, 0, 0, 1]     
+        ])
+        
+        
+        P_transformed = self.R_j62sensor @ R_sensor2conn
+        trans_pose = P_transformed[:3, 0]
+        # print(f"[ROS2] 轉換後的座標：{trans_pose}")
+        return trans_pose
+        
+    def GrabbingMotorAngle(self):
+        """coordinate the motor angle"""
+        # print("[Claw] GrabbingMotorAngle")
+        received = self.canData[0:4]
+        if received == CanData.STATE_STM_GRABBING_MOTOR_ANGLE:
+            # print(f"[ROS2] get motor angle data: {self.canData[-1]}")
+            self.calculate_transfer_matrix(self.canData[-1]) # 更新 self.R_j62sensor
+            
+            return Status.SUCCESS
+        
 
     # ********************************************************************* #
     # ********************************************************************* #

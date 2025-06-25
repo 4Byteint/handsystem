@@ -40,6 +40,7 @@ struct GraspPose_
     {
       this->x = 0.0f;
       this->y = 0.0f;
+      this->z = 0.0f;
       this->angle = 0.0f;
     }
   }
@@ -52,6 +53,7 @@ struct GraspPose_
     {
       this->x = 0.0f;
       this->y = 0.0f;
+      this->z = 0.0f;
       this->angle = 0.0f;
     }
   }
@@ -63,6 +65,9 @@ struct GraspPose_
   using _y_type =
     float;
   _y_type y;
+  using _z_type =
+    float;
+  _z_type z;
   using _angle_type =
     float;
   _angle_type angle;
@@ -78,6 +83,12 @@ struct GraspPose_
     const float & _arg)
   {
     this->y = _arg;
+    return *this;
+  }
+  Type & set__z(
+    const float & _arg)
+  {
+    this->z = _arg;
     return *this;
   }
   Type & set__angle(
@@ -133,6 +144,9 @@ struct GraspPose_
       return false;
     }
     if (this->y != other.y) {
+      return false;
+    }
+    if (this->z != other.z) {
       return false;
     }
     if (this->angle != other.angle) {

@@ -1,0 +1,22 @@
+[3.581s] Invoking command in '/workspace/ros2_robot_ws/src/arm_test': PYTHONPATH=/workspace/ros2_robot_ws/build/arm_test/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/arm_test build --build-base /workspace/ros2_robot_ws/build/arm_test/build install --record /workspace/ros2_robot_ws/build/arm_test/install.log --single-version-externally-managed install_data
+[5.232s] running egg_info
+[5.233s] writing ../../build/arm_test/arm_test.egg-info/PKG-INFO
+[5.234s] writing dependency_links to ../../build/arm_test/arm_test.egg-info/dependency_links.txt
+[5.235s] writing entry points to ../../build/arm_test/arm_test.egg-info/entry_points.txt
+[5.235s] writing requirements to ../../build/arm_test/arm_test.egg-info/requires.txt
+[5.245s] writing top-level names to ../../build/arm_test/arm_test.egg-info/top_level.txt
+[5.245s] reading manifest file '../../build/arm_test/arm_test.egg-info/SOURCES.txt'
+[5.246s] adding license file 'LICENSE'
+[5.246s] writing manifest file '../../build/arm_test/arm_test.egg-info/SOURCES.txt'
+[5.247s] running build
+[5.247s] running build_py
+[5.261s] running install
+[5.264s] running install_lib
+[5.265s] running install_data
+[5.265s] running install_egg_info
+[5.266s] removing '/workspace/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages/arm_test-0.0.0-py3.10.egg-info' (and everything under it)
+[5.266s] Copying ../../build/arm_test/arm_test.egg-info to /workspace/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages/arm_test-0.0.0-py3.10.egg-info
+[5.267s] running install_scripts
+[5.267s] Installing talker script to /workspace/ros2_robot_ws/install/arm_test/lib/arm_test
+[5.292s] writing list of installed files to '/workspace/ros2_robot_ws/build/arm_test/install.log'
+[5.441s] Invoked command in '/workspace/ros2_robot_ws/src/arm_test' returned '0': PYTHONPATH=/workspace/ros2_robot_ws/build/arm_test/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/ros2_robot_ws/install/arm_test/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/arm_test build --build-base /workspace/ros2_robot_ws/build/arm_test/build install --record /workspace/ros2_robot_ws/build/arm_test/install.log --single-version-externally-managed install_data

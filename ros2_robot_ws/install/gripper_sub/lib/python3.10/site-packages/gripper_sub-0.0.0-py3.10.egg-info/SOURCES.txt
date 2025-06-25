@@ -11,7 +11,8 @@ setup.py
 ../../build/gripper_sub/gripper_sub.egg-info/zip-safe
 gripper_sub/__init__.py
 gripper_sub/gripper_sub_main.py
-gripper_sub/socket_receive_test.py
+gripper_sub/only_socket_receive_test.py
+gripper_sub/ros_socket_receive.py
 gripper_sub/subscriber_member_function.py
 resource/gripper_sub
 test/test_copyright.py

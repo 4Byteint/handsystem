@@ -19,6 +19,7 @@ robot_interfaces__msg__GraspPose__init(robot_interfaces__msg__GraspPose * msg)
   }
   // x
   // y
+  // z
   // angle
   return true;
 }
@@ -31,6 +32,7 @@ robot_interfaces__msg__GraspPose__fini(robot_interfaces__msg__GraspPose * msg)
   }
   // x
   // y
+  // z
   // angle
 }
 
@@ -46,6 +48,10 @@ robot_interfaces__msg__GraspPose__are_equal(const robot_interfaces__msg__GraspPo
   }
   // y
   if (lhs->y != rhs->y) {
+    return false;
+  }
+  // z
+  if (lhs->z != rhs->z) {
     return false;
   }
   // angle
@@ -67,6 +73,8 @@ robot_interfaces__msg__GraspPose__copy(
   output->x = input->x;
   // y
   output->y = input->y;
+  // z
+  output->z = input->z;
   // angle
   output->angle = input->angle;
   return true;

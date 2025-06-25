@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "/opt/ros/humble/lib/rosidl_typesupport_c/rosidl_typesupport_c", line 6, in <module>
+gmake[2]: *** [CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/build.make:163: librobot_interfaces__rosidl_typesupport_fastrtps_cpp.so] Interrupt
+    from rosidl_typesupport_c import generate_c
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_typesupport_c/__init__.py", line 15, in <module>
+    from rosidl_cmake import generate_files
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_cmake/__init__.py", line 22, in <module>
+gmake[1]: *** [CMakeFiles/Makefile2:343: CMakeFiles/robot_interfaces__rosidl_typesupport_fastrtps_cpp.dir/all] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:266: CMakeFiles/robot_interfaces__rosidl_typesupport_introspection_c.dir/all] Interrupt
+    import em
+  File "/usr/lib/python3/dist-packages/em.py", line 20, in <module>
+    import inspect
+  File "/usr/lib/python3.10/inspect.py", line 43, in <module>
+    import linecache
+  File "/usr/lib/python3.10/linecache.py", line 11, in <module>
+    import tokenize
+  File "/usr/lib/python3.10/tokenize.py", line 31, in <module>
+    from io import TextIOWrapper
+  File "/usr/lib/python3.10/io.py", line 60, in __getattr__
+    def __getattr__(name):
+KeyboardInterrupt
+gmake[2]: *** [CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/build.make:82: rosidl_typesupport_c/robot_interfaces/msg/gripper_command__type_support.cpp] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:290: CMakeFiles/robot_interfaces__rosidl_typesupport_c.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt

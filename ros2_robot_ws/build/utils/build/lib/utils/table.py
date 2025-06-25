@@ -8,6 +8,7 @@ class GripperState:
     STATE_OFFLINE = 6
     STATE_GRABBING_MISS = 7
     STATE_RELEASING_MISS = 8
+    STATE_GRABBING_MOTOR_ANGLE = 9
 
     # only for readable printing
     stateDict = {
@@ -19,6 +20,7 @@ class GripperState:
         STATE_OFFLINE: "state Offline",
         STATE_GRABBING_MISS: "state Grabbing Miss",
         STATE_RELEASING_MISS: "state Releasing Miss",
+        STATE_GRABBING_MOTOR_ANGLE: "state Grabbing Motor Angle",
     }
 
 
@@ -27,8 +29,8 @@ class ArmCmd:
     # state switching cmd
     CMD_ERROR = -1
     CMD_NO_NEWCMD = 0
-    CMD_RELEASE = 1  #:
-    CMD_GRAB = 2
+    CMD_RELEASE = 2   # change
+    CMD_GRAB = 1 # change
     CMD_INIT = 3  #:初始化, 各裝置接初始化狀態(等待夾取相關命令到來前皆進入初始化),夾爪到初始位置,目前位置與放開狀態相同
     CMD_POWERON = 4  #: 重開機, 包含開機確認,各裝置初始化確認
     CMD_POWEROFF = 5
@@ -84,8 +86,9 @@ class CanData:
     STATE_STM_START_GRABBING = (0, 3, 2, 4)
     STATE_STM_START_RELEASING = (0, 3, 2, 5)
     STATE_STM_MOTOR_OFFLINE = (0, 3, 2, 6)
-    STATE_STM_GRABBING_MISS = (0, 3, 2, 7)
-    STATE_STM_RELEASING_MISS = (0, 3, 2, 8)
+    STATE_STM_GRABBING_MISS = (0, 3, 2, 7) 
+    STATE_STM_RELEASING_MISS = (0, 3, 2, 8) 
+    STATE_STM_GRABBING_MOTOR_ANGLE = (0, 3, 2, 9)
 
     DATA_UNO_SENSOR_DATA = (0, 2, 3, 1)
 

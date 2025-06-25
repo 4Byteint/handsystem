@@ -36,6 +36,8 @@ cdr_serialize(
   cdr << ros_message.x;
   // Member: y
   cdr << ros_message.y;
+  // Member: z
+  cdr << ros_message.z;
   // Member: angle
   cdr << ros_message.angle;
   return true;
@@ -52,6 +54,9 @@ cdr_deserialize(
 
   // Member: y
   cdr >> ros_message.y;
+
+  // Member: z
+  cdr >> ros_message.z;
 
   // Member: angle
   cdr >> ros_message.angle;
@@ -81,6 +86,12 @@ get_serialized_size(
   // Member: y
   {
     size_t item_size = sizeof(ros_message.y);
+    current_alignment += item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: z
+  {
+    size_t item_size = sizeof(ros_message.z);
     current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
@@ -124,6 +135,15 @@ max_serialized_size_GraspPose(
   }
 
   // Member: y
+  {
+    size_t array_size = 1;
+
+    last_member_size = array_size * sizeof(uint32_t);
+    current_alignment += array_size * sizeof(uint32_t) +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
+  }
+
+  // Member: z
   {
     size_t array_size = 1;
 

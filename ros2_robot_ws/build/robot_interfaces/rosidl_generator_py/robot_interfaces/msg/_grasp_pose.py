@@ -59,16 +59,19 @@ class GraspPose(metaclass=Metaclass_GraspPose):
     __slots__ = [
         '_x',
         '_y',
+        '_z',
         '_angle',
     ]
 
     _fields_and_field_types = {
         'x': 'float',
         'y': 'float',
+        'z': 'float',
         'angle': 'float',
     }
 
     SLOT_TYPES = (
+        rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
         rosidl_parser.definition.BasicType('float'),  # noqa: E501
@@ -80,6 +83,7 @@ class GraspPose(metaclass=Metaclass_GraspPose):
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
         self.x = kwargs.get('x', float())
         self.y = kwargs.get('y', float())
+        self.z = kwargs.get('z', float())
         self.angle = kwargs.get('angle', float())
 
     def __repr__(self):
@@ -114,6 +118,8 @@ class GraspPose(metaclass=Metaclass_GraspPose):
         if self.x != other.x:
             return False
         if self.y != other.y:
+            return False
+        if self.z != other.z:
             return False
         if self.angle != other.angle:
             return False
@@ -153,6 +159,21 @@ class GraspPose(metaclass=Metaclass_GraspPose):
             assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
                 "The 'y' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
         self._y = value
+
+    @builtins.property
+    def z(self):
+        """Message field 'z'."""
+        return self._z
+
+    @z.setter
+    def z(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, float), \
+                "The 'z' field must be of type 'float'"
+            assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
+                "The 'z' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
+        self._z = value
 
     @builtins.property
     def angle(self):

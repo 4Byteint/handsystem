@@ -10,6 +10,8 @@ module robot_interfaces {
 
       float y;
 
+      float z;
+
       float angle;
     };
   };

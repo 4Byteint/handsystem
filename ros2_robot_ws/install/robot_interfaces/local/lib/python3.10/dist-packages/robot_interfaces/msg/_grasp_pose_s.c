@@ -68,6 +68,15 @@ bool robot_interfaces__msg__grasp_pose__convert_from_py(PyObject * _pymsg, void 
     ros_message->y = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
+  {  // z
+    PyObject * field = PyObject_GetAttrString(_pymsg, "z");
+    if (!field) {
+      return false;
+    }
+    assert(PyFloat_Check(field));
+    ros_message->z = (float)PyFloat_AS_DOUBLE(field);
+    Py_DECREF(field);
+  }
   {  // angle
     PyObject * field = PyObject_GetAttrString(_pymsg, "angle");
     if (!field) {
@@ -115,6 +124,17 @@ PyObject * robot_interfaces__msg__grasp_pose__convert_to_py(void * raw_ros_messa
     field = PyFloat_FromDouble(ros_message->y);
     {
       int rc = PyObject_SetAttrString(_pymessage, "y", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // z
+    PyObject * field = NULL;
+    field = PyFloat_FromDouble(ros_message->z);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "z", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

@@ -22,6 +22,7 @@ typedef struct robot_interfaces__msg__GraspPose
 {
   float x;
   float y;
+  float z;
   float angle;
 } robot_interfaces__msg__GraspPose;
 

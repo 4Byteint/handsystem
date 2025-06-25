@@ -1,9 +1,12 @@
 import time
 import threading
+
+import numpy as np
 from utils.claw import Claw
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
-from robot_interfaces.msg import GripperCommand, GripperInfo
+from robot_interfaces.msg import GripperCommand, GripperInfo, GraspPose
+
 
 from utils.table import (
     GripperState,
@@ -32,19 +35,21 @@ class pubsub(Node):
         self.canFailedFirstTimeFlag = False
         self.stateTaskPrintFlag = True
         self.lastPrintedState = None  # 添加变量来跟踪上一次打印的状态
+       
 
         self.currentCmd = ArmCmd.CMD_NO_NEWCMD
 
         self.preTaskStatus = Status.UNKNOWN
         self.curTaskStatus = Status.UNKNOWN
-
+        
+        self.vision_pose = None
+        
         # self.delayStart = 0
         # self.time1 = 0
         # self.cmdStartTime = 0
         # self.canStartTime = 0
 
         self.claw = Claw()
-
         # Using ReentrantCallbackGroup
         self.callback_group = ReentrantCallbackGroup()
 
@@ -57,40 +62,64 @@ class pubsub(Node):
             callback_group=self.callback_group,
         )
 
-        # # 發布者:回傳 response
-        self.publisher_resp = self.create_publisher(
-            GripperCommand,
-            "/gripper_response",  # 請確認回傳的 topic 名稱
+        # # # 發布者:回傳 response
+        # self.publisher_resp = self.create_publisher(
+        #     GripperCommand,
+        #     "/gripper_response",  # 請確認回傳的 topic 名稱
+        #     10,
+        #     callback_group=self.callback_group,
+        # )
+        
+        # Subscriber, subscribe to get vision pose
+        self.subscription_vision = self.create_subscription(
+            GraspPose,
+            '/pose_data',
+            self.grasp_condition_callback,
             10,
             callback_group=self.callback_group,
         )
-
+        
+        self.subscription_trans = self.create_subscription(
+            GraspPose,
+            '/pose_data',
+            self.publish_trans_pose_callback,
+            10,
+            callback_group=self.callback_group,
+        )
+        
+        # Publisher, pushlish the transfered pose
+        self.publisher_pose = self.create_publisher(
+            GraspPose,
+            "/grasp_pose",  
+            10,
+            callback_group=self.callback_group,
+        )
+        
         # Publisher, publish gripper infomation(state, error...)
         self.publisher_info = self.create_publisher(
             GripperInfo,
-            "/gripper_info",  # 請確認回傳的 topic 名稱
+            "/gripper_info",  
             10,
             callback_group=self.callback_group,
         )
         
         
-
+        
         # 狀態變數 called every 0.01 sec
         self.clawCtrlTimer = self.create_timer(
             0.01, self.clawControll_CallBack, callback_group=self.callback_group
         )
-
+        
         # Monitor CAN every  0.05 sec
         self.readCanTimer = self.create_timer(
             0.05, self.readCan_CallBack, callback_group=self.callback_group
         )
-
+        # check can connection every 5 sec
         self.clawConnectTimer = self.create_timer(
-            0.1,
+            5,
             self.clawCanConnectCheckTask_CallBack,
             callback_group=self.callback_group,
         )
-
         self.lock = threading.Lock()
 
         # ************************************************************************************************************#
@@ -118,6 +147,7 @@ class pubsub(Node):
             CanData.STATE_STM_MOTOR_OFFLINE: GripperState.STATE_OFFLINE,
             CanData.STATE_STM_GRABBING_MISS: GripperState.STATE_GRABBING_MISS,
             CanData.STATE_STM_RELEASING_MISS: GripperState.STATE_RELEASING_MISS,
+            CanData.STATE_STM_GRABBING_MOTOR_ANGLE: GripperState.STATE_GRABBING_MOTOR_ANGLE,
         }
 
         self.toDoTaskByCmd = {
@@ -234,7 +264,7 @@ class pubsub(Node):
                 self.stateTaskPrintFlag = True
                 self.pubFirstTimeFlag = True
                 self.claw.sendFirstTimeFlag[Device.STM] = True
-                self.claw.sendFirstTimeFlag[Device.UNO] = True
+                # self.claw.sendFirstTimeFlag[Device.UNO] = True
             except KeyError:
                 # for toDoTaskByCan
                 self.toDoTaskByCan.get(self.claw.canData[0:4], self.NoTask)()
@@ -248,12 +278,12 @@ class pubsub(Node):
                 self.stateTaskPrintFlag = True
                 self.pubFirstTimeFlag = True
                 self.claw.sendFirstTimeFlag[Device.STM] = True
-                self.claw.sendFirstTimeFlag[Device.UNO] = True
+                # self.claw.sendFirstTimeFlag[Device.UNO] = True
             except KeyError:
                 # for toDoTaskByCmd
                 self.toDoTaskByCmd.get(self.currentCmd, self.NoTask)()
             #
-            #
+            # ************************print state************************************* #
             if self.stateTaskPrintFlag:
                 current_state = self.claw.state
                 # 只有当状态真正改变时才打印
@@ -263,14 +293,14 @@ class pubsub(Node):
                     )
                     self.lastPrintedState = current_state
                 self.stateTaskPrintFlag = False
-            #
-            #
-
+            # ********************************************************************** #
+            
             self.preTaskStatus = self.curTaskStatus
             # claw.toDoTask function return  Status.SUCCESS/  Status.FAILED/  Status.UNKNOWN
             self.curTaskStatus = self.claw.toDoTask.get(
                 self.claw.state, self.claw.NoTask
             )()
+          
             if self.preTaskStatus != self.curTaskStatus:
                 self.pubFirstTimeFlag = True
 
@@ -304,7 +334,7 @@ class pubsub(Node):
     def CmdInitTask(self):
         """"""
         self.claw.initStatus[Device.STM] = Status.UNKNOWN
-        self.claw.initStatus[Device.UNO] = Status.UNKNOWN
+        # self.claw.initStatus[Device.UNO] = Status.UNKNOWN
 
     def CmdStateCheckTask(self):
         """"""
@@ -329,6 +359,55 @@ class pubsub(Node):
     # *************************  other  func. ***************************** #
     # ********************************************************************* #
     # ********************************************************************* #
+
+
+    # if socket is received a data
+    def grasp_condition_callback(self, msg):
+        with self.lock:
+            self.vision_pose = msg  # ✅ 儲存整個 msg，乾淨又安全
+            
+        if msg.x != float('nan') and msg.y != float('nan') and msg.angle !=float('nan'):
+            print(f"[ROS2] Received Grasp Pose: x={msg.x:.2f}, y={msg.y:.2f}, angle={msg.angle:.2f}")
+            
+            if msg.y > 34.50: # first condition
+                if -90 <= msg.angle <= 90: # second condition
+                    print("[ROS2] Grasp Pose: PASS")
+                    self.claw.state = GripperState.STATE_GRABBING
+                    
+                else:
+                    print("[ROS2] Grasp Pose: FAILED 2")
+                    self.claw.state = GripperState.STATE_RELEASING
+            else:
+                print("[ROS2] Grasp Pose: FAILED 1")
+                self.claw.state = GripperState.STATE_RELEASING
+            
+        else:
+            print("[ROS2] Received Grasp Pose: nan, nan, nan")
+        
+    # Pub to /grasp_pose
+    def publish_trans_pose_callback(self, msg):
+        with self.lock:
+            if self.vision_pose is None:
+                print("[ROS2] 尚未接收到影像pose，請檢查程式")
+                return
+        x = self.vision_pose.x
+        y = self.vision_pose.y
+        angle = self.vision_pose.angle
+        if x != float('nan') and y != float('nan') and angle != float('nan'):
+            trans_x, trans_y, trans_z = self.claw.calculate_grasp_pose(
+                x, y, angle
+            )
+
+            new_msg = GraspPose()
+            new_msg.x = trans_x
+            new_msg.y = trans_y
+            new_msg.z = trans_z
+
+            self.publisher_pose.publish(new_msg)
+
+            print(f"[ROS2] publish pose: x={new_msg.x:.2f}, y={new_msg.y:.2f}, z={new_msg.z:.2f}")
+        else:
+            print("[ROS2] pose is nan, no publish")
 
     def shutdown(self):
         self.clawCtrlTimer.cancel()

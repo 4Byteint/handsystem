@@ -37,7 +37,7 @@ void GraspPose_fini_function(void * message_memory)
   typed_message->~GraspPose();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember GraspPose_message_member_array[3] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember GraspPose_message_member_array[4] = {
   {
     "x",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
@@ -73,6 +73,23 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember GraspPose_mes
     nullptr  // resize(index) function pointer
   },
   {
+    "z",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(robot_interfaces::msg::GraspPose, z),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr,  // fetch(index, &value) function pointer
+    nullptr,  // assign(index, value) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
     "angle",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
@@ -94,7 +111,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember GraspPose_mes
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers GraspPose_message_members = {
   "robot_interfaces::msg",  // message namespace
   "GraspPose",  // message name
-  3,  // number of fields
+  4,  // number of fields
   sizeof(robot_interfaces::msg::GraspPose),
   GraspPose_message_member_array,  // message members
   GraspPose_init_function,  // function to initialize message memory (memory has to be allocated)

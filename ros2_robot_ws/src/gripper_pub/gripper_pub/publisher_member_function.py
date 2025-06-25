@@ -62,8 +62,8 @@ class GripperPublisher(Node):
             user_input = input(
                 # "輸入 'a' 設定 num=1 / 'b' 設定 num=2: / 'c' 設定 num=-1: "
                 "輸入 1~6 or 'e': \n"
-                "1: release\n"
-                "2: grab\n"
+                "1: grab\n"
+                "2: release\n"
                 "3: init\n"
                 "4: poweron\n"
                 "5: poweroff\n"
@@ -71,9 +71,9 @@ class GripperPublisher(Node):
                 "e: error\n"
             )
             if user_input == "1":
-                self.publish_message(4, ArmCmd.CMD_RELEASE)
-            elif user_input == "2":
                 self.publish_message(4, ArmCmd.CMD_GRAB)
+            elif user_input == "2":
+                self.publish_message(4, ArmCmd.CMD_RELEASE)
             elif user_input == "3":
                 self.publish_message(4, ArmCmd.CMD_INIT)
             elif user_input == "4":
