@@ -38,63 +38,30 @@ struct GraspPose_
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
-      this->x = 0.0f;
-      this->y = 0.0f;
-      this->z = 0.0f;
-      this->angle = 0.0f;
+      std::fill<typename std::array<float, 16>::iterator, float>(this->data.begin(), this->data.end(), 0.0f);
     }
   }
 
   explicit GraspPose_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : data(_alloc)
   {
-    (void)_alloc;
     if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
       rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
     {
-      this->x = 0.0f;
-      this->y = 0.0f;
-      this->z = 0.0f;
-      this->angle = 0.0f;
+      std::fill<typename std::array<float, 16>::iterator, float>(this->data.begin(), this->data.end(), 0.0f);
     }
   }
 
   // field types and members
-  using _x_type =
-    float;
-  _x_type x;
-  using _y_type =
-    float;
-  _y_type y;
-  using _z_type =
-    float;
-  _z_type z;
-  using _angle_type =
-    float;
-  _angle_type angle;
+  using _data_type =
+    std::array<float, 16>;
+  _data_type data;
 
   // setters for named parameter idiom
-  Type & set__x(
-    const float & _arg)
+  Type & set__data(
+    const std::array<float, 16> & _arg)
   {
-    this->x = _arg;
-    return *this;
-  }
-  Type & set__y(
-    const float & _arg)
-  {
-    this->y = _arg;
-    return *this;
-  }
-  Type & set__z(
-    const float & _arg)
-  {
-    this->z = _arg;
-    return *this;
-  }
-  Type & set__angle(
-    const float & _arg)
-  {
-    this->angle = _arg;
+    this->data = _arg;
     return *this;
   }
 
@@ -140,16 +107,7 @@ struct GraspPose_
   // comparison operators
   bool operator==(const GraspPose_ & other) const
   {
-    if (this->x != other.x) {
-      return false;
-    }
-    if (this->y != other.y) {
-      return false;
-    }
-    if (this->z != other.z) {
-      return false;
-    }
-    if (this->angle != other.angle) {
+    if (this->data != other.data) {
       return false;
     }
     return true;

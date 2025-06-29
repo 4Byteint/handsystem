@@ -20,10 +20,7 @@ extern "C"
 /// Struct defined in msg/GraspPose in the package robot_interfaces.
 typedef struct robot_interfaces__msg__GraspPose
 {
-  float x;
-  float y;
-  float z;
-  float angle;
+  float data[16];
 } robot_interfaces__msg__GraspPose;
 
 // Struct for a sequence of robot_interfaces__msg__GraspPose.

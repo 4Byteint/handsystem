@@ -21,64 +21,16 @@ namespace msg
 namespace builder
 {
 
-class Init_GraspPose_angle
+class Init_GraspPose_data
 {
 public:
-  explicit Init_GraspPose_angle(::robot_interfaces::msg::GraspPose & msg)
-  : msg_(msg)
-  {}
-  ::robot_interfaces::msg::GraspPose angle(::robot_interfaces::msg::GraspPose::_angle_type arg)
-  {
-    msg_.angle = std::move(arg);
-    return std::move(msg_);
-  }
-
-private:
-  ::robot_interfaces::msg::GraspPose msg_;
-};
-
-class Init_GraspPose_z
-{
-public:
-  explicit Init_GraspPose_z(::robot_interfaces::msg::GraspPose & msg)
-  : msg_(msg)
-  {}
-  Init_GraspPose_angle z(::robot_interfaces::msg::GraspPose::_z_type arg)
-  {
-    msg_.z = std::move(arg);
-    return Init_GraspPose_angle(msg_);
-  }
-
-private:
-  ::robot_interfaces::msg::GraspPose msg_;
-};
-
-class Init_GraspPose_y
-{
-public:
-  explicit Init_GraspPose_y(::robot_interfaces::msg::GraspPose & msg)
-  : msg_(msg)
-  {}
-  Init_GraspPose_z y(::robot_interfaces::msg::GraspPose::_y_type arg)
-  {
-    msg_.y = std::move(arg);
-    return Init_GraspPose_z(msg_);
-  }
-
-private:
-  ::robot_interfaces::msg::GraspPose msg_;
-};
-
-class Init_GraspPose_x
-{
-public:
-  Init_GraspPose_x()
+  Init_GraspPose_data()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  Init_GraspPose_y x(::robot_interfaces::msg::GraspPose::_x_type arg)
+  ::robot_interfaces::msg::GraspPose data(::robot_interfaces::msg::GraspPose::_data_type arg)
   {
-    msg_.x = std::move(arg);
-    return Init_GraspPose_y(msg_);
+    msg_.data = std::move(arg);
+    return std::move(msg_);
   }
 
 private:
@@ -96,7 +48,7 @@ template<>
 inline
 auto build<::robot_interfaces::msg::GraspPose>()
 {
-  return robot_interfaces::msg::builder::Init_GraspPose_x();
+  return robot_interfaces::msg::builder::Init_GraspPose_data();
 }
 
 }  // namespace robot_interfaces

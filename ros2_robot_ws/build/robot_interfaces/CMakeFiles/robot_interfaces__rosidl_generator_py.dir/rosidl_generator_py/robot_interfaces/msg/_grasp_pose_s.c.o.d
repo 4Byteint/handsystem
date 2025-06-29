@@ -209,4 +209,6 @@ CMakeFiles/robot_interfaces__rosidl_generator_py.dir/rosidl_generator_py/robot_i
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h \
  /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/grasp_pose__struct.h \
  /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/detail/grasp_pose__functions.h \
- /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/rosidl_generator_c__visibility_control.h
+ /workspace/ros2_robot_ws/build/robot_interfaces/rosidl_generator_c/robot_interfaces/msg/rosidl_generator_c__visibility_control.h \
+ /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
+ /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence_functions.h

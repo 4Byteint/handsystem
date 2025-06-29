@@ -9,6 +9,9 @@ import builtins  # noqa: E402, I100
 
 import math  # noqa: E402, I100
 
+# Member 'data'
+import numpy  # noqa: E402, I100
+
 import rosidl_parser.definition  # noqa: E402, I100
 
 
@@ -57,34 +60,26 @@ class GraspPose(metaclass=Metaclass_GraspPose):
     """Message class 'GraspPose'."""
 
     __slots__ = [
-        '_x',
-        '_y',
-        '_z',
-        '_angle',
+        '_data',
     ]
 
     _fields_and_field_types = {
-        'x': 'float',
-        'y': 'float',
-        'z': 'float',
-        'angle': 'float',
+        'data': 'float[16]',
     }
 
     SLOT_TYPES = (
-        rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.BasicType('float'),  # noqa: E501
-        rosidl_parser.definition.BasicType('float'),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 16),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
-        self.x = kwargs.get('x', float())
-        self.y = kwargs.get('y', float())
-        self.z = kwargs.get('z', float())
-        self.angle = kwargs.get('angle', float())
+        if 'data' not in kwargs:
+            self.data = numpy.zeros(16, dtype=numpy.float32)
+        else:
+            self.data = numpy.array(kwargs.get('data'), dtype=numpy.float32)
+            assert self.data.shape == (16, )
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -115,13 +110,7 @@ class GraspPose(metaclass=Metaclass_GraspPose):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
-        if self.x != other.x:
-            return False
-        if self.y != other.y:
-            return False
-        if self.z != other.z:
-            return False
-        if self.angle != other.angle:
+        if all(self.data != other.data):
             return False
         return True
 
@@ -131,61 +120,32 @@ class GraspPose(metaclass=Metaclass_GraspPose):
         return copy(cls._fields_and_field_types)
 
     @builtins.property
-    def x(self):
-        """Message field 'x'."""
-        return self._x
+    def data(self):
+        """Message field 'data'."""
+        return self._data
 
-    @x.setter
-    def x(self, value):
+    @data.setter
+    def data(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'data' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 16, \
+                "The 'data' numpy.ndarray() must have a size of 16"
+            self._data = value
+            return
         if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
             assert \
-                isinstance(value, float), \
-                "The 'x' field must be of type 'float'"
-            assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
-                "The 'x' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
-        self._x = value
-
-    @builtins.property
-    def y(self):
-        """Message field 'y'."""
-        return self._y
-
-    @y.setter
-    def y(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'y' field must be of type 'float'"
-            assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
-                "The 'y' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
-        self._y = value
-
-    @builtins.property
-    def z(self):
-        """Message field 'z'."""
-        return self._z
-
-    @z.setter
-    def z(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'z' field must be of type 'float'"
-            assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
-                "The 'z' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
-        self._z = value
-
-    @builtins.property
-    def angle(self):
-        """Message field 'angle'."""
-        return self._angle
-
-    @angle.setter
-    def angle(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, float), \
-                "The 'angle' field must be of type 'float'"
-            assert not (value < -3.402823466e+38 or value > 3.402823466e+38) or math.isinf(value), \
-                "The 'angle' field must be a float in [-3.402823466e+38, 3.402823466e+38]"
-        self._angle = value
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 16 and
+                 all(isinstance(v, float) for v in value) and
+                 all(not (val < -3.402823466e+38 or val > 3.402823466e+38) or math.isinf(val) for val in value)), \
+                "The 'data' field must be a set or sequence with length 16 and each value of type 'float' and each float in [-340282346600000016151267322115014000640.000000, 340282346600000016151267322115014000640.000000]"
+        self._data = numpy.array(value, dtype=numpy.float32)

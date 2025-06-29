@@ -5,14 +5,9 @@
 
 module robot_interfaces {
   module msg {
+    typedef float float__16[16];
     struct GraspPose {
-      float x;
-
-      float y;
-
-      float z;
-
-      float angle;
+      float__16 data;
     };
   };
 };

@@ -49,24 +49,11 @@ static bool _GraspPose__cdr_serialize(
     return false;
   }
   const _GraspPose__ros_msg_type * ros_message = static_cast<const _GraspPose__ros_msg_type *>(untyped_ros_message);
-  // Field name: x
+  // Field name: data
   {
-    cdr << ros_message->x;
-  }
-
-  // Field name: y
-  {
-    cdr << ros_message->y;
-  }
-
-  // Field name: z
-  {
-    cdr << ros_message->z;
-  }
-
-  // Field name: angle
-  {
-    cdr << ros_message->angle;
+    size_t size = 16;
+    auto array_ptr = ros_message->data;
+    cdr.serializeArray(array_ptr, size);
   }
 
   return true;
@@ -81,24 +68,11 @@ static bool _GraspPose__cdr_deserialize(
     return false;
   }
   _GraspPose__ros_msg_type * ros_message = static_cast<_GraspPose__ros_msg_type *>(untyped_ros_message);
-  // Field name: x
+  // Field name: data
   {
-    cdr >> ros_message->x;
-  }
-
-  // Field name: y
-  {
-    cdr >> ros_message->y;
-  }
-
-  // Field name: z
-  {
-    cdr >> ros_message->z;
-  }
-
-  // Field name: angle
-  {
-    cdr >> ros_message->angle;
+    size_t size = 16;
+    auto array_ptr = ros_message->data;
+    cdr.deserializeArray(array_ptr, size);
   }
 
   return true;
@@ -118,28 +92,13 @@ size_t get_serialized_size_robot_interfaces__msg__GraspPose(
   (void)padding;
   (void)wchar_size;
 
-  // field.name x
+  // field.name data
   {
-    size_t item_size = sizeof(ros_message->x);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name y
-  {
-    size_t item_size = sizeof(ros_message->y);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name z
-  {
-    size_t item_size = sizeof(ros_message->z);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name angle
-  {
-    size_t item_size = sizeof(ros_message->angle);
-    current_alignment += item_size +
+    size_t array_size = 16;
+    auto array_ptr = ros_message->data;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -171,33 +130,9 @@ size_t max_serialized_size_robot_interfaces__msg__GraspPose(
   full_bounded = true;
   is_plain = true;
 
-  // member: x
+  // member: data
   {
-    size_t array_size = 1;
-
-    last_member_size = array_size * sizeof(uint32_t);
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: y
-  {
-    size_t array_size = 1;
-
-    last_member_size = array_size * sizeof(uint32_t);
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: z
-  {
-    size_t array_size = 1;
-
-    last_member_size = array_size * sizeof(uint32_t);
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-  // member: angle
-  {
-    size_t array_size = 1;
+    size_t array_size = 16;
 
     last_member_size = array_size * sizeof(uint32_t);
     current_alignment += array_size * sizeof(uint32_t) +
@@ -212,7 +147,7 @@ size_t max_serialized_size_robot_interfaces__msg__GraspPose(
     using DataType = robot_interfaces__msg__GraspPose;
     is_plain =
       (
-      offsetof(DataType, angle) +
+      offsetof(DataType, data) +
       last_member_size
       ) == ret_val;
   }

@@ -32,14 +32,10 @@ cdr_serialize(
   const robot_interfaces::msg::GraspPose & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
-  // Member: x
-  cdr << ros_message.x;
-  // Member: y
-  cdr << ros_message.y;
-  // Member: z
-  cdr << ros_message.z;
-  // Member: angle
-  cdr << ros_message.angle;
+  // Member: data
+  {
+    cdr << ros_message.data;
+  }
   return true;
 }
 
@@ -49,17 +45,10 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   robot_interfaces::msg::GraspPose & ros_message)
 {
-  // Member: x
-  cdr >> ros_message.x;
-
-  // Member: y
-  cdr >> ros_message.y;
-
-  // Member: z
-  cdr >> ros_message.z;
-
-  // Member: angle
-  cdr >> ros_message.angle;
+  // Member: data
+  {
+    cdr >> ros_message.data;
+  }
 
   return true;
 }
@@ -77,28 +66,11 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
-  // Member: x
+  // Member: data
   {
-    size_t item_size = sizeof(ros_message.x);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: y
-  {
-    size_t item_size = sizeof(ros_message.y);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: z
-  {
-    size_t item_size = sizeof(ros_message.z);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: angle
-  {
-    size_t item_size = sizeof(ros_message.angle);
-    current_alignment += item_size +
+    size_t array_size = 16;
+    size_t item_size = sizeof(ros_message.data[0]);
+    current_alignment += array_size * item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -125,36 +97,9 @@ max_serialized_size_GraspPose(
   is_plain = true;
 
 
-  // Member: x
+  // Member: data
   {
-    size_t array_size = 1;
-
-    last_member_size = array_size * sizeof(uint32_t);
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: y
-  {
-    size_t array_size = 1;
-
-    last_member_size = array_size * sizeof(uint32_t);
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: z
-  {
-    size_t array_size = 1;
-
-    last_member_size = array_size * sizeof(uint32_t);
-    current_alignment += array_size * sizeof(uint32_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint32_t));
-  }
-
-  // Member: angle
-  {
-    size_t array_size = 1;
+    size_t array_size = 16;
 
     last_member_size = array_size * sizeof(uint32_t);
     current_alignment += array_size * sizeof(uint32_t) +
@@ -169,7 +114,7 @@ max_serialized_size_GraspPose(
     using DataType = robot_interfaces::msg::GraspPose;
     is_plain =
       (
-      offsetof(DataType, angle) +
+      offsetof(DataType, data) +
       last_member_size
       ) == ret_val;
   }

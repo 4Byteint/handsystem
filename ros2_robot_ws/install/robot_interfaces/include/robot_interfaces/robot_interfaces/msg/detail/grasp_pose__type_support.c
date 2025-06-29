@@ -31,73 +31,67 @@ void robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__Grasp
   robot_interfaces__msg__GraspPose__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_message_member_array[4] = {
+size_t robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__size_function__GraspPose__data(
+  const void * untyped_member)
+{
+  (void)untyped_member;
+  return 16;
+}
+
+const void * robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__get_const_function__GraspPose__data(
+  const void * untyped_member, size_t index)
+{
+  const float * member =
+    (const float *)(untyped_member);
+  return &member[index];
+}
+
+void * robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__get_function__GraspPose__data(
+  void * untyped_member, size_t index)
+{
+  float * member =
+    (float *)(untyped_member);
+  return &member[index];
+}
+
+void robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__fetch_function__GraspPose__data(
+  const void * untyped_member, size_t index, void * untyped_value)
+{
+  const float * item =
+    ((const float *)
+    robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__get_const_function__GraspPose__data(untyped_member, index));
+  float * value =
+    (float *)(untyped_value);
+  *value = *item;
+}
+
+void robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__assign_function__GraspPose__data(
+  void * untyped_member, size_t index, const void * untyped_value)
+{
+  float * item =
+    ((float *)
+    robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__get_function__GraspPose__data(untyped_member, index));
+  const float * value =
+    (const float *)(untyped_value);
+  *item = *value;
+}
+
+static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_message_member_array[1] = {
   {
-    "x",  // name
+    "data",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
+    true,  // is array
+    16,  // array size
     false,  // is upper bound
-    offsetof(robot_interfaces__msg__GraspPose, x),  // bytes offset in struct
+    offsetof(robot_interfaces__msg__GraspPose, data),  // bytes offset in struct
     NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL,  // fetch(index, &value) function pointer
-    NULL,  // assign(index, value) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "y",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(robot_interfaces__msg__GraspPose, y),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL,  // fetch(index, &value) function pointer
-    NULL,  // assign(index, value) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "z",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(robot_interfaces__msg__GraspPose, z),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL,  // fetch(index, &value) function pointer
-    NULL,  // assign(index, value) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "angle",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(robot_interfaces__msg__GraspPose, angle),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL,  // fetch(index, &value) function pointer
-    NULL,  // assign(index, value) function pointer
+    robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__size_function__GraspPose__data,  // size() function pointer
+    robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__get_const_function__GraspPose__data,  // get_const(index) function pointer
+    robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__get_function__GraspPose__data,  // get(index) function pointer
+    robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__fetch_function__GraspPose__data,  // fetch(index, &value) function pointer
+    robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__assign_function__GraspPose__data,  // assign(index, value) function pointer
     NULL  // resize(index) function pointer
   }
 };
@@ -105,7 +99,7 @@ static rosidl_typesupport_introspection_c__MessageMember robot_interfaces__msg__
 static const rosidl_typesupport_introspection_c__MessageMembers robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_message_members = {
   "robot_interfaces__msg",  // message namespace
   "GraspPose",  // message name
-  4,  // number of fields
+  1,  // number of fields
   sizeof(robot_interfaces__msg__GraspPose),
   robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_message_member_array,  // message members
   robot_interfaces__msg__GraspPose__rosidl_typesupport_introspection_c__GraspPose_init_function,  // function to initialize message memory (memory has to be allocated)

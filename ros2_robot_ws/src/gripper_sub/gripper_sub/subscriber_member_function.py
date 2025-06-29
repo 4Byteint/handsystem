@@ -394,18 +394,16 @@ class pubsub(Node):
         y = self.vision_pose.y
         angle = self.vision_pose.angle
         if x != float('nan') and y != float('nan') and angle != float('nan'):
-            trans_x, trans_y, trans_z = self.claw.calculate_grasp_pose(
+            transformed_matrix = self.claw.calculate_grasp_pose(
                 x, y, angle
             )
 
             new_msg = GraspPose()
-            new_msg.x = trans_x
-            new_msg.y = trans_y
-            new_msg.z = trans_z
+            new_msg.data = transformed_matrix
 
             self.publisher_pose.publish(new_msg)
 
-            print(f"[ROS2] publish pose: x={new_msg.x:.2f}, y={new_msg.y:.2f}, z={new_msg.z:.2f}")
+            print(f"[ROS2] publish pose: {new_msg}")
         else:
             print("[ROS2] pose is nan, no publish")
 

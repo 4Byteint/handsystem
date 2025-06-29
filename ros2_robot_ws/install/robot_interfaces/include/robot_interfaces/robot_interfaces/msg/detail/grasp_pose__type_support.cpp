@@ -37,73 +37,60 @@ void GraspPose_fini_function(void * message_memory)
   typed_message->~GraspPose();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember GraspPose_message_member_array[4] = {
+size_t size_function__GraspPose__data(const void * untyped_member)
+{
+  (void)untyped_member;
+  return 16;
+}
+
+const void * get_const_function__GraspPose__data(const void * untyped_member, size_t index)
+{
+  const auto & member =
+    *reinterpret_cast<const std::array<float, 16> *>(untyped_member);
+  return &member[index];
+}
+
+void * get_function__GraspPose__data(void * untyped_member, size_t index)
+{
+  auto & member =
+    *reinterpret_cast<std::array<float, 16> *>(untyped_member);
+  return &member[index];
+}
+
+void fetch_function__GraspPose__data(
+  const void * untyped_member, size_t index, void * untyped_value)
+{
+  const auto & item = *reinterpret_cast<const float *>(
+    get_const_function__GraspPose__data(untyped_member, index));
+  auto & value = *reinterpret_cast<float *>(untyped_value);
+  value = item;
+}
+
+void assign_function__GraspPose__data(
+  void * untyped_member, size_t index, const void * untyped_value)
+{
+  auto & item = *reinterpret_cast<float *>(
+    get_function__GraspPose__data(untyped_member, index));
+  const auto & value = *reinterpret_cast<const float *>(untyped_value);
+  item = value;
+}
+
+static const ::rosidl_typesupport_introspection_cpp::MessageMember GraspPose_message_member_array[1] = {
   {
-    "x",  // name
+    "data",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
     0,  // upper bound of string
     nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
+    true,  // is array
+    16,  // array size
     false,  // is upper bound
-    offsetof(robot_interfaces::msg::GraspPose, x),  // bytes offset in struct
+    offsetof(robot_interfaces::msg::GraspPose, data),  // bytes offset in struct
     nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr,  // fetch(index, &value) function pointer
-    nullptr,  // assign(index, value) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "y",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(robot_interfaces::msg::GraspPose, y),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr,  // fetch(index, &value) function pointer
-    nullptr,  // assign(index, value) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "z",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(robot_interfaces::msg::GraspPose, z),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr,  // fetch(index, &value) function pointer
-    nullptr,  // assign(index, value) function pointer
-    nullptr  // resize(index) function pointer
-  },
-  {
-    "angle",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_FLOAT,  // type
-    0,  // upper bound of string
-    nullptr,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(robot_interfaces::msg::GraspPose, angle),  // bytes offset in struct
-    nullptr,  // default value
-    nullptr,  // size() function pointer
-    nullptr,  // get_const(index) function pointer
-    nullptr,  // get(index) function pointer
-    nullptr,  // fetch(index, &value) function pointer
-    nullptr,  // assign(index, value) function pointer
+    size_function__GraspPose__data,  // size() function pointer
+    get_const_function__GraspPose__data,  // get_const(index) function pointer
+    get_function__GraspPose__data,  // get(index) function pointer
+    fetch_function__GraspPose__data,  // fetch(index, &value) function pointer
+    assign_function__GraspPose__data,  // assign(index, value) function pointer
     nullptr  // resize(index) function pointer
   }
 };
@@ -111,7 +98,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember GraspPose_mes
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers GraspPose_message_members = {
   "robot_interfaces::msg",  // message namespace
   "GraspPose",  // message name
-  4,  // number of fields
+  1,  // number of fields
   sizeof(robot_interfaces::msg::GraspPose),
   GraspPose_message_member_array,  // message members
   GraspPose_init_function,  // function to initialize message memory (memory has to be allocated)

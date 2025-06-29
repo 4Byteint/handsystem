@@ -16,6 +16,9 @@
 #include "robot_interfaces/msg/detail/grasp_pose__struct.h"
 #include "robot_interfaces/msg/detail/grasp_pose__functions.h"
 
+#include "rosidl_runtime_c/primitives_sequence.h"
+#include "rosidl_runtime_c/primitives_sequence_functions.h"
+
 
 ROSIDL_GENERATOR_C_EXPORT
 bool robot_interfaces__msg__grasp_pose__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -50,40 +53,28 @@ bool robot_interfaces__msg__grasp_pose__convert_from_py(PyObject * _pymsg, void 
     assert(strncmp("robot_interfaces.msg._grasp_pose.GraspPose", full_classname_dest, 42) == 0);
   }
   robot_interfaces__msg__GraspPose * ros_message = _ros_message;
-  {  // x
-    PyObject * field = PyObject_GetAttrString(_pymsg, "x");
+  {  // data
+    PyObject * field = PyObject_GetAttrString(_pymsg, "data");
     if (!field) {
       return false;
     }
-    assert(PyFloat_Check(field));
-    ros_message->x = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
-  {  // y
-    PyObject * field = PyObject_GetAttrString(_pymsg, "y");
-    if (!field) {
-      return false;
+    {
+      // TODO(dirk-thomas) use a better way to check the type before casting
+      assert(field->ob_type != NULL);
+      assert(field->ob_type->tp_name != NULL);
+      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+      PyArrayObject * seq_field = (PyArrayObject *)field;
+      Py_INCREF(seq_field);
+      assert(PyArray_NDIM(seq_field) == 1);
+      assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+      Py_ssize_t size = 16;
+      float * dest = ros_message->data;
+      for (Py_ssize_t i = 0; i < size; ++i) {
+        float tmp = *(npy_float32 *)PyArray_GETPTR1(seq_field, i);
+        memcpy(&dest[i], &tmp, sizeof(float));
+      }
+      Py_DECREF(seq_field);
     }
-    assert(PyFloat_Check(field));
-    ros_message->y = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
-  {  // z
-    PyObject * field = PyObject_GetAttrString(_pymsg, "z");
-    if (!field) {
-      return false;
-    }
-    assert(PyFloat_Check(field));
-    ros_message->z = (float)PyFloat_AS_DOUBLE(field);
-    Py_DECREF(field);
-  }
-  {  // angle
-    PyObject * field = PyObject_GetAttrString(_pymsg, "angle");
-    if (!field) {
-      return false;
-    }
-    assert(PyFloat_Check(field));
-    ros_message->angle = (float)PyFloat_AS_DOUBLE(field);
     Py_DECREF(field);
   }
 
@@ -108,49 +99,23 @@ PyObject * robot_interfaces__msg__grasp_pose__convert_to_py(void * raw_ros_messa
     }
   }
   robot_interfaces__msg__GraspPose * ros_message = (robot_interfaces__msg__GraspPose *)raw_ros_message;
-  {  // x
+  {  // data
     PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->x);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "x", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
+    field = PyObject_GetAttrString(_pymessage, "data");
+    if (!field) {
+      return NULL;
     }
-  }
-  {  // y
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->y);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "y", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // z
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->z);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "z", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // angle
-    PyObject * field = NULL;
-    field = PyFloat_FromDouble(ros_message->angle);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "angle", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
+    assert(field->ob_type != NULL);
+    assert(field->ob_type->tp_name != NULL);
+    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+    PyArrayObject * seq_field = (PyArrayObject *)field;
+    assert(PyArray_NDIM(seq_field) == 1);
+    assert(PyArray_TYPE(seq_field) == NPY_FLOAT32);
+    assert(sizeof(npy_float32) == sizeof(float));
+    npy_float32 * dst = (npy_float32 *)PyArray_GETPTR1(seq_field, 0);
+    float * src = &(ros_message->data[0]);
+    memcpy(dst, src, 16 * sizeof(float));
+    Py_DECREF(field);
   }
 
   // ownership of _pymessage is transferred to the caller
