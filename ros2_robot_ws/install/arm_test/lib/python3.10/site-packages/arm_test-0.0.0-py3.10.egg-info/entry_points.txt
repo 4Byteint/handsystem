@@ -1,3 +1,0 @@
-[console_scripts]
-talker = arm_test.publisher_member_function:main
-

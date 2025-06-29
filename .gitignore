@@ -1,0 +1,10 @@
+# ROS log files
+ros2_robot_ws/log/
+
+# colcon build
+ros2_robot_ws/build/
+ros2_robot_ws/install/
+
+# Python cache
+__pycache__/
+*.pyc

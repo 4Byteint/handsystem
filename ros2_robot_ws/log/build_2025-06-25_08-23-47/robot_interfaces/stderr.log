@@ -1,3 +1,0 @@
-gmake[2]: *** [CMakeFiles/ament_cmake_python_copy_robot_interfaces.dir/build.make:70: CMakeFiles/ament_cmake_python_copy_robot_interfaces] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:421: CMakeFiles/ament_cmake_python_copy_robot_interfaces.dir/all] Interrupt
-gmake: *** [Makefile:146: all] Interrupt
