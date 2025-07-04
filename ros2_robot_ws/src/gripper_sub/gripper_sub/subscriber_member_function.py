@@ -385,7 +385,7 @@ class pubsub(Node):
             print("[ROS2] Received Grasp Pose: nan, nan, nan")
         
     # Pub to /grasp_pose
-    def publish_trans_pose_callback(self, msg):
+    def publish_trans_pose_callback(self):
         with self.lock:
             if self.vision_pose is None:
                 print("[ROS2] 尚未接收到影像pose，請檢查程式")
@@ -399,7 +399,7 @@ class pubsub(Node):
             )
 
             new_msg = GraspPose()
-            new_msg.data = transformed_matrix
+            new_msg.data = transformed_matrix.flatten().tolist()
 
             self.publisher_pose.publish(new_msg)
 

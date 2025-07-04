@@ -312,7 +312,7 @@ class Claw:
     # ********************************************************************* #
     
     
-    def calculate_transfer_matrix(self, motor_deg):
+    def sensor2j6_matrix(self, motor_deg):
         L1 = 15
         L2 = 32.5
         offset = -27.5
@@ -325,32 +325,30 @@ class Claw:
 
         # print("dz= ", dz)
         
-        self.R_j62sensor = np.array([
-            [0, 0, 1, 0],
-            [1, 0, 0, 201.62],
-            [0, 1, 1, dz],
+        self.R_sensor2j6 = np.array([
+            [-1, 0, 0, 0],
+            [0, 0, 1, dz],
+            [0, 1, 0, 201.62],
             [0, 0, 0, 1]
         ])
     
-    def calculate_grasp_pose(self, x, y, vision_deg):
+    def conn2sensor_matrix(self, x, y, vision_deg):
         vision_deg = np.radians(vision_deg)
         tx = x
         ty = y
         tz = 2.2
         cos_a = np.cos(vision_deg)
         sin_a = np.sin(vision_deg)
-        R_sensor2conn = np.array([
+        R_conn2sensor = np.array([
             [cos_a, -sin_a, 0, tx],
             [sin_a, cos_a, 0, ty],
             [0, 0, 1, tz],
             [0, 0, 0, 1]     
         ])
         
-        
-        P_transformed = self.R_j62sensor @ R_sensor2conn
-        trans_pose = P_transformed[:3, 0]
-        # print(f"[ROS2] 轉換後的座標：{trans_pose}")
-        return trans_pose
+        R_transformed = self.R_sensor2j6 @ R_conn2sensor
+
+        return R_transformed
         
     def GrabbingMotorAngle(self):
         """coordinate the motor angle"""
