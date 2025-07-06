@@ -5,7 +5,7 @@ import numpy as np
 from utils.claw import Claw
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
-from robot_interfaces.msg import GripperCommand, GripperInfo, GraspPose
+from robot_interfaces.msg import GripperCommand, GripperInfo, GraspPose, GripperPose
 
 
 from utils.table import (
@@ -89,8 +89,8 @@ class pubsub(Node):
         
         # Publisher, pushlish the transfered pose
         self.publisher_pose = self.create_publisher(
-            GraspPose,
-            "/grasp_pose",  
+            GripperPose,
+            "/gripper_pose",  
             10,
             callback_group=self.callback_group,
         )
@@ -364,12 +364,12 @@ class pubsub(Node):
     # if socket is received a data
     def grasp_condition_callback(self, msg):
         with self.lock:
-            self.vision_pose = msg  # ✅ 儲存整個 msg，乾淨又安全
+            self.vision_pose = msg  
             
         if msg.x != float('nan') and msg.y != float('nan') and msg.angle !=float('nan'):
             print(f"[ROS2] Received Grasp Pose: x={msg.x:.2f}, y={msg.y:.2f}, angle={msg.angle:.2f}")
             
-            if msg.y > 34.50: # first condition
+            if msg.y > 24.25: # first condition
                 if -90 <= msg.angle <= 90: # second condition
                     print("[ROS2] Grasp Pose: PASS")
                     self.claw.state = GripperState.STATE_GRABBING
@@ -385,27 +385,27 @@ class pubsub(Node):
             print("[ROS2] Received Grasp Pose: nan, nan, nan")
         
     # Pub to /grasp_pose
-    def publish_trans_pose_callback(self):
+    def publish_trans_pose_callback(self, msg):
         with self.lock:
             if self.vision_pose is None:
                 print("[ROS2] 尚未接收到影像pose，請檢查程式")
                 return
-        x = self.vision_pose.x
-        y = self.vision_pose.y
-        angle = self.vision_pose.angle
-        if x != float('nan') and y != float('nan') and angle != float('nan'):
-            transformed_matrix = self.claw.calculate_grasp_pose(
-                x, y, angle
-            )
+            x = self.vision_pose.x
+            y = self.vision_pose.y
+            angle = self.vision_pose.angle
+            if x != float('nan') and y != float('nan') and angle != float('nan'):
+                transformed_matrix = self.claw.conn2sensor_matrix(
+                    x, y, angle
+                )
 
-            new_msg = GraspPose()
-            new_msg.data = transformed_matrix.flatten().tolist()
+                new_msg = GripperPose()
+                new_msg.data = transformed_matrix.flatten().tolist()
 
-            self.publisher_pose.publish(new_msg)
+                self.publisher_pose.publish(new_msg)
 
-            print(f"[ROS2] publish pose: {new_msg}")
-        else:
-            print("[ROS2] pose is nan, no publish")
+                # print(f"[ROS2] publish pose: {new_msg}")
+            else:
+                print("[ROS2] pose is nan, no publish")
 
     def shutdown(self):
         self.clawCtrlTimer.cancel()

@@ -1,1 +1,3 @@
-float32[16] data
+float32 x
+float32 y
+float32 angle

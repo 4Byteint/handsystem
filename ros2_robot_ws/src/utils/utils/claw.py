@@ -34,8 +34,8 @@ class Claw:
         # public
         self.canData = (0, 0, 0, 0, 0, 0, 0, 0)
         self.state = GripperState.STATE_POWER_OFF  # 初始狀態
-        self.R_j62sensor = np.zeros((4, 4))
-        self.R_sensor2conn = np.zeros((4, 4))
+        self.R_sensor2j6 = np.zeros((4, 4))
+        self.R_conn2sensor = np.zeros((4, 4))
 
         #  True for CAN  been transmitted for the first time
         self.sendFirstTimeFlag = {Device.STM: False, Device.UNO: False}
@@ -356,7 +356,7 @@ class Claw:
         received = self.canData[0:4]
         if received == CanData.STATE_STM_GRABBING_MOTOR_ANGLE:
             # print(f"[ROS2] get motor angle data: {self.canData[-1]}")
-            self.calculate_transfer_matrix(self.canData[-1]) # 更新 self.R_j62sensor
+            self.sensor2j6_matrix(self.canData[-1]) # 更新 self.R_j62sensor
             
             return Status.SUCCESS
         
