@@ -4,6 +4,7 @@ import threading
 import rclpy
 from rclpy.node import Node
 from robot_interfaces.msg import GraspPose
+from math import isnan
 
 class SocketReceiver(Node):
     def __init__(self):
@@ -40,13 +41,14 @@ class SocketReceiver(Node):
                             message = data.decode('utf-8').strip()
                             parts = message.split(',')
                             x, y, angle = map(lambda v: float(v) if v.lower() != 'nan' else float('nan'), parts)
-                            print(f"[socket] 收到資料：x: {x:.2f}, y: {y:.2f}, angle: {angle:.2f}")
                             
-                            msg = GraspPose()
-                            msg.x = x
-                            msg.y = y
-                            msg.angle = angle
-                            self.publisher_.publish(msg)
+                            print(f"[socket] 收到資料：x: {x:.2f}, y: {y:.2f}, angle: {angle:.2f}")
+                            if not (isnan(x) or isnan(y) or isnan(angle)):
+                                msg = GraspPose()
+                                msg.x = x
+                                msg.y = y
+                                msg.angle = angle
+                                self.publisher_.publish(msg)
                  
                         except Exception as e:
                             print(f"[socket] 解析資料錯誤：{e}")

@@ -43,7 +43,7 @@ class ArmCmd:
         CMD_POWERON: "cmd Power On",
         CMD_POWEROFF: "cmd Power Off",
         CMD_INIT: "cmd Initialization",
-        CMD_RELEASE: "cmd Releas",
+        CMD_RELEASE: "cmd Release",
         CMD_GRAB: "cmd Hold",
         CMD_STATE_CHECK: "cmd State Check",
         CMD_NO_NEWCMD: "no New Cmd",

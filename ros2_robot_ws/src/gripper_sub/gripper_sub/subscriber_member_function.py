@@ -42,8 +42,10 @@ class pubsub(Node):
         self.preTaskStatus = Status.UNKNOWN
         self.curTaskStatus = Status.UNKNOWN
         
-        self.vision_pose = None
-        
+        self.vision_pose = None 
+        self.waiting_grasp = False
+        self.grasp_start_time = None
+
         # self.delayStart = 0
         # self.time1 = 0
         # self.cmdStartTime = 0
@@ -190,6 +192,7 @@ class pubsub(Node):
     # ********************************************************************* #
     # ********************************************************************* #
     def listener_callback(self, msg):
+        """focus on cmd ONLY"""
         """listener callback only processed when new msg on topic "GripperCommand" arrived"""
         """mainly assigning next state or some flags"""
 
@@ -208,10 +211,13 @@ class pubsub(Node):
             try:
                 # get new cmd and change the claw state
                 self.currentCmd = msg.num
-
                 print(
                     f'Arm cmd receieved : "{ArmCmd.cmdDict.get(msg.num,"unknown cmd")}"'
                 )
+                if self.currentCmd == ArmCmd.CMD_GRAB:
+                    self.waiting_grasp = True
+                if self.currentCmd == ArmCmd.CMD_RELEASE:
+                    self.waiting_grasp = False
                 if self.currentCmd == ArmCmd.CMD_ERROR:
                     raise ValueError("例外發生")
 
@@ -245,7 +251,7 @@ class pubsub(Node):
     # ********************************************************************* #
     # ********************************************************************* #
     def clawControll_CallBack(self):
-        """state machine"""
+        """state machine, change state & publish info"""
         """assigning next state and do task based on state or messege"""
 
         # print("timr")
@@ -258,6 +264,7 @@ class pubsub(Node):
             # CanData processing part
             # ****************************************************************** #
             # print(self.claw.canData)
+            
             try:
                 # for nextByCAN
                 self.claw.state = self.nextByCAN[self.claw.canData[0:4]]
@@ -308,23 +315,23 @@ class pubsub(Node):
             self.claw.canData = CanData.CAN_ERROR_FRAME + (0, 0, 0, 0)
             self.currentCmd = ArmCmd.CMD_NO_NEWCMD
 
-        infoMsg = GripperInfo()
+         # infoMsg = GripperInfo()
 
-        if self.pubFirstTimeFlag:
-            if self.curTaskStatus == Status.SUCCESS:
-                infoMsg.result = self.clawTaskSuccessInfo.get(
-                    self.claw.state, GripperInfomation.NO_INFO
-                )
-            elif self.curTaskStatus == Status.FAILED:
-                infoMsg.result = self.clawTaskFailedInfo.get(
-                    self.claw.state, GripperInfomation.NO_INFO
-                )
-            else:
-                infoMsg.result = GripperInfomation.NO_INFO
+         # if self.pubFirstTimeFlag:
+            #  if self.curTaskStatus == Status.SUCCESS:
+                 # infoMsg.result = self.clawTaskSuccessInfo.get(
+                     # self.claw.state, GripperInfomation.NO_INFO
+                 # )
+             # elif self.curTaskStatus == Status.FAILED:
+                 # infoMsg.result = self.clawTaskFailedInfo.get(
+                   #   self.claw.state, GripperInfomation.NO_INFO
+                 # )
+             # else:
+                #  infoMsg.result = GripperInfomation.NO_INFO
 
-            if infoMsg.result != GripperInfomation.NO_INFO:
-                self.publisher_info.publish(infoMsg)
-                self.pubFirstTimeFlag = False
+           #   if infoMsg.result != GripperInfomation.NO_INFO:
+               #   self.publisher_info.publish(infoMsg)
+                #  self.pubFirstTimeFlag = False
 
         # ***************************************************************
 
@@ -363,49 +370,76 @@ class pubsub(Node):
 
     # if socket is received a data
     def grasp_condition_callback(self, msg):
+        """focus on receiving vision pose ONLY"""
         with self.lock:
-            self.vision_pose = msg  
-            
-        if msg.x != float('nan') and msg.y != float('nan') and msg.angle !=float('nan'):
-            print(f"[ROS2] Received Grasp Pose: x={msg.x:.2f}, y={msg.y:.2f}, angle={msg.angle:.2f}")
-            
-            if msg.y > 24.25: # first condition
-                if -90 <= msg.angle <= 90: # second condition
-                    print("[ROS2] Grasp Pose: PASS")
-                    self.claw.state = GripperState.STATE_GRABBING
-                    
-                else:
-                    print("[ROS2] Grasp Pose: FAILED 2")
-                    self.claw.state = GripperState.STATE_RELEASING
-            else:
-                print("[ROS2] Grasp Pose: FAILED 1")
-                self.claw.state = GripperState.STATE_RELEASING
-            
-        else:
-            print("[ROS2] Received Grasp Pose: nan, nan, nan")
+            self.vision_pose = msg
         
+        if self.waiting_grasp:
+            # first time entering
+            if not self.grasp_start_time:
+                print("[ROS2] Start grasping process")
+                self.grasp_start_time = time.time()
+                
+            elapsed = time.time() - self.grasp_start_time
+            timeout = 5
+            
+            if self.vision_pose:
+                x = self.vision_pose.x
+                y = self.vision_pose.y
+                angle = self.vision_pose.angle
+                # 成功即發布
+                if y > 24.25 and -90 <= angle <= 90:
+                    print("[ROS2] Grasp PASS")
+                    
+                    infoMsg = GripperInfo()
+                    infoMsg.result = 4
+                    self.publisher_info.publish(infoMsg)
+                elif x == 0 or y == 0 or angle == 0:
+                    print("[ROS2] Grasp FAIL")
+                    
+                    infoMsg = GripperInfo()
+                    infoMsg.result = 5
+                    self.publisher_info.publish(infoMsg)
+                # 超時則發布
+                elif elapsed > timeout:
+                    print("[ROS2] Grasp TIMEOUT, fail")
+                    
+                    infoMsg = GripperInfo()
+                    infoMsg.result = 5
+                    self.publisher_info.publish(infoMsg)
+
+            else:
+                if elapsed > timeout:
+                    print("[ROS2] Grasp TIMEOUT without vision pose")
+
+                    infoMsg = GripperInfo()
+                    infoMsg.result = 5
+                    self.publisher_info.publish(infoMsg)
+                    
+                    self.waiting_grasp = False
+                    self.grasp_start_time = None
+        else:
+            return
+           
     # Pub to /grasp_pose
     def publish_trans_pose_callback(self, msg):
         with self.lock:
-            if self.vision_pose is None:
+            if not self.vision_pose:
                 print("[ROS2] 尚未接收到影像pose，請檢查程式")
                 return
+            
             x = self.vision_pose.x
             y = self.vision_pose.y
             angle = self.vision_pose.angle
-            if x != float('nan') and y != float('nan') and angle != float('nan'):
-                transformed_matrix = self.claw.conn2sensor_matrix(
-                    x, y, angle
-                )
+         
+            transformed_matrix = self.claw.conn2sensor_matrix(
+                x, y, angle
+            )
 
-                new_msg = GripperPose()
-                new_msg.data = transformed_matrix.flatten().tolist()
+            new_msg = GripperPose()
+            new_msg.data = transformed_matrix.flatten().tolist()
 
-                self.publisher_pose.publish(new_msg)
-
-                # print(f"[ROS2] publish pose: {new_msg}")
-            else:
-                print("[ROS2] pose is nan, no publish")
+            self.publisher_pose.publish(new_msg)
 
     def shutdown(self):
         self.clawCtrlTimer.cancel()

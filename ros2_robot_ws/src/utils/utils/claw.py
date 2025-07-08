@@ -356,7 +356,7 @@ class Claw:
         received = self.canData[0:4]
         if received == CanData.STATE_STM_GRABBING_MOTOR_ANGLE:
             # print(f"[ROS2] get motor angle data: {self.canData[-1]}")
-            self.sensor2j6_matrix(self.canData[-1]) # 更新 self.R_j62sensor
+            self.sensor2j6_matrix(self.canData[-1]) # 更新矩陣
             
             return Status.SUCCESS
         
