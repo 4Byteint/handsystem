@@ -419,6 +419,10 @@ class pubsub(Node):
                     self.waiting_grasp = False
                     self.grasp_start_time = None
         else:
+            # cmd 從 grab 轉為 release 時
+            infoMsg = GripperInfo()
+            infoMsg.result = 6
+            self.publisher_info.publish(infoMsg)
             return
            
     # Pub to /grasp_pose
@@ -427,19 +431,21 @@ class pubsub(Node):
             if not self.vision_pose:
                 print("[ROS2] 尚未接收到影像pose，請檢查程式")
                 return
+            if self.vision_pose:
+                x = self.vision_pose.x
+                y = self.vision_pose.y
+                angle = self.vision_pose.angle
             
-            x = self.vision_pose.x
-            y = self.vision_pose.y
-            angle = self.vision_pose.angle
-         
-            transformed_matrix = self.claw.conn2sensor_matrix(
-                x, y, angle
-            )
+                transformed_matrix = self.claw.conn2sensor_matrix(
+                    x, y, angle
+                )
 
-            new_msg = GripperPose()
-            new_msg.data = transformed_matrix.flatten().tolist()
+                new_msg = GripperPose()
+                new_msg.data = transformed_matrix.flatten().tolist()
 
-            self.publisher_pose.publish(new_msg)
+                self.publisher_pose.publish(new_msg)
+            else:
+                return
 
     def shutdown(self):
         self.clawCtrlTimer.cancel()
