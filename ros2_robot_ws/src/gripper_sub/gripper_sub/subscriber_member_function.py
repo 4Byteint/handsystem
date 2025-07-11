@@ -5,7 +5,7 @@ import numpy as np
 from utils.claw import Claw
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
-from robot_interfaces.msg import GripperCommand, GripperInfo, GraspPose, GripperPose
+from robot_interfaces.msg import GripperCommand, GripperInfo
 
 
 from utils.table import (
@@ -17,7 +17,7 @@ from utils.table import (
     Device,
     Status,
 )
-
+from .only_socket_receive_test import SocketReceiver
 
 #########################################################################
 
@@ -26,7 +26,7 @@ class pubsub(Node):
     """this class contains all the callback func. and related func in this ROS2 system
     see readme to know more detail"""
 
-    def __init__(self):
+    def __init__(self, sock: SocketReceiver):
         super().__init__("pubsub")
 
         self.sensorValue = 0
@@ -42,7 +42,9 @@ class pubsub(Node):
         self.preTaskStatus = Status.UNKNOWN
         self.curTaskStatus = Status.UNKNOWN
         
-        self.vision_pose = None 
+        self.sock = sock
+        self.sock.on_update = self.socket_callback
+   
         self.waiting_grasp = False
         self.grasp_start_time = None
 
@@ -73,21 +75,21 @@ class pubsub(Node):
         # )
         
         # Subscriber, subscribe to get vision pose
-        self.subscription_vision = self.create_subscription(
-            GraspPose,
-            '/pose_data',
-            self.grasp_condition_callback,
-            10,
-            callback_group=self.callback_group,
-        )
+        # self.subscription_vision = self.create_subscription(
+        #     GraspPose,
+        #     '/pose_data',
+        #     self.grasp_condition_callback,
+        #     10,
+        #     callback_group=self.callback_group,
+        # )
         
-        self.subscription_trans = self.create_subscription(
-            GraspPose,
-            '/pose_data',
-            self.publish_trans_pose_callback,
-            10,
-            callback_group=self.callback_group,
-        )
+        # self.subscription_trans = self.create_subscription(
+        #     GraspPose,
+        #     '/pose_data',
+        #     self.publish_trans_pose_callback,
+        #     10,
+        #     callback_group=self.callback_group,
+        # )
         
         # Publisher, publish gripper infomation(state, error...)
         self.publisher_info = self.create_publisher(
@@ -352,89 +354,70 @@ class pubsub(Node):
     # *************************  other  func. ***************************** #
     # ********************************************************************* #
     # ********************************************************************* #
-
-
-    # if socket is received a data
-    def grasp_condition_callback(self, msg):
-        """focus on receiving vision pose ONLY"""
+    def socket_callback(self, x, y, angle): # grasp_condition
         with self.lock:
-            self.vision_pose = msg
-        
-        if self.waiting_grasp:
-            # first time entering
-            if not self.grasp_start_time:
-                print("[ROS2] Start grasping process")
-                self.grasp_start_time = time.time()
-                
-            elapsed = time.time() - self.grasp_start_time
-            timeout = 5
-            
-            if self.vision_pose:
-                x = self.vision_pose.x
-                y = self.vision_pose.y
-                angle = self.vision_pose.angle
-                # 成功即發布
-                if y >= 34.5 and -90 <= angle <= 90:
-                    print("[ROS2] Grasp PASS")
-                    infoMsg = GripperInfo()
-                    infoMsg.result = GripperInfomation.GRASP_SUCCESS
-                    self.publisher_info.publish(infoMsg)
+            if self.waiting_grasp:
+                # first time entering
+                if not self.grasp_start_time:
+                    print("[ROS2] Start grasping process")
+                    self.grasp_start_time = time.time()
                     
-                elif x == 0 or y == 0 or angle == 0:
-                    print("[ROS2] Grasp FAIL")
-                    infoMsg = GripperInfo()
-                    infoMsg.result = GripperInfomation.GRASP_FAIL
-                    self.publisher_info.publish(infoMsg)
-                    
-                elif 0 < y < 34.5 :
-                    print("[ROS2] Grasp FAIL, y too small")
-                    infoMsg = GripperInfo()
-                    infoMsg.result = GripperInfomation.GRASP_MISS
-                    infoMsg.adjust = 3.5
-                    self.publisher_info.publish(infoMsg)
-                    
-                # 超時則發布
-                elif elapsed > timeout:
-                    print("[ROS2] Grasp TIMEOUT, fail")
-                    infoMsg = GripperInfo()
-                    infoMsg.result = GripperInfomation.GRASP_FAIL
-                    self.publisher_info.publish(infoMsg)
-
-            else:
-                if elapsed > timeout:
-                    print("[ROS2] Grasp TIMEOUT without vision pose")
-
-                    infoMsg = GripperInfo()
-                    infoMsg.result = GripperInfomation.GRASP_FAIL
-                    self.publisher_info.publish(infoMsg)
-                    
-                    self.waiting_grasp = False
-                    self.grasp_start_time = None
-        else:
-            # cmd 從 grab 轉為 release 時
-            return
-           
-    # Pub to /grasp_pose
-    def publish_trans_pose_callback(self, msg):
-        with self.lock:
-            if not self.vision_pose:
-                print("[ROS2] 尚未接收到影像pose，請檢查程式")
-                return
-            if self.vision_pose:
-                x = self.vision_pose.x
-                y = self.vision_pose.y
-                angle = self.vision_pose.angle
-            
+                elapsed = time.time() - self.grasp_start_time
+                timeout = 5
+                infoMsg = GripperInfo() 
                 transformed_matrix = self.claw.conn2sensor_matrix(
                     x, y, angle
                 )
+                infoMsg.data = transformed_matrix.flatten().tolist()
+                # 成功即發布
+                if y >= 34.5 and -90 <= angle <= 90:
+                    print("[ROS2] Grasp PASS")
+                    infoMsg.result = GripperInfomation.GRASP_SUCCESS
+                    
+                elif x == 0 or y == 0 or angle == 0:
+                    print("[ROS2] Grasp FAIL")
+                    infoMsg.result = GripperInfomation.GRASP_FAIL
+                    
+                elif 0 < y < 34.5 :
+                    print("[ROS2] Grasp FAIL, y too small")
+                    infoMsg.result = GripperInfomation.GRASP_MISS
+                    infoMsg.adjust = 3.5
+                    
+                # 超時則發布
+                elif elapsed > timeout:
+                    print("[ROS2] Grasp TIMEOUT without vision pose")
+                    infoMsg.result = GripperInfomation.GRASP_FAIL
+                    self.waiting_grasp = False
+                    self.grasp_start_time = None
 
-                new_msg = GripperInfo()
-                new_msg.data = transformed_matrix.flatten().tolist()
+                else:
+                    # cmd 從 grab 轉為 release 時
+                    return
+        
+        
+        
+        
+    # # Pub to /grasp_pose
+    # def publish_trans_pose_callback(self, msg):
+    #     with self.lock:
+    #         if not self.vision_pose:
+    #             print("[ROS2] 尚未接收到影像pose，請檢查程式")
+    #             return
+    #         if self.vision_pose:
+    #             x = self.vision_pose.x
+    #             y = self.vision_pose.y
+    #             angle = self.vision_pose.angle
+            
+    #             transformed_matrix = self.claw.conn2sensor_matrix(
+    #                 x, y, angle
+    #             )
 
-                self.publisher_info.publish(new_msg)
-            else:
-                return
+    #             new_msg = GripperInfo()
+    #             new_msg.data = transformed_matrix.flatten().tolist()
+
+    #             self.publisher_info.publish(new_msg)
+    #         else:
+    #             return
 
     def shutdown(self):
         self.clawCtrlTimer.cancel()

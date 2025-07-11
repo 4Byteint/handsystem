@@ -1,7 +1,7 @@
 from .subscriber_member_function import pubsub
 import rclpy
 from rclpy.executors import MultiThreadedExecutor
-from .ros_socket_receive import SocketReceiver
+from .only_socket_receive_test import SocketReceiver
     
 from utils.table import (
     GripperState,
@@ -16,9 +16,9 @@ from utils.table import (
 
 def main(args=None):
     rclpy.init(args=args)
-
-    Pubsub_instance = pubsub()
-    Socket_instance = SocketReceiver()
+    socket = SocketReceiver()
+    Pubsub_instance = pubsub(socket)
+    
     user_input = input(" enter a to directly power on, enter b to wait for ArmCmd: \n")
     if user_input == "a":
         Pubsub_instance.claw.state = GripperState.STATE_POWER_ON
@@ -28,7 +28,7 @@ def main(args=None):
     # 使用 MultiThreadedExecutor 運行節點
     executor = MultiThreadedExecutor()
     executor.add_node(Pubsub_instance)
-    executor.add_node(Socket_instance)
+   
 
     try:
         executor.spin()
@@ -36,7 +36,6 @@ def main(args=None):
         executor.shutdown()
         Pubsub_instance.destroy_node()
         Pubsub_instance.shutdown()
-        Socket_instance.destroy_node()
         rclpy.shutdown()
 
 
