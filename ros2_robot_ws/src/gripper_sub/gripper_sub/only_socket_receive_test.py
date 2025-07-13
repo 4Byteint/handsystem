@@ -14,6 +14,22 @@ class SocketReceiver:
         self._lock = threading.Lock() 
         self.server_thread = threading.Thread(target=self.start_socket_server, daemon=True)
         self.server_thread.start()
+        self.filter_mx = self.EMA(alpha=0.1)
+        self.filter_my = self.EMA(alpha=0.1)
+        self.filter_angle = self.EMA(alpha=0.1)
+       
+    class EMA:
+      def __init__(self, alpha=0.2):
+          self.alpha = alpha
+          self.value = None  # 初始沒有值
+
+      def update(self, new_value):
+          if self.value is None:
+              self.value = new_value
+          else:
+              self.value = self.alpha * new_value + (1 - self.alpha) * self.value
+          return self.value
+    
     
     def is_success(self):
         with self._lock:
@@ -44,17 +60,22 @@ class SocketReceiver:
                         try:
                             parts = data.decode('utf-8').strip().split(',')
                             x, y, angle = map(float, parts)
-                            if (x, y, angle) == (self.prev_x, self.prev_y, self.prev_angle):
-                                continue  # 忽略重複資料
+                            # # 忽略重複資料
+                            # if (x, y, angle) == (self.prev_x, self.prev_y, self.prev_angle):
+                            #     continue  
                             
                             with self._lock:
                                 self.x, self.y, self.angle = x, y, angle
                                 self.result = True
-                            
-                            self.prev_x, self.prev_y, self.prev_angle = x, y, angle
+                            # self.prev_x, self.prev_y, self.prev_angle = x, y, angle
                             
                             if self.on_update:
                                 try:
+                                    if x != 0 or y != 0 or angle != 0:
+                                        # 使用 EMA 平滑處理
+                                        x = self.filter_mx.update(x)
+                                        y = self.filter_my.update(y)
+                                        angle = self.filter_angle.update(angle)
                                     self.on_update(x,y,angle)
                                     print(f"[socket] 收到資料：x: {self.x:.2f}, y: {self.y:.2f}, angle: {self.angle:.2f}")
 

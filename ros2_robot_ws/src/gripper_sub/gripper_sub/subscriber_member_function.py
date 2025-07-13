@@ -6,7 +6,7 @@ from utils.claw import Claw
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 from robot_interfaces.msg import GripperCommand, GripperInfo
-
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
 from utils.table import (
     GripperState,
@@ -35,7 +35,7 @@ class pubsub(Node):
         self.canFailedFirstTimeFlag = False
         self.stateTaskPrintFlag = True
         self.lastPrintedState = None  # 添加变量来跟踪上一次打印的状态
-       
+        self.pendingInfoMsg = None 
 
         self.currentCmd = ArmCmd.CMD_NO_NEWCMD
 
@@ -90,11 +90,12 @@ class pubsub(Node):
         #     10,
         #     callback_group=self.callback_group,
         # )
-        
+  
+
         # Publisher, publish gripper infomation(state, error...)
         self.publisher_info = self.create_publisher(
             GripperInfo,
-            "/gripper_Info",  
+            "/gripper_info",  
             10,
             callback_group=self.callback_group,
         )
@@ -303,23 +304,31 @@ class pubsub(Node):
             self.claw.canData = CanData.CAN_ERROR_FRAME + (0, 0, 0, 0)
             self.currentCmd = ArmCmd.CMD_NO_NEWCMD
 
-        infoMsg = GripperInfo()
+        
 
-        if self.pubFirstTimeFlag:
-            if self.curTaskStatus == Status.SUCCESS:
-                 infoMsg.result = self.clawTaskSuccessInfo.get(
-                     self.claw.state, GripperInfomation.NO_INFO
-                 )
-            elif self.curTaskStatus == Status.FAILED:
-                 infoMsg.result = self.clawTaskFailedInfo.get(
-                     self.claw.state, GripperInfomation.NO_INFO
-                 )
-            else:
-                 infoMsg.result = GripperInfomation.NO_INFO
+        # if self.pubFirstTimeFlag:
+        #     if self.pendingInfoMsg is not None:
+        #         # 來自 socket_callback 的預備訊息
+        #         print("[ROS2] Publishing pending infoMsg from socket")
+        #         self.publisher_info.publish(self.pendingInfoMsg)
+        #         self.pendingInfoMsg = None
+        #         self.pubFirstTimeFlag = False
+        #     else:
+        #         infoMsg = GripperInfo()
+        #         if self.curTaskStatus == Status.SUCCESS:
+        #             infoMsg.result = self.clawTaskSuccessInfo.get(
+        #                 self.claw.state, GripperInfomation.NO_INFO
+        #             )
+        #         elif self.curTaskStatus == Status.FAILED:
+        #             infoMsg.result = self.clawTaskFailedInfo.get(
+        #                 self.claw.state, GripperInfomation.NO_INFO
+        #             )
+        #         else:
+        #             infoMsg.result = GripperInfomation.NO_INFO
 
-            if infoMsg.result != GripperInfomation.NO_INFO:
-                 self.publisher_info.publish(infoMsg)
-                 self.pubFirstTimeFlag = False
+        #         if infoMsg.result != GripperInfomation.NO_INFO:
+        #             self.publisher_info.publish(infoMsg)
+        #             self.pubFirstTimeFlag = False
 
         # ***************************************************************
 
@@ -361,23 +370,30 @@ class pubsub(Node):
                 if not self.grasp_start_time:
                     print("[ROS2] Start grasping process")
                     self.grasp_start_time = time.time()
+                    self.grasp_pose_counter = 0 
                     
+                self.grasp_pose_counter += 1
+                # print(f"[ROS2] 收到 pose 第 {self.grasp_pose_counter} 筆")
+
+                if self.grasp_pose_counter <= 3:
+                    return
+                
                 elapsed = time.time() - self.grasp_start_time
                 timeout = 5
+                
                 infoMsg = GripperInfo() 
-                transformed_matrix = self.claw.conn2sensor_matrix(
-                    x, y, angle
-                )
+                transformed_matrix = self.claw.conn2sensor_matrix(x, y, angle)
                 infoMsg.data = transformed_matrix.flatten().tolist()
+                
                 # 成功即發布
                 if y >= 34.5 and -90 <= angle <= 90:
-                    print("[ROS2] Grasp PASS")
                     infoMsg.result = GripperInfomation.GRASP_SUCCESS
-                    
+                    infoMsg.adjust = 0.0
+                   
                 elif x == 0 or y == 0 or angle == 0:
                     print("[ROS2] Grasp FAIL")
                     infoMsg.result = GripperInfomation.GRASP_FAIL
-                    
+                    infoMsg.adjust = 0.0
                 elif 0 < y < 34.5 :
                     print("[ROS2] Grasp FAIL, y too small")
                     infoMsg.result = GripperInfomation.GRASP_MISS
@@ -387,12 +403,15 @@ class pubsub(Node):
                 elif elapsed > timeout:
                     print("[ROS2] Grasp TIMEOUT without vision pose")
                     infoMsg.result = GripperInfomation.GRASP_FAIL
+                    infoMsg.adjust = 0.0
                     self.waiting_grasp = False
                     self.grasp_start_time = None
-
                 else:
-                    # cmd 從 grab 轉為 release 時
                     return
+                # cmd 從 grab 轉為 release 時
+                self.publisher_info.publish(infoMsg)
+                
+                
         
         
         

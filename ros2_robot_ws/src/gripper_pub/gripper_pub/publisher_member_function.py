@@ -4,6 +4,7 @@ from robot_interfaces.msg import GripperCommand, GripperInfo
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 import threading
+
 from utils.table import (
     GripperState,
     ArmCmd,
@@ -93,7 +94,7 @@ class GripperPublisher(Node):
 
     def listener_callback2(self, msg):
         print("callback2")
-        print(f"Received: result={msg.result}")
+        print(f"Received: result={msg.result}, adjust={msg.adjust}")
 
 
 def main(args=None):
