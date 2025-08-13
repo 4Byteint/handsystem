@@ -13,7 +13,6 @@ from .table import (
 import os
 import can
 from .can_sender import CANInterface
-from robot_interfaces.msg import  GraspPose
 
 class Claw:
     """This class handles all CAN-related tasks using python-can."""
@@ -315,7 +314,7 @@ class Claw:
     def sensor2j6_matrix(self, motor_deg):
         L1 = 15
         L2 = 32.5
-        offset = -27.5
+        offset = -27.5+3.11
         theta = np.radians(motor_deg) # radius
         dz = (
             L1 * np.cos(theta)
@@ -327,8 +326,8 @@ class Claw:
         
         self.R_sensor2j6 = np.array([
             [-1, 0, 0, 0],
-            [0, 0, 1, dz],
-            [0, 1, 0, 201.62],
+            [0, 0, 1, -dz],
+            [0, 1, 0, 206.62],
             [0, 0, 0, 1]
         ])
     

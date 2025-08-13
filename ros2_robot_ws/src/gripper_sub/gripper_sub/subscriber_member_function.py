@@ -5,7 +5,7 @@ import numpy as np
 from utils.claw import Claw
 from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
-from robot_interfaces.msg import GripperCommand, GripperInfo
+from robot_interfaces.msg import GripperCommand, GripperInfo, GripperPose
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
 from utils.table import (
@@ -96,6 +96,13 @@ class pubsub(Node):
         self.publisher_info = self.create_publisher(
             GripperInfo,
             "/gripper_info",  
+            10,
+            callback_group=self.callback_group,
+        )
+        
+        self.publisher_pose = self.create_publisher(
+            GripperPose,
+            "/gripper_pose",  
             10,
             callback_group=self.callback_group,
         )
@@ -203,12 +210,15 @@ class pubsub(Node):
                 print(
                     f'Arm cmd receieved : "{ArmCmd.cmdDict.get(msg.num,"unknown cmd")}"'
                 )
-                if self.currentCmd == ArmCmd.CMD_GRAB:
-                    self.waiting_grasp = True
-                if self.currentCmd == ArmCmd.CMD_RELEASE:
-                    self.waiting_grasp = False
-                if self.currentCmd == ArmCmd.CMD_ERROR:
-                    raise ValueError("例外發生")
+                if self.currentCmd != ArmCmd.CMD_NO_NEWCMD:
+                    if self.currentCmd == ArmCmd.CMD_GRAB:
+                        self.waiting_grasp = True
+                    
+                    elif self.currentCmd == ArmCmd.CMD_ERROR:
+                        self.waiting_grasp = False
+                        raise ValueError("例外發生")
+                    else:
+                        self.waiting_grasp = False
 
             except ValueError as e:
                 print(f"Exception occurred: {e}")
@@ -375,41 +385,53 @@ class pubsub(Node):
                 self.grasp_pose_counter += 1
                 # print(f"[ROS2] 收到 pose 第 {self.grasp_pose_counter} 筆")
 
-                if self.grasp_pose_counter <= 3:
+                if self.grasp_pose_counter <= 5:
                     return
                 
                 elapsed = time.time() - self.grasp_start_time
-                timeout = 5
+                timeout = 10
                 
                 infoMsg = GripperInfo() 
+                poseMsg = GripperPose()
                 transformed_matrix = self.claw.conn2sensor_matrix(x, y, angle)
-                infoMsg.data = transformed_matrix.flatten().tolist()
+                poseMsg.data = transformed_matrix.flatten().tolist()
                 
                 # 成功即發布
-                if y >= 34.5 and -90 <= angle <= 90:
+                if y >= 30.5 and -90 <= angle <= 90:
                     infoMsg.result = GripperInfomation.GRASP_SUCCESS
-                    infoMsg.adjust = 0.0
+                    poseMsg.adjust = 0.0
+                    self.publisher_info.publish(infoMsg)
+                    self.publisher_pose.publish(poseMsg)
                    
-                elif x == 0 or y == 0 or angle == 0:
+                elif x == 0 and y == 0 and angle == 0:
                     print("[ROS2] Grasp FAIL")
                     infoMsg.result = GripperInfomation.GRASP_FAIL
-                    infoMsg.adjust = 0.0
-                elif 0 < y < 34.5 :
-                    print("[ROS2] Grasp FAIL, y too small")
+                    poseMsg.adjust = 0.0
+                    self.publisher_info.publish(infoMsg)
+                    self.publisher_pose.publish(poseMsg)
+                    
+                elif 0 < y < 30.5 :
+                    print("[ROS2] Grasp ADJUST, y too small")
                     infoMsg.result = GripperInfomation.GRASP_MISS
-                    infoMsg.adjust = 3.5
+                    poseMsg.adjust = 3.5
+                    self.publisher_info.publish(infoMsg)
+                    self.publisher_pose.publish(poseMsg)
                     
                 # 超時則發布
                 elif elapsed > timeout:
-                    print("[ROS2] Grasp TIMEOUT without vision pose")
+                    print("[ROS2] Grasp TIMEOUT")
                     infoMsg.result = GripperInfomation.GRASP_FAIL
-                    infoMsg.adjust = 0.0
-                    self.waiting_grasp = False
+                    poseMsg.adjust = 0.0
+                    self.publisher_info.publish(infoMsg)
                     self.grasp_start_time = None
-                else:
-                    return
-                # cmd 從 grab 轉為 release 時
+
+                
+            else: # cmd 從 grab 轉為 release 時
+                self.grasp_pose_counter = 0
+                infoMsg = GripperInfo() 
+                infoMsg.result = GripperInfomation.GRIPPER_RELEASE 
                 self.publisher_info.publish(infoMsg)
+                
                 
                 
         

@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from robot_interfaces.msg import GripperCommand, GripperInfo
+from robot_interfaces.msg import GripperCommand, GripperInfo, GripperPose
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 import threading
@@ -41,6 +41,13 @@ class GripperPublisher(Node):
             GripperInfo,
             "/gripper_info",
             self.listener_callback2,
+            10,
+            callback_group=self.callback_group,
+        )
+        self.subscription3 = self.create_subscription(
+            GripperPose,
+            "/gripper_pose",
+            self.listener_callback3,
             10,
             callback_group=self.callback_group,
         )
@@ -94,7 +101,12 @@ class GripperPublisher(Node):
 
     def listener_callback2(self, msg):
         print("callback2")
-        print(f"Received: result={msg.result}, adjust={msg.adjust}")
+        print(f"Received: result={msg.result}")
+        
+    
+    def listener_callback3(self, msg):
+        print("callback3")
+        print(f"Received: result={msg.data}, adjust={msg.adjust}")
 
 
 def main(args=None):
